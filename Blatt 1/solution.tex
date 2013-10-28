@@ -1,0 +1,153 @@
+% all-in-one cheatsheet layout (Michael Franzen, 2013)
+\documentclass[a4paper]{article}
+
+% geometry settings
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+
+% font settings
+%\usepackage[light,math]{kurier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{marvosym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% colors
+\usepackage{xcolor}
+\definecolor{lightgray}{gray}{0.8}
+
+% formatting
+\usepackage{paralist}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{Tabbing}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{mdframed}
+\pagestyle{fancy}
+
+% math
+\usepackage{array}
+\usepackage{eqnarray}
+
+% figures
+\usepackage{wrapfig}
+\usepackage{subfig}
+
+% figure modules
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc}
+\usepackage{algorithm2e}
+\usepackage{verbatim}
+
+% TOC & Glossary
+\usepackage{sectsty}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[titles,subfigure]{tocloft}
+
+% commands
+\usepackage{xargs}
+\usepackage{ifthen}
+
+% head line
+\fancyhf{}
+\rhead{Michael Franzen (1696933), \today}
+\lhead{Graph Theory - solution of problem sheet 1 }
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+
+\newcommand{\sheetnumber}{1}
+
+% (problem number)
+\surroundwithmdframed[
+    hidealllines=true,
+    backgroundcolor=gray!10,
+    skipbelow=\baselineskip,
+    skipabove=\baselineskip
+]{mylemma}
+
+\surroundwithmdframed[
+	linecolor=white,
+	skipbelow=\baselineskip,
+	skipabove=\baselineskip
+]{mytheorem}
+
+\begin{document}
+	
+	\newtheorem{mytheorem}{Theorem}[section]
+	\newtheorem{mylemma}{Lemma}[mytheorem]	
+
+	\newenvironmentx*{solution}[1]{\section*{Problem #1}\addtocounter{section}{1}\setcounter{mylemma}{0}\setcounter{mytheorem}{0}}{}
+	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\begin{proof}}{\end{proof}\end{mytheorem}}
+	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\begin{proof}}{\end{proof}\end{mylemma}}
+
+
+	\begin{solution}{1}
+		\begin{theorem}{Any tree $T$ has at least $\Delta(T)$ leaves.}
+			\begin{lemma}{Any connected subgraph of a tree is a tree as well.}
+				If a graph $G = (V, E)$ is acyclic then $E$ does not contain any cyclic subset and hence there is no cyclic subgraph of $G$. From these considerations, any connected subgraph of $G$ is acyclic and therefore a tree.
+			\end{lemma}
+		
+			\begin{lemma}{Any tree $T$ with $\Delta(T)+1$ vertices has $\Delta(T)$ leaves ($\Delta(T) \geq 1$).}
+				Let $v_0 \in V_T$ denote the vertex of $T = (V_T, E_T)$ with $d(v_0) = \Delta(T)$.\\
+				For any $v, w \in V_T\setminus\{v_0\}$ $(v \neq w)$:
+				\begin{itemize}
+					\item $d(v) \geq 1$: $v_0$ is adjacent to $v$ since $|V_T| =  \Delta(T)+1$. $\Rightarrow d(v) \geq 1$
+					\item $d(v) \leq 1$: Any edge $\{v, w\} \in E_T$ would create a cycle $(v_0, v, w, v_0)$ which would render $T$ invalid as a tree.
+				\end{itemize}
+				$\Rightarrow \forall v \in V_T\setminus\{v_0\}: d(v) = 1 \Leftrightarrow v \text{ is a leaf}$. Notably, $|V_T\setminus\{v_0\}| = \Delta(T)$.
+			\end{lemma}
+
+			\begin{lemma}{For any tree $T =  (V_T, E_T)$ with $|V_T| > \Delta(T)+1 \geq 3$, there exists a partition $(S, S')$  of $T$ with $\Delta(S) + \Delta(S') = \Delta(T)$.}
+				Let $v_0 \in V_T$ denote a vertex with $d(v_0) = \Delta(T)$. Since $|V_T| > \Delta(T)+1$, $v0$ has at least one non-leaf adjacent vertex $v_1 \in V_T$. Now, let $(S_0, S_1)$ denote the partition at the edge $\{v_0, v_1\}$ whereby $S_0$ contains $v_0$ and ($S_1$, $v_1$ respectively).\\
+				As seen in Lemma 1.1, $S_0$ and $S_1$ are trees.
+				\begin{itemize}
+					\item case $d(v_1) = 2$: In this case, a cut at the edge $\{v_0, v_1\}$ would make 
+				\end{itemize}
+			\end{lemma}
+			\ \\
+			\emph{Proof by induction.} Let $T = (V_T, E_T)$ be a tree.\\ \ \\
+			\textbf{Basis: }$\Delta(T)=1$\\
+				Inherently, $V_T =^! \{v_1, \dots, v_m\}$ $(v_i = v_j \Rightarrow i=j)$ and $E_T =^! \{\{v_1, v_2\}, ..., \{v_{m-1}, v_m\}\}$ $(m,i,j \in \mathbb{N})$. Any modification would violate our preconditions. $v_1, v_m$ are the only vertices with degree $1$. Therefore, the number of leaves is $2 \geq \Delta(T)$. \ \\
+			\ \\
+			\textbf{Step: }For some $n \in \mathbb{N}: \text{ Any } T = (V_T, E_T) \text{ with } \Delta(T) = n \text{ has at least } n \text{ leaves}$ .\ \\
+			Let $T' = (V_{T'}, E_{T'})$ be a tree with $\Delta(T') > n$.
+		\end{theorem}
+	\end{solution}
+	\newpage
+	\begin{solution}{2}
+		\begin{theorem}{If any removal of an edge increases the number of connected components of a graph $G$ then $G$ is acyclic.}
+			Let $S = (V_S, E_S)$ be a connected component of $G$. Removing any edge $e \in E_S$ increases the number of connected components and thereby disconnects $S$.\\
+			\textbf{If $S$ had contained a cycle $C$ then there would not have been any unique paths in $C$}. Hence, no edge removal would have an effect on the connectivity of $S$ (removing an edge still leaves a path between any two vertices). Hereby, $S$ had to be acyclic.\\
+			 If any connected component of $G$ was acyclic then $G$ would be acyclic, too.
+		\end{theorem}
+		\begin{theorem}{If adding any edge introduces a cycle in an acyclic graph $G = (V, E)$ then any two vertices in $G$ are joined by a unique path.}
+			If adding an edge $\{v_0, v_1\}$ joining two non-adjacent vertices $v_0, v_1 \in V$ introduces a cycle $(v_0, ..., v_1, v_0)$ then there had to be \emph{at least} one path from $v_0$ to $v_1$.\\
+			Furthermore, if there was \emph{more than one} path joining $v_0$ and $v_1$ then there would have already been a cycle (but $G$ is acyclic). $\Rightarrow$ Any vertex had to be joined by a unique path.
+		\end{theorem}
+		\begin{theorem}{If any two vertices in a graph are joined by a unique path then any removal of an edge increases the number of connected components.}
+			Let $G = (V, E)$ be a graph in which all vertices are joined by a unique path. Let $e = \{v_0, v_1\} \in E$ be an edge. Thus, the unique path from $v_0$ to $v_1$ runs over (and is exactly) $e$. From these considerations, removing $e$ would make $v_1$ inaccessible from $v_0$ and would thereby increase the number of connected components.
+		\end{theorem}
+	\end{solution} 
+	\newpage
+	\begin{solution}{3}
+		\begin{theorem}{Either a graph or its complement is connected.}
+			Let $G = (V, E)$ be disconnected. Moreover, let $S = (V_S, E_S)$ and $T = (V_T, E_T)$ be two connected components of G ($S, T$ are not inter-connected).\\
+			Thus, for any two vertices $s \in V_S$ and $t \in V_T$, there is no edge $\{s, t\}$ in $E$. On the other hand, $\{s, t\}$ is contained in the graphs complement $\bar{G}$.\\
+			Moreover, for any additional vertex $t' \in V_T$, there exists an edge $\{s, t'\}$ and hence, the complement contains the path $(t, s, t')$.\\
+			From these considerations, any two components that are not inter-connected in $G$ are inter-connected in $\bar{G}$ and any connected component of $G$ is connected in $\bar{G}$ as well.\\
+			Since $S, T$ are chosen without any loss of generality, the complement of any disconnected graph is connected.\\
+			\ \\
+			Finally, if $\bar{G}$ is disconnected then $G$ is connected according to $\bar{\bar{G}} = G$.
+		\end{theorem}
+	\end{solution} 
+	\newpage
+	\begin{solution}{4}
+		\begin{theorem}{If $u$ and $v$ are the only vertices of odd degree in a graph then there is a $u$-$v$-path.}
+			
+		\end{theorem}
+	\end{solution} 
+\end{document}
