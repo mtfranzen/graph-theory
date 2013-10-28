@@ -87,7 +87,7 @@
 	\begin{solution}{1}
 		\begin{theorem}{Any tree $T$ has at least $\Delta(T)$ leaves.}
 			\begin {lemma}{Any connected subgraph of a tree is a tree as well.}
-				If a graph $G = (V, E)$ is acyclic then $E$ does not contain any cyclic subset and hence there is no cyclic subgraph of $G$. From these considerations, any connected subgraph of $G$ is acyclic and therefore a tree.
+				If a graph $G = (V, E)$ is acyclic, then $E$ does not contain any cyclic subset and hence there is no cyclic subgraph of $G$. From these considerations, any connected subgraph of $G$ is acyclic and therefore a tree.
 			\end{lemma}
 		
 			\begin{lemma}{Any tree $T$ with $\Delta(T)+1$ vertices has $\Delta(T)$ leaves ($\Delta(T) \geq 1$).}
@@ -118,23 +118,22 @@
 	\end{solution}
 	\newpage
 	\begin{solution}{2}
-		\begin{theorem}{If any removal of an edge increases the number of connected components of a graph $G$ then $G$ is acyclic.}
-			Let $S = (V_S, E_S)$ be a connected component of $G$. Removing any edge $e \in E_S$ increases the number of connected components and thereby disconnects $S$.\\
-			\textbf{If $S$ had contained a cycle $C$ then there would not have been any unique paths in $C$}. Hence, no edge removal would have an effect on the connectivity of $S$ (removing an edge still leaves a path between any two vertices). Hereby, $S$ had to be acyclic.\\
-			 If any connected component of $G$ was acyclic then $G$ would be acyclic, too.
+		\begin{theorem}{If any removal of an edge increases the number of connected components of a graph $G$, then $G$ is acyclic.}
+			Let $S$ be a connected component of $G$. If $S$ contained any cycle $C = (v_0, ..., v_i, v_j, ..., v_0)$, then the removal of an edge $\{v_i, v_j\}$ would still leave a complete walkthrough $(v_j, ..., v_0, ..., v_i)$ of $S$ and therefore maintain the component's connectivity.
+			But - as our preconditions state - the removal of any edge increases the number of connected components (disconnects a component).\\ Thus, a component of $G$ does not contain any cycles. Considering that none of the graph's connected components contains a cycle, $G$ is acyclic as well.
 		\end{theorem}
-		\begin{theorem}{If adding any edge introduces a cycle in an acyclic graph $G = (V, E)$ then any two vertices in $G$ are joined by a unique path.}
-			If adding an edge $\{v_0, v_1\}$ joining two non-adjacent vertices $v_0, v_1 \in V$ introduces a cycle $(v_0, ..., v_1, v_0)$ then there had to be \emph{at least} one path from $v_0$ to $v_1$.\\
-			Furthermore, if there was \emph{more than one} path joining $v_0$ and $v_1$ then there would have already been a cycle (but $G$ is acyclic). $\Rightarrow$ Any vertex had to be joined by a unique path.
+		\begin{theorem}{If adding any edge introduces a cycle in an acyclic graph $G = (V, E)$, then any two vertices in $G$ are joined by a unique path.}
+			If adding an edge $\{v_0, v_1\}$ joining two non-adjacent vertices $v_0, v_1 \in V$ introduces a cycle $(v_0, ..., v_1, v_0)$, then there had to be \emph{at least} one path from $v_0$ to $v_1$.\\
+			Furthermore, if there was \emph{more than one} path joining $v_0$ and $v_1$, then there would have already been a cycle (but $G$ is acyclic). $\Rightarrow$ Any vertex had to be joined by a unique path.
 		\end{theorem}
-		\begin{theorem}{If any two vertices in a graph are joined by a unique path then any removal of an edge increases the number of connected components.}
+		\begin{theorem}{If any two vertices in a graph are joined by a unique path, then any removal of an edge increases the number of connected components.}
 			Let $G = (V, E)$ be a graph in which all vertices are joined by a unique path. Let $e = \{v_0, v_1\} \in E$ be an edge. Thus, the unique path from $v_0$ to $v_1$ runs over (and is exactly) $e$. From these considerations, removing $e$ would make $v_1$ inaccessible from $v_0$ and would thereby increase the number of connected components.
 		\end{theorem}
 	\end{solution} 
 	\newpage
 	\begin{solution}{3}
 		\begin{theorem}{Either a graph or its complement is connected.}
-			For a connected graph, we're done.\\
+			For a \emph{connected} graph, we're done.\\
 			Let $G = (V, E)$ be disconnected. Moreover, let $S = (V_S, E_S)$ and $T = (V_T, E_T)$ be two connected components of G ($S \neq T$).\\
 			Now let $u, v \in V_S \cup V_T$ be vertices in these components.
 			\begin{itemize}
