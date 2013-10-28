@@ -134,15 +134,28 @@
 	\begin{solution}{3}
 		\begin{theorem}{Either a graph or its complement is connected.}
 			For a \emph{connected} graph, we're done.\\
-			Let $G = (V, E)$ be disconnected. Moreover, let $S = (V_S, E_S)$ and $T = (V_T, E_T)$ be two connected components of G ($S \neq T$).\\
-			Now let $u, v \in V_S \cup V_T$ be vertices in these components.
+			
+%			Let $G = (V, E)$ be disconnected. Moreover, let $S = (V_S, E_S)$ and $T = (V_T, E_T)$ be two connected components of G ($S \neq T$).\\
+%			Now let $u, v \in V_S \cup V_T$ be vertices in these components.
+%			\begin{itemize}
+%				\item \textbf{Case 1: } $u \in V_S$ and $v \in V_T$.\\
+%					Then $G$ does not contain the edge $e = \{u, v\}$ . Otherwise, S and T were interconnected. From these considerations, the graph's complement $\bar{G}$ does contain $e$.
+%				\item  \textbf{Case 2: } $u, v \in V_S$:\\
+%					Considering that $V_T$ is not empty, then there is a vertex $w \in V_T$ such that the edges $\{u, w\}$ and $\{v, w\}$ exist in $\bar{G}$ (see Case 1). From these considerations, $\bar{G}$ also contains the path $(u, w, v)$ .
+%			\end{itemize}
+			
+			Let $G = (V, E)$ be disconnected. \\
+			Claim: Any two vertices $u,v \in V$ are connected in $\bar{G}$. \\
+			Proof: There are only two cases to distinguish, either $u$ and $v$ lie in the same component or in different components. 
 			\begin{itemize}
-				\item \textbf{Case 1: } $u \in V_S$ and $v \in V_T$.\\
-					Then $G$ does not contain the edge $e = \{u, v\}$ . Otherwise, S and T were interconnected. From these considerations, the graph's complement $\bar{G}$ does contain $e$.
-				\item  \textbf{Case 2: } $u, v \in V_S$:\\
+				\item  \textbf{Case 1: } $u$ and $v$ are in different components $V_S$ and $V_T$ with $u \in V_S$ and $v \in V_T$.\\
+				Then $G$ does not contain the edge $e = \{u, v\}$ . Otherwise, S and T were interconnected. From these considerations, the graph's complement $\bar{G}$ does contain $e$.
+				\item \textbf{Case 2: } $u$ and $v$ are in the same component $V_S$, $u, v \in V_S$:\\
+					$G$ is disconnected, hence there is atleast another not empty component $V_T$ with $V_T \neq V_S$. 
 					Considering that $V_T$ is not empty, then there is a vertex $w \in V_T$ such that the edges $\{u, w\}$ and $\{v, w\}$ exist in $\bar{G}$ (see Case 1). From these considerations, $\bar{G}$ also contains the path $(u, w, v)$ .
 			\end{itemize}
-			Therefore, all vertices in a \emph{disconnected graph} $G$ are connected in $\bar{G}$ and hereby $\bar{G}$ is connected.\\
+			
+			Therefore, any two vertices in a \emph{disconnected graph} $G$ are connected in $\bar{G}$ either by one or two edges and hereby $\bar{G}$ is connected.\\
 		\end{theorem}
 	\end{solution} 
 	\newpage
