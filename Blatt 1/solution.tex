@@ -55,7 +55,7 @@
 
 % head line
 \fancyhf{}
-\chead{Graph Theory - Sheet 1 - \today\\J. Batzill (1698622), M. Franzen (1696933), J. Labeit (ABCDEFGH)}
+\chead{Graph Theory - Sheet 1 - \today\\J. Batzill (1698622), M. Franzen (1696933), J. Labeit (1656460)}
 \renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
 
 \newcommand{\sheetnumber}{1}
@@ -148,8 +148,13 @@
 	\end{solution} 
 	\newpage
 	\begin{solution}{4}
+		I will prove the theorem that if u and v are the only vertices with odd degree in a graph $G$, then there is a path connecting $u$ and $v$, by assuming there is no path connecting $u$ and $v$ and leading this assumption to the contradiction that G is no valid graph. 
 		\begin{theorem}{If $u$ and $v$ are the only vertices of odd degree in a graph then there is a $u$-$v$-path.}
-			
+		Let $G$ be a graph with edges $u,v \in V(G)$ and let $u$ and $v$ be the only vertices with odd degree in G. 
+		Assuming there is no path connecting $u$ and $v$ then $u$ and $v$ have to be in different components, because if they were in the same component there would be a path connecting $u$ and $v$. 
+		Let $A$ be the component of $u$, then $u$ is the only vertex of odd degree in $A$ because as stated above $v$ is not in $A$. Because $u$ is the only vertex with odd degree in $A$ the sum over the degree of all vertices in $A$ is odd. 
+		Using the theorem that the sum over the degrees over all vertices in a graph has to be even this leads to the conclusion that $A$ is no valid graph. 
+		This is a contradiction to $A$ being a valid component of $G$, hence the assumption that there is no path connecting $u$ and $v$ must be wrong leaving the only conclusion that there is a $u$-$v$-path.	
 		\end{theorem}
-	\end{solution} 
+	\end{solution}
 \end{document}
