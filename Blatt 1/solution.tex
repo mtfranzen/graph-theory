@@ -87,7 +87,7 @@
 
 	\begin{solution}{1}
 		\begin{theorem}{Any tree $T$ has at least $\Delta(T)$ leaves.}
-			\begin{lemma}{Any connected subgraph of a tree is a tree as well.}
+			\begin {lemma}{Any connected subgraph of a tree is a tree as well.}
 				If a graph $G = (V, E)$ is acyclic then $E$ does not contain any cyclic subset and hence there is no cyclic subgraph of $G$. From these considerations, any connected subgraph of $G$ is acyclic and therefore a tree.
 			\end{lemma}
 		
@@ -135,13 +135,16 @@
 	\newpage
 	\begin{solution}{3}
 		\begin{theorem}{Either a graph or its complement is connected.}
-			Let $G = (V, E)$ be disconnected. Moreover, let $S = (V_S, E_S)$ and $T = (V_T, E_T)$ be two connected components of G ($S, T$ are not inter-connected).\\
-			Thus, for any two vertices $s \in V_S$ and $t \in V_T$, there is no edge $\{s, t\}$ in $E$. On the other hand, $\{s, t\}$ is contained in the graphs complement $\bar{G}$.\\
-			Moreover, for any additional vertex $t' \in V_T$, there exists an edge $\{s, t'\}$ and hence, the complement contains the path $(t, s, t')$.\\
-			From these considerations, any two components that are not inter-connected in $G$ are inter-connected in $\bar{G}$ and any connected component of $G$ is connected in $\bar{G}$ as well.\\
-			Since $S, T$ are chosen without any loss of generality, the complement of any disconnected graph is connected.\\
-			\ \\
-			Finally, if $\bar{G}$ is disconnected then $G$ is connected according to $\bar{\bar{G}} = G$.
+			If $G$ was connected, we would already been done.\\
+			Let $G = (V, E)$ be disconnected. Moreover, let $S = (V_S, E_S)$ and $T = (V_T, E_T)$ be two connected components of G ($S \neq T$).\\
+			Now let $u, v \in V_S \cup V_T$ be vertices in these components.
+			\begin{itemize}
+				\item \textbf{Case 1: } $u \in V_S$ and $v \in V_T$.\\
+					Then $G$ does not contain the edge $e = \{u, v\}$ . Otherwise, S and T were interconnected. From these considerations, the graph's complement $\bar{G}$ does contain $e$.
+				\item  \textbf{Case 2: } $u, v \in V_S$:\\
+					Considering that $V_T$ is not empty, then there is a vertex $w \in V_T$ such that the edges $\{u, w\}$ and $\{v, w\}$ exist in $\bar{G}$ (see Case 1). From these considerations, $\bar{G}$ also contains the path $(u, w, v)$ .
+			\end{itemize}
+			Therefore, all vertices in a \emph{disconnected graph} $G$ are connected in $\bar{G}$ and hereby $\bar{G}$ is connected.\\
 		\end{theorem}
 	\end{solution} 
 	\newpage
