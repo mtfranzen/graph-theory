@@ -148,7 +148,7 @@
 			Claim: Any two vertices $u,v \in V$ are connected in $\bar{G}$. \\
 			Proof: There are only two cases to distinguish, either $u$ and $v$ lie in the same component or in different components. 
 			\begin{itemize}
-				\item  \textbf{Case 1: } $u$ and $v$ are in different components $V_S$ and $V_T$ with $u \in V_S$ and $v \in V_T$.\\
+				\item  \textbf{Case 1: } $u$ and $v$ are in different components $S = (V_S, E_S)$ and $T = (V_T, E_S)$ with $u \in V_S$ and $v \in V_T$.\\
 				Then $G$ does not contain the edge $e = \{u, v\}$ . Otherwise, S and T were interconnected. From these considerations, the graph's complement $\bar{G}$ does contain $e$.
 				\item \textbf{Case 2: } $u$ and $v$ are in the same component $V_S$, $u, v \in V_S$:\\
 					$G$ is disconnected, hence there is atleast another not empty component $V_T$ with $V_T \neq V_S$. 
@@ -160,12 +160,11 @@
 	\end{solution} 
 	\newpage
 	\begin{solution}{4}
-		I will prove the theorem that if u and v are the only vertices with odd degree in a graph $G$, then there is a path connecting $u$ and $v$, by assuming there is no path connecting $u$ and $v$ and leading this assumption to the contradiction that G is no valid graph. 
+		I will prove the theorem that if $u$ and $v$ are the only vertices with odd degree in a graph $G$, then there is a path connecting $u$ and $v$. Our assumption is going to be that there is no path connecting those odd-degree vertices - which we will prove to be a contradiction.
 		\begin{theorem}{If $u$ and $v$ are the only vertices of odd degree in a graph then there is a $u$-$v$-path.}
-		Let $G$ be a graph with edges $u,v \in V(G)$ and let $u$ and $v$ be the only vertices with odd degree in G. 
-		Assuming there is no path connecting $u$ and $v$ then $u$ and $v$ have to be in different components, because if they were in the same component there would be a path connecting $u$ and $v$. 
-		Let $A$ be the component of $u$, then $u$ is the only vertex of odd degree in $A$ because as stated above $v$ is not in $A$. Because $u$ is the only vertex with odd degree in $A$ the sum over the degree of all vertices in $A$ is odd. 
-		Using the theorem that the sum over the degrees over all vertices in a graph has to be even this leads to the conclusion that $A$ is no valid graph. 
+		Let $G = (V, E)$ be a graph with vertices $u,v \in V$ and let $u$ and $v$ be the only vertices with odd degree in G. \\
+		Assuming that there is no path connecting $u$ and $v$, then $u$ and $v$ have to be in different components. If they were in the same component, then there had to be a path connecting $u$ and $v$.\\
+		Let $A$ be the component of $u$, then $u$ is the only odd-degree vertex in $A$ (as seen above, $v$ is not in $A$). Because $u$ is the only vertex with odd degree in $A$, the sum over the degree of all vertices in $A$ is odd. However, the sum over the degrees over all vertices in a graph has to be even and this leads to the conclusion that $A$ is no valid graph.\\
 		This is a contradiction to $A$ being a valid component of $G$, hence the assumption that there is no path connecting $u$ and $v$ must be wrong leaving the only conclusion that there is a $u$-$v$-path.	
 		\end{theorem}
 	\end{solution}
