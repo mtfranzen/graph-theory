@@ -143,18 +143,41 @@
 %				\item  \textbf{Case 2: } $u, v \in V_S$:\\
 %					Considering that $V_T$ is not empty, then there is a vertex $w \in V_T$ such that the edges $\{u, w\}$ and $\{v, w\}$ exist in $\bar{G}$ (see Case 1). From these considerations, $\bar{G}$ also contains the path $(u, w, v)$ .
 %			\end{itemize}
-			
+		
 			Let $G = (V, E)$ be disconnected. \\
 			Claim: Any two vertices $u,v \in V$ are connected in $\bar{G}$. \\
 			Proof: There are only two cases to distinguish, either $u$ and $v$ lie in the same component or in different components. 
+
 			\begin{itemize}
 				\item  \textbf{Case 1: } $u$ and $v$ are in different components $S = (V_S, E_S)$ and $T = (V_T, E_S)$ with $u \in V_S$ and $v \in V_T$.\\
 				Then $G$ does not contain the edge $e = \{u, v\}$ . Otherwise, S and T were interconnected. From these considerations, the graph's complement $\bar{G}$ does contain $e$.
+				\begin{center}
+					\begin{tikzpicture}
+						\node[circle, draw] (u)  at (0,0) {$u$};
+						\node[circle, draw] (v)  at (3,0) {$v$};
+						\node[circle, draw, dotted, minimum size=1cm, label=$S$] (S) at (0, 0) {};
+						\node[circle, draw, dotted, minimum size=1cm, label=$T$] (S) at (3, 0) {};
+						\draw[red, dashed] (u) -- (v) node [midway,fill=white] {$e$};
+					\end{tikzpicture}
+				\end{center}
+
 				\item \textbf{Case 2: } $u$ and $v$ are in the same component $V_S$, $u, v \in V_S$:\\
 					$G$ is disconnected, hence there is atleast another not empty component $V_T$ with $V_T \neq V_S$. 
-					Considering that $V_T$ is not empty, then there is a vertex $w \in V_T$ such that the edges $\{u, w\}$ and $\{v, w\}$ exist in $\bar{G}$ (see Case 1). From these considerations, $\bar{G}$ also contains the path $(u, w, v)$ .
+					Considering that $V_T$ is not empty, then there is a vertex $w \in V_T$ such that the edges $e_1 = \{u, w\}$ and $e_2 = \{v, w\}$ exist in $\bar{G}$ (see Case 1). From these considerations, $\bar{G}$ also contains the path $(u, w, v)$ .
+				\begin{center}
+					\begin{tikzpicture}
+						\node[circle, draw] (u)  at (0,0) {$u$};
+						\node[circle, draw] (v)  at (0,-1) {$v$};
+						\node[circle, draw] (w)  at (3,-0.5) {$w$};
+						\node[circle, draw, dotted, minimum size=2cm, label=$S$] (S) at (0, -0.5) {};
+						\node[circle, draw, dotted, minimum size=1cm, label=$T$] (S) at (3, -0.5) {};
+						\draw (u) -- (v);
+						\draw[red, dashed] (u) -- (w) node [midway,fill=white] {$e_1$};
+						\draw[red, dashed] (v) -- (w) node [midway,fill=white] {$e_2$};
+					\end{tikzpicture}
+				\end{center}
 			\end{itemize}
-			
+
 			Therefore, any two vertices in a \emph{disconnected graph} $G$ are connected in $\bar{G}$ either by one or two edges and hereby $\bar{G}$ is connected.\\
 		\end{theorem}
 	\end{solution} 
