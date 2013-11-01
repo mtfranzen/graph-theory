@@ -32,6 +32,7 @@
 % math
 \usepackage{array}
 \usepackage{eqnarray}
+\usepackage{mathtools}
 
 % figures
 \usepackage{wrapfig}
@@ -40,7 +41,7 @@
 % figure modules
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{positioning,calc}
+\usetikzlibrary{positioning,calc, shapes}
 \usepackage{algorithm2e}
 \usepackage{verbatim}
 
@@ -84,19 +85,75 @@
 	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\begin{proof}}{\end{proof}\end{mylemma}}
 
 
-	\begin{solution}{1}
+	\begin{solution}{5}
+		\begin{center}
+			
+			\begin{tikzpicture}
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
+				\node[circle, draw] (v1) at (1, 0) {$v_1$};
+				\node[circle, draw] (v2) at (1, -1) {$v_2$};
+				\draw[dotted] (c1) -- (v1);
+				\draw[dotted] (c1) -- (v2);
+				\draw (v1) -- (v2);
 
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c2)  at (5,-0.5) {$C_2$};
+				\node[circle, draw] (w1) at (3, 0) {$w_1$};
+				\node[circle, draw] (w2) at (3, -1) {$w_2$};
+				\draw[dotted] (c2) -- (w1);
+				\draw[dotted] (c2) -- (w2);
+				\draw (w1) -- (w2);
+			\end{tikzpicture}
+		\end{center}
+		\textbf{Step 1:}
+		\begin{center}
+			\begin{tikzpicture}
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
+				\node[circle, draw] (v1) at (1, 0) {$v_1$};
+				\node[circle, draw] (v2) at (1, -1) {$v_2$};
+				\draw[dotted] (c1) -- (v1);
+				\draw[dotted] (c1) -- (v2);
+				\draw (v1) -- (w1);
+
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c2)  at (5,-0.5) {$C_2$};
+				\node[circle, draw] (w1) at (3, 0) {$w_1$};
+				\node[circle, draw] (w2) at (3, -1) {$w_2$};
+				\draw[dotted] (c2) -- (w1);
+				\draw[dotted] (c2) -- (w2);
+				\draw (w1) -- (w2);
+			\end{tikzpicture}
+		\end{center}
+		\textbf{Step 2:}
+		\begin{center}
+			\begin{tikzpicture}
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
+				\node[circle, draw] (v1) at (1, 0) {$v_1$};
+				\node[circle, draw] (v2) at (1, -1) {$v_2$};
+				\draw[dotted] (c1) -- (v1);
+				\draw[dotted] (c1) -- (v2);
+				\draw (v1) -- (w1);
+
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c2)  at (5,-0.5) {$C_2$};
+				\node[circle, draw] (w1) at (3, 0) {$w_1$};
+				\node[circle, draw] (w2) at (3, -1) {$w_2$};
+				\draw[dotted] (c2) -- (w1);
+				\draw[dotted] (c2) -- (w2);
+				\draw (v2) -- (w2);
+			\end{tikzpicture}
+		\end{center}
+		\textbf{Result: } The components are connected while $d(v_1), d(v_2), d(w_1), d(w_2)$ have not been modified.
 	\end{solution}
 	\newpage
-	\begin{solution}{2}
-		
+	\begin{solution}{6}
 	\end{solution} 
 	\newpage
-	\begin{solution}{3}
-		
+	\begin{solution}{7}
+		For a set $C = \{G_1, ..., G_n\}$ of connected components:\\
+		\begin{align}
+			\pi(C)&= \sum_{i = 1}^n \frac{|\{v \in V(G_i)\ |\ d(v) \text{ odd}\}|}{2}&
+		\end{align}
 	\end{solution} 
 	\newpage
-	\begin{solution}{4}
+	\begin{solution}{8}
 		
 	\end{solution}
 	
