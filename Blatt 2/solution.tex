@@ -43,7 +43,7 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning,calc, shapes}
 \usepackage{algorithm2e}
-\usepackage{verbatim}
+\usepackage{verbatim}	
 
 % TOC & Glossary
 \usepackage{sectsty}
@@ -86,61 +86,71 @@
 
 
 	\begin{solution}{5}
-		\begin{center}
-			
-			\begin{tikzpicture}
-				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
-				\node[circle, draw] (v1) at (1, 0) {$v_1$};
-				\node[circle, draw] (v2) at (1, -1) {$v_2$};
-				\draw[dotted] (c1) -- (v1);
-				\draw[dotted] (c1) -- (v2);
-				\draw (v1) -- (v2);
+		\begin{theorem}{Let $G$ be a nonempty graph with minimum degree at least two. Then, there is a connected graph $G'$ having the same degree sequence as $G$.}
+			We will show that we are able to inter-connect any two connected components of $G$ without changing the graph's degree-sequence.\\ \ \\
+			For any component $C_1 = (V_1, E_1)$ and any vertex $v_1 \in V_1$, we find at least two more vertices $v_2, v_3 \in V_1$ within $C_1$ which are adjacent to $v_1$. From these considerations, removing any edge will have no impact on the connectivity of some component of $G$.
 
-				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c2)  at (5,-0.5) {$C_2$};
-				\node[circle, draw] (w1) at (3, 0) {$w_1$};
-				\node[circle, draw] (w2) at (3, -1) {$w_2$};
-				\draw[dotted] (c2) -- (w1);
-				\draw[dotted] (c2) -- (w2);
-				\draw (w1) -- (w2);
-			\end{tikzpicture}
-		\end{center}
-		\textbf{Step 1:}
-		\begin{center}
-			\begin{tikzpicture}
-				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
-				\node[circle, draw] (v1) at (1, 0) {$v_1$};
-				\node[circle, draw] (v2) at (1, -1) {$v_2$};
-				\draw[dotted] (c1) -- (v1);
-				\draw[dotted] (c1) -- (v2);
-				\draw (v1) -- (w1);
-
-				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c2)  at (5,-0.5) {$C_2$};
-				\node[circle, draw] (w1) at (3, 0) {$w_1$};
-				\node[circle, draw] (w2) at (3, -1) {$w_2$};
-				\draw[dotted] (c2) -- (w1);
-				\draw[dotted] (c2) -- (w2);
-				\draw (w1) -- (w2);
-			\end{tikzpicture}
-		\end{center}
-		\textbf{Step 2:}
-		\begin{center}
-			\begin{tikzpicture}
-				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
-				\node[circle, draw] (v1) at (1, 0) {$v_1$};
-				\node[circle, draw] (v2) at (1, -1) {$v_2$};
-				\draw[dotted] (c1) -- (v1);
-				\draw[dotted] (c1) -- (v2);
-				\draw (v1) -- (w1);
-
-				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c2)  at (5,-0.5) {$C_2$};
-				\node[circle, draw] (w1) at (3, 0) {$w_1$};
-				\node[circle, draw] (w2) at (3, -1) {$w_2$};
-				\draw[dotted] (c2) -- (w1);
-				\draw[dotted] (c2) -- (w2);
-				\draw (v2) -- (w2);
-			\end{tikzpicture}
-		\end{center}
-		\textbf{Result: } The components are connected while $d(v_1), d(v_2), d(w_1), d(w_2)$ have not been modified.
+%			Let $C_1 = (V_1, E_1)$ be a connected component of $G$. Since $G$ has degree at least two, we find at least two \emph{adjacent} vertices $v_1, v_2, v_3 \in V_1$. Respectively, let $w_1, w_2 \in V_2$ be two adjacent vertices of component $C_2 = (V_2, E_2)$. Furthermore, each of these vertices is adjacent to at least one \emph{other} vertex of it's component (again, since their degree is at least two).
+		\end{theorem}
+		\begin{figure}[h!]
+			\subfloat[Initial situation]{
+				\resizebox {0.3\textwidth}{!}{
+					\begin{tikzpicture}
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
+						\node[circle, draw] (v1) at (1, 0) {$v_1$};
+						\node[circle, draw] (v2) at (1, -1) {$v_2$};
+						\draw[dotted] (c1) -- (v1);
+						\draw[dotted] (c1) -- (v2);
+						\draw (v1) -- (v2);
+		
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c2)  at (5,-0.5) {$C_2$};
+						\node[circle, draw] (w1) at (3, 0) {$w_1$};
+						\node[circle, draw] (w2) at (3, -1) {$w_2$};
+						\draw[dotted] (c2) -- (w1);
+						\draw[dotted] (c2) -- (w2);
+						\draw (w1) -- (w2);
+					\end{tikzpicture}
+				}
+			} $\Rightarrow$
+			\subfloat[]{
+				\resizebox {0.3\textwidth}{!}{
+					\begin{tikzpicture}
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
+						\node[circle, draw] (v1) at (1, 0) {$v_1$};
+						\node[circle, draw] (v2) at (1, -1) {$v_2$};
+						\draw[dotted] (c1) -- (v1);
+						\draw[dotted] (c1) -- (v2);
+						\draw (v1) -- (w1);
+		
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c2)  at (5,-0.5) {$C_2$};
+						\node[circle, draw] (w1) at (3, 0) {$w_1$};
+						\node[circle, draw] (w2) at (3, -1) {$w_2$};
+						\draw[dotted] (c2) -- (w1);
+						\draw[dotted] (c2) -- (w2);
+						\draw (w1) -- (w2);
+					\end{tikzpicture}
+				}
+			} $\Rightarrow$
+			\subfloat[Result]{
+				\resizebox {0.3\textwidth}{!}{
+					\begin{tikzpicture}
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
+						\node[circle, draw] (v1) at (1, 0) {$v_1$};
+						\node[circle, draw] (v2) at (1, -1) {$v_2$};
+						\draw[dotted] (c1) -- (v1);
+						\draw[dotted] (c1) -- (v2);
+						\draw (v1) -- (w1);
+		
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c2)  at (5,-0.5) {$C_2$};
+						\node[circle, draw] (w1) at (3, 0) {$w_1$};
+						\node[circle, draw] (w2) at (3, -1) {$w_2$};
+						\draw[dotted] (c2) -- (w1);
+						\draw[dotted] (c2) -- (w2);
+						\draw (v2) -- (w2);
+					\end{tikzpicture}
+				}
+			}
+		\end{figure}
 	\end{solution}
 	\newpage
 	\begin{solution}{6}
