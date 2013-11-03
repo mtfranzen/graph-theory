@@ -189,12 +189,62 @@
 				Additionally, if there is exactly one spanning subgraph for $T'$ with only odd degrees then there is also exactly one for $T$ which additionally covers the vertices $v_1$ and $v_2$. 
 				Hence, either $|V- \{v_1,v_2\}| \leq 2$ and we know that there is exact one spanning subgraph meeting the conditions, or we can again apply case 1 or case 2. 
 				
+				\begin{center}
+				\resizebox {0.25\textwidth}{!}{
+					\begin{tikzpicture}
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-2.5,-0.5) {tree};
+						\node[circle, draw] (u) at (-1, -0.5) {$u$};
+						\node[circle, draw] (v1) at (1, 0.5) {$v_1$};
+						\node[circle, draw] (v2) at (1, -0.5) {$v_2$};
+						\node[circle, draw] (v3) at (1, -1.5) {$v_3$};
+						\draw[very thick] (u) -- (v1);
+						\draw[very thick] (u) -- (v2);
+						\draw (u) -- (v3);
+						\draw[dotted] (c1) -- (u);
+
+					\end{tikzpicture}
+				} $\Rightarrow$
+				\resizebox {0.25\textwidth}{!}{
+					\begin{tikzpicture}
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-2.5,-0.5) {tree};
+						\node[circle, draw] (u) at (-1, -0.5) {$u$};
+						\node[circle, draw] (v3) at (1, -0.5) {$v_3$};
+						\draw (u) -- (v3);
+						\draw[dotted] (c1) -- (u);
+					\end{tikzpicture}
+				}
+			\end{center}
+			
+				
 				\item \textbf{Case 2:} There is no edge $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$. \\
 				Using the lemma we can find a leaf $v \in V$ with an edge $(v,u) \in E$ with $deg(v)=2$. 
 				We know that the edge $(v,u)$ has to be in $S$. 
 				Additionally, we know that the degree of $u$ in any spanning subgraph meeting the conditions has to be odd, so the second edge $(u,t)$ with $t \in V$ cannot be in $S$. 
 				If we remove $u$ and $v$ from T we again receive a tree with an even number of vertices. 
 				Hence, either $|V- \{v,u\}| \leq 2$ and we know that there is exact one spanning subgraph meeting the conditions, or we can again apply case 1 or case 2. 
+				\begin{center}
+				\resizebox {0.25\textwidth}{!}{
+					\begin{tikzpicture}
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-2.5,-0.5) {tree};
+						\node[circle, draw] (t) at (-1, -0.5) {$t$};
+						\node[circle, draw] (u) at (0, -0.5) {$u$};
+						\node[circle, draw] (v) at (1, -0.5) {$v$};
+						\draw[dotted] (c1) -- (t);
+						\draw (t) -- (u);			
+						\draw[very thick] (u) -- (v);
+
+					\end{tikzpicture}
+				} $\Rightarrow$
+				\resizebox {0.25\textwidth}{!}{
+					\begin{tikzpicture}
+						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-2.5,-0.5) {tree};
+						\node[circle, draw] (t) at (-1, -0.5) {$t$};
+						\draw[dotted] (c1) -- (t);
+					\end{tikzpicture}
+				}
+			\end{center}
+			
+			
 			\end{itemize}
 		
 		All in all we can always find edges in $T$ which have to be part of $S$ and thus reducing $T$ until there is only the trivial solution. 
