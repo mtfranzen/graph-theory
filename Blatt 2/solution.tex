@@ -26,7 +26,7 @@
 \usepackage{booktabs}
 \usepackage{fancyhdr}
 \usepackage{url}
-\usepackage{mdframed}
+\usepackage[framemethod=tikz]{mdframed}
 \pagestyle{fancy}
 
 % math
@@ -75,26 +75,26 @@
 	skipabove=\baselineskip
 ]{mytheorem}
 
+
+
+
 \begin{document}
 	
 	\newtheorem{mytheorem}{Theorem}[section]
 	\newtheorem{mylemma}{Lemma}[mytheorem]	
 
 	\newenvironmentx*{solution}[1]{\section*{Problem #1}\addtocounter{section}{1}\setcounter{mylemma}{0}\setcounter{mytheorem}{0}}{}
-	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\begin{proof}}{\end{proof}\end{mytheorem}}
-	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\begin{proof}}{\end{proof}\end{mylemma}}
+	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\\\begin{proof}}{\end{proof}\end{mytheorem}}
+	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\\\begin{proof}}{\end{proof}\end{mylemma}}
 
 
 	\begin{solution}{5}
 		\begin{theorem}{Let $G$ be a nonempty graph with minimum degree at least two. Then, there is a connected graph $G'$ having the same degree sequence as $G$.}
-			We will show that we are able to inter-connect any two connected components of $G$ without changing the graph's degree-sequence.\\ \ \\
-			For any component $C_1 = (V_1, E_1)$ and any vertex $v_1 \in V_1$, we find at least two more vertices $v_2, v_3 \in V_1$ within $C_1$ which are adjacent to $v_1$. From these considerations, removing any edge will have no impact on the connectivity of some component of $G$.
 
-%			Let $C_1 = (V_1, E_1)$ be a connected component of $G$. Since $G$ has degree at least two, we find at least two \emph{adjacent} vertices $v_1, v_2, v_3 \in V_1$. Respectively, let $w_1, w_2 \in V_2$ be two adjacent vertices of component $C_2 = (V_2, E_2)$. Furthermore, each of these vertices is adjacent to at least one \emph{other} vertex of it's component (again, since their degree is at least two).
-		\end{theorem}
-		\begin{figure}[h!]
-			\subfloat[Initial situation]{
-				\resizebox {0.3\textwidth}{!}{
+			We will show that we are able to inter-connect any two components of $G$ without changing the graph's degree-sequence. We accomplish this by choosing two adjacent vertices in each component and modify the indicent edges such that the components are connected. Finally, we will show that our modification does not change any vertex degree, nor does it disconnect any component. Inductively, we are then able to connect any graph $G$ without changing any degree (and therefore without changing the degree sequence).\\
+
+			\begin{center}
+				\resizebox {0.25\textwidth}{!}{
 					\begin{tikzpicture}
 						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
 						\node[circle, draw] (v1) at (1, 0) {$v_1$};
@@ -110,10 +110,8 @@
 						\draw[dotted] (c2) -- (w2);
 						\draw (w1) -- (w2);
 					\end{tikzpicture}
-				}
-			} $\Rightarrow$
-			\subfloat[]{
-				\resizebox {0.3\textwidth}{!}{
+				} $\Rightarrow$
+				\resizebox {0.25\textwidth}{!}{
 					\begin{tikzpicture}
 						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
 						\node[circle, draw] (v1) at (1, 0) {$v_1$};
@@ -129,10 +127,8 @@
 						\draw[dotted] (c2) -- (w2);
 						\draw (w1) -- (w2);
 					\end{tikzpicture}
-				}
-			} $\Rightarrow$
-			\subfloat[Result]{
-				\resizebox {0.3\textwidth}{!}{
+				} $\Rightarrow$
+				\resizebox {0.25\textwidth}{!}{
 					\begin{tikzpicture}
 						\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (c1)  at (-1,-0.5) {$C_1$};
 						\node[circle, draw] (v1) at (1, 0) {$v_1$};
@@ -149,44 +145,54 @@
 						\draw (v2) -- (w2);
 					\end{tikzpicture}
 				}
-			}
-		\end{figure}
+			\end{center}
+
+			Let $C_1 = (V_1, E_1)$ and $C_2 = (V_2, E_2)$ be components of $G$. Furthermore, we consider $v_1, v_2 \in V_1$ to be adjacent vertices of $C_1$ and $w_1, w_2 \in V_1$ to be adjacent vertices of $C_2$. We always find those vertices since the graph's minimum degree exceeds or is equal to two.\\
+
+			First, we remove the edges $\{v_1, v_2\} \in E_1$ and $\{w_1, w_2\} \in E_2$. Notably, neither $C_1$ nor $C_2$ has been disconnected since the graph's minimum degree is at least two and hence at least one other adjacent vertex exists for each vertex $v_1, v_2, w_1, w_2$. Now, we add the edges $\{v_1, w_1\}$ as well as $\{v_2, w_2\}$ and thereby connect $C_1$ with $C_2$.\\
+			
+			We can easily see that no degree has been changed. Each vertex has lost and gained one indicent edge. From these considerations, the graph's degree sequence has not been modified. Moreover, we have connected the two components without disconnecting one.
+
+			Inductively, we are able to connect the entire graph and at the same time maintain it's degree sequence.
+
+		\end{theorem}
 	\end{solution}
 	\newpage
 	\begin{solution}{6}
-	In the following I will proof that any tree with a even number of vertices has exactly one spanning subgraph in which every vertex has odd degree induction. I will reduce the problem by recursively removing leaves until only the trivial case of two vertices is left. \\
-	Let $T=(V, E)$ be a tree with even number. If $|V|=0$ or $|V|=2$ there is obviously exact one spanning subgraph. 
-	In the following let $|V|>2$ and let $S$ be the set of edges of a spanning subgraph meeting the conditions stated above. \\
-	In the lecture we proved that $T$ has atleast one leave $v$. 
-	Because any leaf only has one edge $(v,u)$, this edge has to be in $S$. 
-	Additionally, if the edge $(v,u)$ is part of $S$ the condition that the degree of any vertex is odd is met for the leaf $v$. 
-		
-	\begin{itemize}
-		\item \textbf{Case 1:} There is one edge $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$. \\
-		We know that the edges $(u,v_1)$ and $(u,v_2)$ have to be in $S$. If we remove T
-		
-		\item \textbf{Case 2:} There is no edge $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$. \\
-		
-		\begin{lemma}{In a tree $T=(V,E)$ with $|V|>2$ where there is no edge $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$, there is a leaf $v \in V$ connected to a vertex $u$ with $deg(u) = 2$.}
-		Proof: From the prerequisite that there is no edge $u \in V$ connected to atleast two leaves, we know that all leaves are connected to different vertices. 
-		Let's assume there is no such vertex $u$, then all vertices $u \in V$ connected two a leaf have to have $deg(u) \neq 2$. 
-		Because $T$ is connected and $|V|>2$ all $u$ have to have an edge and cannot be a leaf itself, hence for all such $u$ $deg(u) \geq 3$. 
-		By removing all leaves from $T$ we get $T'$ a subgraph of $T$. By removing the leaves only the degree of all $u$ connected to a leaf are reduced be one. 
-		Then for all $u$ $deg(u) \geq 2$ in the subgraph $T'$. 
-		Additionally, because the degree of all other vertices is not changed and they are no leaves the degree of all vertices of the resulting graph is greater or equal 2. 
-		Thus using a lemma of the lecture the result graph has to have a cycle. 
-		Because $T'$ is a subgraph of $T$ this is a contradiction to $T$ being acyclic. 
-		Hence, there has to be a vertex $u$ connected to a leaf with $deg(u)=2$. 		
-		\end{lemma}
-		
-		Using the lemma we can find a leaf $v \in V$ with an edge $(v,u) \in E$ with $deg(v)=2$. 
-		We know that the edge $(v,u)$ has to be in $S$. 
-		Additionally, we know that the degree of $u$ in any spanning subgraph meeting the conditions has to be odd, so the second edge $(u,t)$ with $t \in V$ cannot be in $S$. 
-		If we remove $u$ and $v$ from T we gain receive a tree with an even number of vertices. 
-		Hence, we either $|V- \{v,u\}| \leq 2$ and we know that there is exact one spanning subgraph meeting the conditions, or we can again apply case 1 or case 2. 
-	\end{itemize}	 
+		\begin{theorem}{Any tree with an even number of vertices has exactly one spanning subgraph in which every vertex has odd degree}
 	
-	
+			\begin{lemma}{In a tree $T=(V,E)$ with $|V|>2$ where there is no edge $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$, there is a leaf $v \in V$ connected to a vertex $u$ with $deg(u) = 2$.}
+				From the prerequisite that there is no edge $u \in V$ connected to atleast two leaves, we know that all leaves are connected to different vertices. 
+				Let's assume there is no such vertex $u$, then all vertices $u \in V$ connected two a leaf have to have $deg(u) \neq 2$. 
+				Because $T$ is connected and $|V|>2$ all $u$ have to have an edge and cannot be a leaf itself, hence for all such $u$ $deg(u) \geq 3$. 
+				By removing all leaves from $T$ we get $T'$ a subgraph of $T$. By removing the leaves only the degree of all $u$ connected to a leaf are reduced be one. 
+				Then for all $u$ $deg(u) \geq 2$ in the subgraph $T'$. 
+				Additionally, because the degree of all other vertices is not changed and they are no leaves the degree of all vertices of the resulting graph is greater or equal 2. 
+				Thus using a lemma of the lecture the result graph has to have a cycle. 
+				Because $T'$ is a subgraph of $T$ this is a contradiction to $T$ being acyclic. 
+				Hence, there has to be a vertex $u$ connected to a leaf with $deg(u)=2$. 		
+			\end{lemma}
+
+			\emph{Proof.} In the following I will proof that any tree with a even number of vertices has exactly one spanning subgraph in which every vertex has odd degree induction. I will reduce the problem by recursively removing leaves until only the trivial case of two vertices is left. \\
+
+			Let $T=(V, E)$ be a tree with even number. If $|V|=0$ or $|V|=2$ there is obviously exact one spanning subgraph. 
+			In the following let $|V|>2$ and let $S$ be the set of edges of a spanning subgraph meeting the conditions stated above. \\
+			In the lecture we proved that $T$ has atleast one leave $v$. 
+			Because any leaf only has one edge $(v,u)$, this edge has to be in $S$. 
+			Additionally, if the edge $(v,u)$ is part of $S$ the condition that the degree of any vertex is odd is met for the leaf $v$. 
+				
+			\begin{itemize}
+				\item \textbf{Case 1:} There is one edge $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$. \\
+				We know that the edges $(u,v_1)$ and $(u,v_2)$ have to be in $S$. If we remove T
+				
+				\item \textbf{Case 2:} There is no edge $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$. \\
+				Using the lemma we can find a leaf $v \in V$ with an edge $(v,u) \in E$ with $deg(v)=2$. 
+				We know that the edge $(v,u)$ has to be in $S$. 
+				Additionally, we know that the degree of $u$ in any spanning subgraph meeting the conditions has to be odd, so the second edge $(u,t)$ with $t \in V$ cannot be in $S$. 
+				If we remove $u$ and $v$ from T we gain receive a tree with an even number of vertices. 
+				Hence, we either $|V- \{v,u\}| \leq 2$ and we know that there is exact one spanning subgraph meeting the conditions, or we can again apply case 1 or case 2. 
+			\end{itemize}
+		\end{theorem}
 	\end{solution} 
 	\newpage
 	\begin{solution}{7}
