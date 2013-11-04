@@ -147,9 +147,9 @@
 				}
 			\end{center}
 
-			Let $C_1 = (V_1, E_1)$ and $C_2 = (V_2, E_2)$ be components of $G$. Furthermore, we consider $v_1, v_2 \in V_1$ to be adjacent vertices of $C_1$ and $w_1, w_2 \in V_2$ to be adjacent vertices of $C_2$. We always find those vertices since the graph's minimum degree exceeds or is equal to two.\\
+			Let $C_1 = (V_1, E_1)$ and $C_2 = (V_2, E_2)$ be components of $G$. Furthermore, we consider $v_1, v_2 \in V_1$ to be adjacent vertices contained in a cycle of $C_1$ and $w_1, w_2 \in V_2$ to be adjacent vertices contained in a cycle of $C_2$. We always find those vertices since the graph's minimum degree exceeds or is equal to two (Lecture: \emph{Any graph $H$ with $\delta(H) \geq 2$ contains a cycle}).\\
 
-			First, we remove the edges $\{v_1, v_2\} \in E_1$ and $\{w_1, w_2\} \in E_2$. Notably, neither $C_1$ nor $C_2$ has been disconnected since the graph's minimum degree is at least two and hence at least one other adjacent vertex exists for each vertex $v_1, v_2, w_1, w_2$. Now, we add the edges $\{v_1, w_1\}$ as well as $\{v_2, w_2\}$ and thereby connect $C_1$ with $C_2$.\\
+			First, we remove the edges $\{v_1, v_2\} \in E_1$ and $\{w_1, w_2\} \in E_2$. Notably, neither $C_1$ nor $C_2$ have been disconnected since each of these edges is contained in a cycle and hence not crucial for the connectivity of $C_1$ and $C_2$. Now, we add the edges $\{v_1, w_1\}$ as well as $\{v_2, w_2\}$ and thereby connect $C_1$ with $C_2$.\\
 			
 			We can easily see that no degree has been changed. Each vertex has lost and gained one indicent edge. From these considerations, the graph's degree sequence has not been modified. Moreover, we have connected the two components without disconnecting one.
 
