@@ -261,7 +261,7 @@
 			Let $G_i$ be a connected component in $C$ and $P$ be the set of walks forming such a minimum cover.
 			
 			\begin{itemize}
-				\item \textbf{Case 1:} $G_i$ has at least one odd-degree vertex.\\
+				\item \textbf{Case 1: $G_i$ has at least one odd-degree vertex.}\\
 					First, we show that each odd-degree vertex in $G_i$ is the endpoint of at least one walk $p \in P$.\\
 
 					We assume $u$ is of odd degree and not an endpoint of any walk $p \in P$.
@@ -270,19 +270,19 @@
 			
 			 		Next, we show that no even vertex $v_1 \in V_i$ is an endpoint of a walk $p = (v_1, ..., v_n) \in P$.
 					\begin{itemize}
-						\item \textbf{Case 1:} $p$ is not a cycle. Considering that $p$ is not a cycle, then the number of non-$p$-covered edges incident to $v_1$ is odd. As shown above, we find a walk $p' \in P$ ($p \neq p'$) starting in $v$. However, then we were able to decrease the amount of walks by fusing $p$ with $p'$. A contradiction to the minimum-size property of $P$. Hence, \emph{there is no even-degree vertex that is an endpoint of a cycle in $P$}.
+						\item \textbf{Case 1: $p$ is not a cycle.} Considering that $p$ is not a cycle, then the number of non-$p$-covered edges incident to $v_1$ is odd. As shown above, we find a walk $p' \in P$ ($p \neq p'$) starting in $v$. However, then we were able to decrease the amount of walks by fusing $p$ with $p'$. A contradiction to the minimum-size property of $P$. Hence, \emph{there is no even-degree vertex that is an endpoint of a cycle in $P$}.
 						\item \textbf{Case 2: $p$ is a cycle.} On the other hand, assuming that $p$ is a cycle ($v_1 = v_n$), then - since each vertex passing of $p$ covers exactly two edges - there has to be at least one edge $e = \{w_j, v_i\} \in E_i\ (w \in V_i)$ not covered by $p$ (since $G_i$ has an odd-degree vertex). Since all edges have to be covered by at least one walk in $P$, there must exists a walk $p' = (w_1, ..., w_j,w_{j+1} = v_i, ..., w_m) \in P$ running over $e$. However, we are again able to fuse $p$ with $p'$  by constructing a walk $(w_1, ..., w_j, v_i, ..., v_n = v_1, ..., v_i = w_{j+1}, ..., w_m)$. This is against contradictory to the minimum-size property of $P$. Hence, \emph{there is no even-degree vertex that is an endpoint of a non-cyclic walk in $P$}.
 					\end{itemize}
 					By these considerations, \emph{there is no even-degree vertex that is an endpoint of a walk in $P$}.
 					
 					All in all, each odd-degree vertex is the endpoint of at least one walk in $P$ and thereby is the number of remaining non-covered edges incident to this vertex even. Therefore - as shown above - it cannot be the endpoint of any more walks in $P$.\\
 
-					From these considerations, any odd-degree vertex is exactly one endpoint of exactly one walk in $P$ and furthermore, every endpoint of a walk in $P$ is an odd-degree vertex. Thus, for every two odd-degree vertices we have one walk in $P$.
+					From these considerations, any odd-degree vertex is exactly one endpoint of exactly one walk in $P$ and furthermore, every endpoint of a walk in $P$ is an odd-degree vertex. \textbf{Thus, for every two odd-degree vertices we have one walk in $P$}.
 			
-				\item \textbf{Case 2:} $G_i$ has no odd vertices.\\
-					If there is no odd-degree vertex, all edges $G_i$ are covered by exactly one walk, the Euler tour. In summary, we get exactly one walk. In case that $E_i \neq \emptyset$, there are no walks required.
+				\item \textbf{Case 2: $G_i$ has no odd vertices.}
+					If there is no odd-degree vertex, all edges $G_i$ are covered by \textbf{exactly one walk}, the Euler tour. In summary, we get exactly one walk. In case that $E_i \neq \emptyset$, there are no walks required.
 			\end{itemize}
-			Finally we summarize the needed walks in the connected components of $G$.
+			All in all, our set of walks consists of one walk for each pair of odd-degree vertices and walk for every component consisting of only even-degree vertices (which have at least one edge). This equals the expression stated above.
 		\end{theorem}
 	\end{solution}
 	
