@@ -91,7 +91,7 @@
 	\begin{solution}{5}
 		\begin{theorem}{Let $G$ be a nonempty graph with minimum degree at least two. Then, there is a connected graph $G'$ having the same degree sequence as $G$.}
 
-			We will show that we are able to inter-connect any two components of $G$ without changing the graph's degree-sequence. We accomplish this by choosing two adjacent vertices in each component and modify the indicent edges such that the components are connected. Finally, we will show that our modification does not change any vertex degree, nor does it disconnect any component. Inductively, we are then able to connect any graph $G$ without changing any degree (and therefore without changing the degree sequence).\\
+			We will show that we are able to inter-connect any two components of $G$ without changing the graph's degree-sequence. We accomplish this by choosing two adjacent vertices in each component and modify the incident edges such that the components are connected. Finally, we will show that our modification does not change any vertex degree, nor does it disconnect any component. Inductively, we are then able to connect any graph $G$ without changing any degree (and therefore without changing the degree sequence).\\
 
 			\begin{center}
 				\resizebox {0.25\textwidth}{!}{
@@ -151,7 +151,7 @@
 
 			First, we remove the edges $\{v_1, v_2\} \in E_1$ and $\{w_1, w_2\} \in E_2$. Notably, neither $C_1$ nor $C_2$ have been disconnected since each of these edges is contained in a cycle and hence not crucial for the connectivity of $C_1$ and $C_2$. Now, we add the edges $\{v_1, w_1\}$ as well as $\{v_2, w_2\}$ and thereby connect $C_1$ with $C_2$.\\
 			
-			We can easily see that no degree has been changed. Each vertex has lost and gained one indicent edge. From these considerations, the graph's degree sequence has not been modified. Moreover, we have connected the two components without disconnecting one.
+			We can easily see that no degree has been changed. Each vertex has lost and gained one incident edge. From these considerations, the graph's degree sequence has not been modified. Moreover, we have connected the two components without disconnecting one.
 
 			Inductively, we are able to connect the entire graph and at the same time maintain it's degree sequence. Thus, a connected graph with the same degree sequence exists.
 
@@ -161,7 +161,7 @@
 	\begin{solution}{6}
 		In the following I will proof that any tree with an even number of vertices has exactly one spanning subgraph in which every vertex has odd degree. 
 		I will reduce the problem by recursively removing leaves until only the trivial case of two vertices is left. 
-		First, I will proof the following lemma which then later is used to to proof the theorem. 
+		First, I will proof the following lemma which then later is used to proof the theorem. 
 			
 		\begin{lemma}{Let $T=(V,E)$ be a tree with $|V|>2$. If there is no vertex $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$, there is a leaf $v \in V$ connected to a vertex $u$ with $deg(u) = 2$.}
 			From the prerequisite that there is no vertex $u \in V$ connected to atleast two leaves, we know that all leaves are connected to different vertices. 
@@ -251,7 +251,7 @@
 	\newpage
 	\begin{solution}{7}
 		\begin{theorem}{
-		For a set $C = \{G_1, ..., G_n\}$ of connected components ($G_i = (V_i, E_i), i = 1..n$) of a graph $G$:\\
+		For a set $C = \{G_1, ..., G_n\}$ of connected components ($G_i = (V_i, E_i), i = 1..n$) of a graph $G$ let $\pi(C)$ denote the minimum number of walks on $C$ so that every edge of G appears once in exactly one walk and does not appear in other walks.\\
 		\begin{align}
 			I&=\{i \in \mathbb{N}\ |\ E_i \neq \emptyset\}&\\
 			\pi(C)&= \sum_{i \in I} \frac{max(|\{v \in V(G_i)\ |\ d(v) \text{ odd}\}|, 1)}{2}&
@@ -270,7 +270,7 @@
 			
 			 		Next, we show that no even vertex $v_1 \in V_i$ is an endpoint of a walk $p = (v_1, ..., v_n) \in P$.
 					\begin{itemize}
-						\item \textbf{Case 1: $p$ is not a cycle.} Considering that $p$ is not a cycle, then the number of non-$p$-covered edges incident to $v_1$ is odd. As shown above, we find a walk $p' \in P$ ($p \neq p'$) starting in $v$. However, then we were able to decrease the amount of walks by fusing $p$ with $p'$. A contradiction to the minimum-size property of $P$. Hence, \emph{there is no even-degree vertex that is an endpoint of a cycle in $P$}.
+						\item \textbf{Case 1: $p$ is not a cycle.} Considering that $p$ is not a cycle, then the number of non-$p$-covered edges incident to $v_1$ is odd. As shown above, we find a walk $p' \in P$ ($p \neq p'$) starting in $v$. However, then we were able to decrease the amount of walks by fusing $p$ with $p'$. A contradiction to the minimum-size property of $P$. Hence, \emph{there is no even-degree vertex that is an endpoint of a walk in $P$}.
 						\item \textbf{Case 2: $p$ is a cycle.} On the other hand, assuming that $p$ is a cycle ($v_1 = v_n$), then - since each vertex passing of $p$ covers exactly two edges - there has to be at least one edge $e = \{w_j, v_i\} \in E_i\ (w \in V_i)$ not covered by $p$ (since $G_i$ has an odd-degree vertex). Since all edges have to be covered by at least one walk in $P$, there must exists a walk $p' = (w_1, ..., w_j,w_{j+1} = v_i, ..., w_m) \in P$ running over $e$. However, we are again able to fuse $p$ with $p'$  by constructing a walk $(w_1, ..., w_j, v_i, ..., v_n = v_1, ..., v_i = w_{j+1}, ..., w_m)$. This is against contradictory to the minimum-size property of $P$. Hence, \emph{there is no even-degree vertex that is an endpoint of a non-cyclic walk in $P$}.
 					\end{itemize}
 					By these considerations, \emph{there is no even-degree vertex that is an endpoint of a walk in $P$}.
