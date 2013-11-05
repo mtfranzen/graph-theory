@@ -163,7 +163,7 @@
 		I will reduce the problem by recursively removing leaves until only the trivial case of two vertices is left. 
 		First, I will proof the following lemma which then later is used to to proof the theorem. 
 			
-		\begin{lemma}{In a tree $T=(V,E)$ with $|V|>2$ if there is no vertex $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$, there is a leaf $v \in V$ connected to a vertex $u$ with $deg(u) = 2$.}
+		\begin{lemma}{Let $T=(V,E)$ be a tree with $|V|>2$. If there is no vertex $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$, there is a leaf $v \in V$ connected to a vertex $u$ with $deg(u) = 2$.}
 			From the prerequisite that there is no vertex $u \in V$ connected to atleast two leaves, we know that all leaves are connected to different vertices. 
 			Let's assume there is no such vertex $u$, then all vertices $u \in V$ connected two a leaf have to have $deg(u) \neq 2$. 
 			Because $T$ is connected and $|V|>2$ all $u$ have to have an edge and cannot be a leaf itself, hence for all such $u$ $deg(u) \geq 3$. 
@@ -176,15 +176,15 @@
 		\end{lemma}
 					
 		\begin{theorem}{Any tree with an even number of vertices has exactly one spanning subgraph in which every vertex has odd degree.}
-			Let $T=(V, E)$ be a tree with even number. If $|V|=0$ or $|V|=2$ there is obviously exact one spanning subgraph. 
+			Let $T=(V, E)$ be a tree with even number of vertices. If $|V|=2$ there is obviously exactly one spanning subgraph. 
 			In the following let $|V|>2$ and let $S$ be the set of edges of a spanning subgraph meeting the conditions stated above. \\
 			In the lecture we proved that $T$ has atleast one leaf $v$. 
-			Because any leaf only has one edge $(v,u)$, this edge has to be in $S$. 
-			Additionally, if the edge $(v,u)$ is part of $S$ the condition that the degree of any vertex is odd is met for the leaf $v$. 
+			Because any leaf only $v$ has exactly one edge $(v,u)$, this edge has to be in $S$. 
+			Additionally, if the edge $(v,u)$ is in $S$ the condition that the degree of any vertex is odd is met for the leaf $v$. 
 			Then always one of the following cases applies. 
 			\begin{itemize}
-				\item \textbf{Case 1:} There is one edge $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$. \\
-				We know that the edges $(u,v_1)$ and $(u,v_2)$ have to be in $S$. 
+				\item \textbf{Case 1:} There is one vertex $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$. \\
+				We know that the edges $(u,v_1)$ and $(u,v_2)$ have to be in $S$, because $v_1$ and $v_2$ are leaves. 
 				If we remove $v_1$ and $v_2$ from T we again receive a tree $T'$ with an even number of vertices. 
 				Additionally, if there is exactly one spanning subgraph for $T'$ with only odd degrees then there is also exactly one for $T$ which additionally covers the vertices $v_1$ and $v_2$. 
 				Hence, either $|V- \{v_1,v_2\}| \leq 2$ and we know that there is exact one spanning subgraph meeting the conditions, or we can again apply case 1 or case 2. 
@@ -216,9 +216,9 @@
 			\end{center}
 			
 				
-				\item \textbf{Case 2:} There is no edge $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$. \\
+				\item \textbf{Case 2:} There is no vertex $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$. \\
 				Using the lemma we can find a leaf $v \in V$ with an edge $(v,u) \in E$ with $deg(v)=2$. 
-				We know that the edge $(v,u)$ has to be in $S$. 
+				We know that the edge $(v,u)$ has to be in $S$, because $v$ is a leaf. 
 				Additionally, we know that the degree of $u$ in any spanning subgraph meeting the conditions has to be odd, so the second edge $(u,t)$ with $t \in V$ cannot be in $S$. 
 				If we remove $u$ and $v$ from T we again receive a tree with an even number of vertices. 
 				Hence, either $|V- \{v,u\}| \leq 2$ and we know that there is exact one spanning subgraph meeting the conditions, or we can again apply case 1 or case 2. 
@@ -247,7 +247,7 @@
 			
 			\end{itemize}
 		
-		All in all we can always find edges in $T$ which have to be part of $S$ and thus reducing $T$ until there is only the trivial solution. 
+		All in all we can always find edges in $T$ which have to be in $S$ and thus we can reduce $T$ uniquely, until there is only the trivial solution. 
 		Thus the theorem is proven by induction. 
 		\end{theorem}
 	\end{solution} 
