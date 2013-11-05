@@ -243,24 +243,47 @@
 					\end{tikzpicture}
 				}
 			\end{center}
-			
-			
 			\end{itemize}
-		
 		All in all we can always find edges in $T$ which have to be in $S$ and thus we can reduce $T$ uniquely, until there is only the trivial solution. 
 		Thus the theorem is proven by induction. 
 		\end{theorem}
 	\end{solution} 
 	\newpage
 	\begin{solution}{7}
-		For a set $C = \{G_1, ..., G_n\}$ of connected components:\\
+		\begin{theorem}{
+		For a set $C = \{G_1, ..., G_n\}$ of connected components ($G_i = (V_i, E_i)$) of a graph $G$:\\
 		\begin{align}
-			\pi(C)&= \sum_{i = 1}^n \frac{|\{v \in V(G_i)\ |\ d(v) \text{ odd}\}|}{2}&
-		\end{align}
-	\end{solution} 
-	\newpage
-	\begin{solution}{8}
-		
+			I&=\{i \in \mathbb{N}\ |\ E_i \neq \emptyset\}&\\
+			\pi(C)&= \sum_{i \in I} \frac{max(|\{v \in V(G_i)\ |\ d(v) \text{ odd}\}|, 1)}{2}&
+		\end{align}}			
+			First, for a graph $G$, we build $\pi(G_i)$ for each connected component of $G$ and afterwards summarize these component-bound values. This applies since no walk between each component exists and thus the minimum number of such walks cannot deceed the built sum.
+
+			Let $G_i$ be a connected component in $C$ and $P$ be the set of walks forming such a minimum cover.
+			
+			\begin{itemize}
+				\item \textbf{Case 1:} $G_i$ has at least one odd-degree vertex.\\
+					First, we show that each odd-degree vertex in $G_i$ is the endpoint of at least one walk $p \in P$.
+					Let $u \in V_i$ be of odd degree. We assume $u$ is not an endpoint of a walk $p \in P$.
+			
+					Then, $p$ only runs \emph{over} $u$ and thus covers  for each passing of $u$ exactly two of it's incident edges.  In other words, only an even amount of $u$-incident edges can be covered by such a walk $p$.
+			
+					So there is one remaining edge incident to $u$ not covered by any walk. A contradiction.\\
+			
+			 		Next, we show that no even vertex is an endpoint of a walk $p = (v_1, ..., v_n) \in P$.
+			
+					Let $v_1 \in V_i$ be of even degree.
+			
+					Considering that $p$ is not a cycle, then the number of non-$p$-covered edges incident to $v_1$ is odd. As shown above, we find a walk $p' \in P$ ($p \neq p'$) starting in $v$. However, then we were able to decrease the amount of walks by fusing $p$ with $p'$. A contradiction to the minimum-size property of $P$.\\
+			
+					On the other hand, assuming that $p$ is a cycle ($v_1 = v_n$), then - since each vertex passing of $p$ covers exactly two edges - there has to be at least one edge $e = \{w_j, v_i\} \in E_i\ (w \in V_i)$ not covered by $p$ (since $G_i$ has an odd-degree vertex). Since all edges have to be covered by at least one walk in $P$, there must exists a walk $p' = (w_1, ..., w_j,w_{j+1} = v_i, ..., w_m) \in P$ running over $e$. However, we are again able to fuse $p$ with $p'$  by constructing a walk $(w_1, ..., w_j, v_i, ..., v_n = v_1, ..., v_i = w_{j+1}, ..., w_m)$. This is against contradictory to the minimum-size property of $P$.\\
+					
+					In summary each odd-degree vertex is the endpoint of at least one walk in $P$ - the number of remaining non-covered incident edges is even. Therefore - as shown above - it cannot be the endpoint of any more walks in $P$. From these considerations, any odd-degree vertex is exactly one endpoint of exactly one walk in $P$ and furthermore, every endpoint of a walk in $P$ is an odd-degree vertex. Thus, for every two odd-degree vertices we have one walk in $P$.
+			
+				\item \textbf{Case 2:} $G_i$ has no odd vertices.\\
+					If there is no odd-degree vertex, all edges $G_i$ are covered by exactly one walk, the Euler tour. In summary, we get exactly one walk. In case that $E_i \neq \emptyset$, there are no walks required.
+			\end{itemize}
+			Finally we summarize the needed walks in the connected components of $G$.
+		\end{theorem}
 	\end{solution}
 	
 \end{document}
