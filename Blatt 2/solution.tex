@@ -163,22 +163,21 @@
 		I will reduce the problem by recursively removing leaves until only the trivial case of two vertices is left. 
 		First, I will proof the following lemma which then later is used to proof the theorem. 
 			
-		\begin{lemma}{Let $T=(V,E)$ be a tree with $|V|>2$. If there is no vertex $u \in V$ connected to atleast two leaves $v_1, v_2 \in V$, there is a leaf $v \in V$ connected to a vertex $u$ with $deg(u) = 2$.}
-			From the prerequisite that there is no vertex $u \in V$ connected to atleast two leaves, we know that all leaves are connected to different vertices. 
-			Let's assume there is no such vertex $u$, then all vertices $u \in V$ connected two a leaf have to have $deg(u) \neq 2$. 
-			Because $T$ is connected and $|V|>2$, all $u$ have to have an edge and cannot be a leaf itself, hence for all such $u$ $deg(u) \geq 3$. 
-			By removing all leaves from $T$ we get $T'$ a subgraph of $T$. By removing the leaves only the degree of all $u$ connected to a leaf are reduced be one. 
-			Then for all $u$ $deg(u) \geq 2$ in the subgraph $T'$. 
-			Additionally, because the degree of all other vertices is not changed and they are no leaves the degree of all vertices of the resulting graph is greater or equal 2. 
-			Thus using a lemma of the lecture the result graph has to have a cycle. 
-			Because $T'$ is a subgraph of $T$ this is a contradiction to $T$ being acyclic. 
-			Hence, there has to be a vertex $u$ connected to a leaf with $deg(u)=2$. 		
+		\begin{lemma}{Let $T=(V,E)$ be a tree with $|V|>2$. If there is no vertex $u \in V$ connected to at least two leaves $v_1, v_2 \in V$, there is a leaf $v \in V$ connected to a vertex $u$ with $d(u) = 2$.}
+			From the prerequisite that there is no vertex $u \in V$ connected to at least than two leaves, we know that all leaves are connected to different vertices. 
+			Let's assume that there is no such vertex $u$, then all vertices $u \in V$ connected to a leaf must not have a degree of two ($d(u) \neq 2$). 
+			Because $T$ is connected and $|V|>2$, all $u$ must have an edge and cannot be a leaf itself. Hence, for all such $u$, $d(u) \geq 3$. 
+			By removing all leaves from $T$, we get $T'$ a subgraph of $T$. By removing the leaves, only the degree of all $u$ connected to a leaf are reduced by one. 
+			Then, for all $u$, $d(u) \geq 2$ in the subgraph $T'$. 
+			Additionally, because the degree of all other vertices is not changed and they are no leaves, the degree of all vertices of the resulting graph is greater or equal to two. 
+			Thus, using a lemma of the lecture, the resulting graph must have a cycle (Lecture: \emph{Any graph $H$ with $\delta(H) \geq 2$ contains a cycle}). 
+			Because $T'$ is a subgraph of $T$, this is a contradiction to $T$ being acyclic. Hence, there has to be a vertex $u$ connected to a leaf with $d(u)=2$. 		
 		\end{lemma}
 					
 		\begin{theorem}{Any tree with an even number of vertices has exactly one spanning subgraph in which every vertex has odd degree.}
-			Let $T=(V, E)$ be a tree with even number of vertices. If $|V|=2$ there is obviously exactly one spanning subgraph. 
-			In the following let $|V|>2$ and let $S$ be the set of edges of a spanning subgraph meeting the conditions stated above. \\
-			In the lecture we proved that $T$ has atleast one leaf $v$. 
+			Let $T=(V, E)$ be a tree with an even number of vertices. If $|V|=2$ there is obviously exactly one spanning subgraph. 
+			In the following, let $|V|>2$ and let $S$ be the set of edges of a spanning subgraph meeting the conditions stated above. \\
+			In the lecture we proved that $T$ has at least one leaf $v$. 
 			Because any leaf only $v$ has exactly one edge $(v,u)$, this edge has to be in $S$. 
 			Additionally, if the edge $(v,u)$ is in $S$ the condition that the degree of any vertex is odd is met for the leaf $v$. 
 			Then always one of the following cases applies. 
