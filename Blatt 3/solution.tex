@@ -98,6 +98,41 @@
 	\end{solution}
 	\newpage
 	\begin{solution}{10}
+		\begin{theorem}{For a natural number $n \geq 2$ let $G = (V_G, E_G)$ be the graph of order $2n + 1$ obtained from $K_{n,n}$ by subdividing an edge by a vertex. Then, $\chi'(X) = \Delta(G) + 1 = n + 1$ but $\chi'(G - e) = \Delta(G - e)$ for any edge $e$ of $G$.}
+			Let $V = \{v_1, ..., v_n\}$ and $W = \{w_1, ..., w_n\}$ denote the two partitions of $K_{n, n}$ and $\{c_k\ |\ k \in \mathbb{N}\}$ be a set of colors. Furthermore, let $u \in V_G$ be the vertex subdividing an edge between these two partitions.\\
+		
+			First, we will prove that $\chi'(X) = \Delta(G) + 1 = n + 1$. We will argue, that any partial coloring of $G$ will inevitably result in $n+1$ colors. 
+%
+% noncolored graph $G$, coloring the edges incident to a vertex $v \in V$ will inevitably result in $n + 1$ colors. Since $V$ and $W$ are entirely commutable, our proof will be sufficient after we consider the extra case in which we begin with coloring the edges of $u$.
+
+			\begin{center}
+				\begin{tikzpicture}
+					\node[draw,circle] (v1) at (0, 0) {$v_1$};
+					\node[draw,circle] (v2) at (2, 0) {$v_2$};
+					\node[draw,circle] (v3) at (4, 0) {$v_3$};
+					\node[draw,circle] (w1) at (0, -2) {$w_1$};
+					\node[draw,circle] (w2) at (2, -2) {$w_2$};
+					\node[draw,circle] (w3) at (4, -2) {$w_3$};
+					\node[draw,circle] (u) at (4.5, -1) {$u$};
+		
+					\draw[thick, red] (v1) -- (w1);
+					\draw[thick, green] (v1) -- (w2);
+					\draw[thick, blue] (v1) -- (w3);
+					\draw[thick, green] (v2) -- (w1);
+					\draw[thick, red] (v2) -- (w2);
+					\draw[thick, red] (v2) -- (w3);
+					\draw[thick, blue] (v3) -- (w1);
+					\draw[thick, red] (v3) -- (w2);
+					\draw[thick, green] (v3) -- (u);
+					\draw[thick, pink] (u) -- (w3);
+				\end{tikzpicture}
+			\end{center}
+
+			For a partially colored $G$, let $v \in V_G$ be a vertex of $G$.
+			\begin{itemize}
+				\item \textbf{Case 1:} $v \neq u$: Since $v$ has $n$ adjacent vertices, we need $n$ colors to color the edges incident to $v$. Of course, 
+			\end{itemize}
+		\end{theorem}
 	\end{solution} 
 	\newpage
 	\begin{solution}{11}
