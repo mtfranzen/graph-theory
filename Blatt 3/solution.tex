@@ -1,0 +1,113 @@
+% all-in-one cheatsheet layout (Michael Franzen, 2013)
+\documentclass[a4paper]{article}
+
+% geometry settings
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+
+% font settings
+%\usepackage[light,math]{kurier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{marvosym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% colors
+\usepackage{xcolor}
+\definecolor{lightgray}{gray}{0.8}
+
+% formatting
+\usepackage{paralist}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{Tabbing}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage[framemethod=tikz]{mdframed}
+\pagestyle{fancy}
+
+% math
+\usepackage{array}
+\usepackage{eqnarray}
+\usepackage{mathtools}
+
+% figures
+\usepackage{wrapfig}
+\usepackage{subfig}
+
+% figure modules
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc, shapes}
+\usepackage{algorithm2e}
+\usepackage{verbatim}	
+
+% TOC & Glossary
+\usepackage{sectsty}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[titles,subfigure]{tocloft}
+
+% commands
+\usepackage{xargs}
+\usepackage{ifthen}
+
+% head line
+\fancyhf{}
+\chead{Graph Theory - Sheet 3 - \today\\J. Batzill (1698622), M. Franzen (1696933), J. Labeit (1656460)}
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+
+\newcommand{\sheetnumber}{1}
+
+% (problem number)
+\surroundwithmdframed[
+    hidealllines=true,
+    backgroundcolor=gray!10,
+    skipbelow=\baselineskip,
+    skipabove=\baselineskip
+]{mylemma}
+
+\surroundwithmdframed[
+	linecolor=white,
+	skipbelow=\baselineskip,
+	skipabove=\baselineskip
+]{mytheorem}
+
+
+
+
+\begin{document}
+	
+	\newtheorem{mytheorem}{Theorem}[section]
+	\newtheorem{mylemma}{Lemma}[mytheorem]	
+
+	\newenvironmentx*{solution}[1]{\section*{Problem #1}\addtocounter{section}{1}\setcounter{mylemma}{0}\setcounter{mytheorem}{0}}{}
+	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\\\begin{proof}}{\end{proof}\end{mytheorem}}
+	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\\\begin{proof}}{\end{proof}\end{mylemma}}
+
+
+	\begin{solution}{9}
+		\begin{theorem}{A hypercube $Q_n$ is Hamiltonian. It has a girth of $4$, a diameter of $n$, an order of $2^n$ and a size of ?.}
+		\end{theorem}
+		\begin{theorem}{A bipartite complete graph $K_{m, n}$ is Hamiltonian iff $m = n$. It's girth is $4$ for $m, n \geq 2$ and $\infty$ otherwise. It's diameter is $2$. The graph's order is $m + n$ and it's size is $m \cdot n$.}
+		\end{theorem}
+		\begin{theorem}{The Petersen graph is Hamiltonian, it has a girth of $5$, a diameter of $2$, an order of $10$ and a size of $15$.}
+		\end{theorem}
+	\end{solution}
+	\newpage
+	\begin{solution}{10}
+	\end{solution} 
+	\newpage
+	\begin{solution}{11}
+		\begin{theorem}{For each odd integer $k > 1$, the complete graph $K_(n+1)$ is a $k$-regular graph with no 1-factor. For each even integer }
+			
+		\end{theorem}
+	\end{solution} 
+	\newpage
+	\begin{solution}{12}
+		
+	\end{solution}
+	
+\end{document}
