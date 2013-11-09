@@ -136,7 +136,66 @@
 	\end{solution} 
 	\newpage
 	\begin{solution}{11}
-		For each even integer $k > 1$, the complete graph $K_{(n+1)}$ is a $k$-regular graph with no 1-factor. For each odd integer $k > 1$ the graph must not be bipartite (\emph{Hall's Theorem}). Furthermore, there must be a subset $U$ such that the graph without $U$ has at least $|U|$ connected components with an odd number of vertices (\emph{Tutte Theorem}).
+		For each even integer $k > 1$, the complete graph $K_{(n+1)}$ is a $k$-regular graph with no 1-factor. 
+		For each odd $k > 1$ we can construct a k-regular graph with no 1-factor in the following way. \\
+		In order to garantee that the graph has no 1-factor we can use Tutt's theorem. 
+		We construct the graph by starting of with one vertex $v$ connected to k subgraphs $S$ which are not inter-connected. 
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (S1)  at (0,-1.0) {$S$};
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (S2)  at (-1.0,1.0) {$S$};
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (S3)  at (1.0,1.0) {$S$};
+
+				\node[circle, draw] (v) at (0, 0) {$v$};
+				\draw(v) -- (S1);
+				\draw(v) -- (S2);
+				\draw(v) -- (S3);
+			\end{tikzpicture}
+		\caption{Example with k=3}
+		\end{figure}
+		Then we construct $S=(V,E)$ in such a way that $|V|$ is odd and that all vertices in $V$ have degree k except of one vertex $u \in V$ with degree $k-1$. 
+		If we then connect $u$ to $v$ we get a k-regular graph. 
+		Using Tutt's theorem we know that the resulting graph has no 1-factor. 
+		Because if $v$ is removed we get $k$ components $S$ with odd number of vertices and $k$ is greater than 1.\\ \\
+		
+		\emph{Constructing a connected graph $S=(V,E)$ with $|V|=k+2$ and the degree sequence $( k,k,...,k,(k-1))$. }  
+		First we construct a $(k-1)$-regular graph $S' = (V',E')$ with $k+1$ vertices. 
+		Then we can add one vertex to $S'$ and connect it to all vertices in $V'$ except of one vertex. 
+		Thus we get a new graph $S$. 
+		Because we only added one vertex $|V| = |V'| +1 = k+2$ and the degree of the newly added vertex is $k$.
+		The degree of all the other vertices except of the last one is increased by one. 
+		Hence, $S$ hat the degree sequence $(k,k,...,k,(k-1))$. 
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
+				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
+				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
+				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
+				
+				\draw(v1) -- (v2);
+				\draw(v1) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v2) -- (v4);
+			\end{tikzpicture}
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
+				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
+				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
+				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
+				\node[circle, draw,very thick] (v5) at (0, 0) {$v_5$};
+				
+				\draw(v1) -- (v2);
+				\draw(v1) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v2) -- (v4);
+				\draw[very thick](v5) -- (v1);
+				\draw[very thick](v5) -- (v2);
+				\draw[very thick](v5) -- (v3);
+			\end{tikzpicture}
+		\caption{$S'$ and $S$ for k=3}
+		\end{figure}
 	\end{solution} 
 	\newpage
 	\begin{solution}{12}
