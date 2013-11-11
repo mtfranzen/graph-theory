@@ -136,11 +136,87 @@
 	\end{solution} 
 	\newpage
 	\begin{solution}{11}
-		For each even integer $k > 1$, the complete graph $K_{(n+1)}$ is a $k$-regular graph with no 1-factor. For each odd integer $k > 1$ the graph must not be bipartite (\emph{Hall's Theorem}). Furthermore, there must be a subset $U$ such that the graph without $U$ has at least $|U|$ connected components with an odd number of vertices (\emph{Tutte Theorem}).
-	\end{solution} 
+		For each even integer $k > 1$, the complete graph $K_{(n+1)}$ is a $k$-regular graph with no 1-factor. 
+		For each odd $k > 1$ we can construct a k-regular graph with no 1-factor in the following way. \\
+		In order to garantee that the graph has no 1-factor we can use Tutt's theorem. 
+		We construct the graph by starting of with one vertex $v$ connected to k subgraphs $S$ which are not inter-connected. 
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (S1)  at (0,-1.0) {$S$};
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (S2)  at (-1.0,1.0) {$S$};
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm, draw] (S3)  at (1.0,1.0) {$S$};
+
+				\node[circle, draw] (v) at (0, 0) {$v$};
+				\draw(v) -- (S1);
+				\draw(v) -- (S2);
+				\draw(v) -- (S3);
+			\end{tikzpicture}
+		\caption{Example with k=3}
+		\end{figure}
+		Then we construct $S=(V,E)$ in such a way that $|V|$ is odd and that all vertices in $V$ have degree k except of one vertex $u \in V$ with degree $k-1$. 
+		If we then connect $u$ to $v$ we get a k-regular graph. 
+		Using Tutt's theorem we know that the resulting graph has no 1-factor. 
+		Because if $v$ is removed we get $k$ components $S$ with odd number of vertices and $k$ is greater than 1.\\ \\
+		
+		In order to contruct $S$ we first need the following lemma.
+		\begin{lemma}{For any odd integer $k > 1$ it is possible to construct $(k-1)$-regular graph $G=(V,E)$ with $k+1$ vertices.}
+			We can obtain $G$ from $K_{k+1}$ by removing by removing all the edges from $K_{k+1}$ contained in a perfect matching. 
+			By removing the edges the degree of every vertex decreases exactly by one. 
+			$K_{k+1}$ is by definition $k$-regular, hence $G$ is $k-1$-regular. 
+			A perfect matching in $K_{k+1}$ exists, because $k+1$ is even, and the condition from Tutte's theorem always holds in a complete graph. 
+			To find such a matching we can just randomly choose $(u,v)$ edges and remove $u$ and $v$ from $K_{k+1}$. 
+		\end{lemma}
+		
+		
+		\emph{Constructing a connected graph $S=(V,E)$ with $|V|=k+2$ and the degree sequence $( k,k,...,k,(k-1))$. }  
+		First we construct a $(k-1)$-regular graph $S' = (V',E')$ with $k+1$ vertices as described in the lemma. 
+		Then we can add one vertex to $S'$ and connect it to all vertices in $V'$ except of one vertex. 
+		Thus we get a new graph $S$. 
+		Because we only added one vertex $|V| = |V'| +1 = k+2$ and the degree of the newly added vertex is $k$.
+		The degree of all the other vertices except of the last one is increased by one. 
+		Hence, $S$ hat the degree sequence $(k,k,...,k,(k-1))$. 
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
+				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
+				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
+				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
+				
+				\draw(v1) -- (v2);
+				\draw(v1) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v2) -- (v4);
+			\end{tikzpicture}
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
+				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
+				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
+				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
+				\node[circle, draw,very thick] (v5) at (0, 0) {$v_5$};
+				
+				\draw(v1) -- (v2);
+				\draw(v1) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v2) -- (v4);
+				\draw[very thick](v5) -- (v1);
+				\draw[very thick](v5) -- (v2);
+				\draw[very thick](v5) -- (v3);
+			\end{tikzpicture}
+		\caption{$S'$ and $S$ for k=3}
+		\end{figure}
+	\end{solution}
 	\newpage
 	\begin{solution}{12}
+	In the following I will show that any graph $G$ with $2n$ vertices and all degrees at least $n$ has a 1-factor. 	
+	I will show that if we divide such a $G$ into two parts we can remove edges until we get an bipartite 1-regular graph. 
+	Then using the corollary of Hall's theorem we know we can find a perfect matching.
+		\begin{theorem}{Let $G=(V,E)$ be a graph with $|V| = 2n$ vertices with all degree atleast n, then $G$ has a 1-factor.}
+		Because $|V| = 2n$ we can divide the vertices $V$ into two subsets $A,B \subset V$ with $|A|=|B|=n$ and $A \cap B = \emptyset$. 
 		
+	
+		\end{theorem}
 	\end{solution}
 	
 \end{document}
