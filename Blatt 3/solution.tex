@@ -159,8 +159,18 @@
 		Using Tutt's theorem we know that the resulting graph has no 1-factor. 
 		Because if $v$ is removed we get $k$ components $S$ with odd number of vertices and $k$ is greater than 1.\\ \\
 		
+		In order to contruct $S$ we first need the following lemma.
+		\begin{lemma}{For any odd integer $k > 1$ it is possible to construct $(k-1)$-regular graph $G=(V,E)$ with $k+1$ vertices.}
+			We can obtain $G$ from $K_{k+1}$ by removing by removing all the edges from $K_{k+1}$ contained in a perfect matching. 
+			By removing the edges the degree of every vertex decreases exactly by one. 
+			$K_{k+1}$ is by definition $k$-regular, hence $G$ is $k-1$-regular. 
+			A perfect matching in $K_{k+1}$ exists, because $k+1$ is even, and the condition from Tutte's theorem always holds in a complete graph. 
+			To find such a matching we can just randomly choose $(u,v)$ edges and remove $u$ and $v$ from $K_{k+1}$. 
+		\end{lemma}
+		
+		
 		\emph{Constructing a connected graph $S=(V,E)$ with $|V|=k+2$ and the degree sequence $( k,k,...,k,(k-1))$. }  
-		First we construct a $(k-1)$-regular graph $S' = (V',E')$ with $k+1$ vertices. 
+		First we construct a $(k-1)$-regular graph $S' = (V',E')$ with $k+1$ vertices as described in the lemma. 
 		Then we can add one vertex to $S'$ and connect it to all vertices in $V'$ except of one vertex. 
 		Thus we get a new graph $S$. 
 		Because we only added one vertex $|V| = |V'| +1 = k+2$ and the degree of the newly added vertex is $k$.
@@ -196,7 +206,7 @@
 			\end{tikzpicture}
 		\caption{$S'$ and $S$ for k=3}
 		\end{figure}
-	\end{solution} 
+	\end{solution}
 	\newpage
 	\begin{solution}{12}
 	In the following I will show that any graph $G$ with $2n$ vertices and all degrees at least $n$ has a 1-factor. 	
