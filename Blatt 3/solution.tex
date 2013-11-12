@@ -185,9 +185,9 @@
 		\newpage
 
 		\begin{theorem}{The Petersen graph is not Hamiltonian, it has a girth of $5$, a diameter of $2$, an order of $10$ and a size of $15$.}
-			Let $G = (V, E)$ be the Petersen graph. Then, $V = \binom{\{1, ..., 5\}}{2}$ and $E = \{\{A, B\}\ |\ A \cap B = \emptyset\}$. To avoid loss of generality, we will consider that $\{a_1, ..., a_n\} = \{1, ..., 5\}$.
+			Let $G = (V, E)$ be the Petersen graph. Then, $V = \binom{\{1, ..., 5\}}{2}$ and $E = \{\{A, B\}\ |\ A \cap B = \emptyset\}$. To avoid loss of generality, we will consider that $\{a_1, ..., a_5\} = \{1, ..., 5\}$.
 			
-			\textbf{Order:} The set $\{1, ..., 5\}$ has $10$ sets with $2$ elements and thus, the number of the graph's vertices aka it's order is $10$.\\
+			\textbf{Order:} The set $\{1, ..., 5\}$ has $10$ sets with $2$ elements each and thus, the number of the graph's vertices aka it's order is $10$.\\
 			
 			\textbf{Size:} Each vertex $\{a_1, a_2\}$ is disjoint to exactly three other $2$-element sets: $\{a_3, a_4\}, \{a_4, a_5\}, \{a_3, a_5\}$. Thus, the graph has $\frac{10 \cdot 3}{2} = 15$ edges and it's size is $15$.\\
 
@@ -204,7 +204,7 @@
 						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, \{a_1, a_4\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_1, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
 					\end{itemize}
 			\end{itemize}
-			All in all, the length of the shortest cycle succeeds $4$.
+			All in all, the length of the shortest cycle exceeds $4$.
 
 			Since we find a cycle of length $5$, $(\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_4\}, \{a_3, a_5\}, \{a_1, a_2\})$, \emph{the girth is $5$}.\\
 
@@ -212,7 +212,7 @@
 				
 				For non-disjoint vertices $A, B \in V$, the sets share exactly one element ($A \cap B \in \{1, ..., 5\}$). Thus, $|A \cup B| = 3$ and there exists a two-element subset $C = \{1, ..., 5\} \setminus (A \cup B)$ which is disjoint to both $A$ and $B$. Finally, $A$ and $B$ can be joined by a path $(A, C, B)$ and the distance is $2$.
 
-				\emph{All in all, the shortest path between any two vertices does not exceed $2$. Thus the distance of the Petersen graph is $2$.}\\
+				\emph{All in all, the shortest path between any two vertices does not exceed $2$. Thus, the distance of the Petersen graph is $2$.}\\
 
 			\textbf{Hamiltonian:}
 
