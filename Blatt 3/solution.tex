@@ -184,23 +184,23 @@
 			
 		\newpage
 		\begin{theorem}{The Petersen graph is not Hamiltonian, it has a girth of $5$, a diameter of $2$, an order of $10$ and a size of $15$.}
-			Let $G = (V, E)$ be the Petersen graph. Then, $V = \binom{\{1, ..., 5\}}{2}$ and $E = \{\{A, B\}\ |\ A \cap B = \emptyset\}$. To avoid loss of generality, we will consider that $\{a_1, ..., a_5\} = \{1, ..., 5\}$.
+			Let $G = (V, E)$ be the Petersen graph. Then, $V = \binom{\{1, ..., 5\}}{2}$ and $E = \{\{A, B\}\ |\ A \cap B = \emptyset\}$. To avoid loss of generality, we consider that $\{a_1, ..., a_5\} = \{1, ..., 5\}$.
 			
-			\textbf{Order:} The set $\{1, ..., 5\}$ has $10$ sets with $2$ elements each and thus, the number of the graph's vertices aka it's order is $10$.\\
+			\textbf{Order:} The set $\{1, ..., 5\}$ has $10$ different subsets with $2$ elements each and thus, the number of the graph's vertices and thereby it's order is $10$.\\
 			
 			\textbf{Size:} Each vertex $\{a_1, a_2\}$ is disjoint to exactly three other $2$-element sets: $\{a_3, a_4\}, \{a_4, a_5\}, \{a_3, a_5\}$. Thus, the graph has $\frac{10 \cdot 3}{2} = 15$ edges and it's size is $15$.\\
 
-			\textbf{Girth:} we consider $C = (\{a_1, a_2\}, \{a_3, a_4\}, ...)$ to be a cycle. $\{a_3, a_4\}$ is disjoint to $\{a_1, a_2\}, \{a_1, a_5\}, \{a_2, a_5\}$. Hence, we inspect the following cases for the continuation of $C$:
+			\textbf{Girth:} We consider $C = (\{a_1, a_2\}, \{a_3, a_4\}, ...)$ to be a cycle. $\{a_3, a_4\}$ is disjoint to $\{a_1, a_2\}, \{a_1, a_5\}, \{a_2, a_5\}$. Hence, we inspect the following cases for the continuation of $C$:
 			\begin{itemize}
-				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, ...)}$. Then, $C$ is not of length $3$, since $\{a_1, a_5\}$ and $\{a_1, a_2\}$ are not disjoint. Again, we differentiate between two cases for the subsets disjoint to $\{a_1, a_5\}$.
+				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, ...)}$. Then, $C$ is not of length $3$ since $\{a_1, a_5\}$ and $\{a_1, a_2\}$ are not disjoint. Again, we define one case for each subset disjoint to $\{a_1, a_5\}$ (except the vertex' predecessor).
 					\begin{itemize}
-						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_3\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_2, a_3\}$ and $\{a_1, a_2\}$ are not disjoint.
-						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_4\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_2, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
+						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_3\}, ...)}$. Then, $C$ is not of length $4$ since $\{a_2, a_3\}$ and $\{a_1, a_2\}$ are not disjoint.
+						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_4\}, ...)}$. Then, $C$ is not of length $4$ since $\{a_2, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
 					\end{itemize}
-				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, ...)}$. Then, $C$ is also not of length $3$, since $\{a_2, a_5\}$ and $\{a_1, a_2\}$ are not disjoint.
+				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, ...)}$. Then, $C$ is also not of length $3$ since $\{a_2, a_5\}$ and $\{a_1, a_2\}$ are not disjoint.
 					\begin{itemize}
-						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, \{a_1, a_3\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_1, a_3\}$ and $\{a_1, a_2\}$ are not disjoint.
-						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, \{a_1, a_4\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_1, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
+						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, \{a_1, a_3\}, ...)}$. Then, $C$ is not of length $4$ since $\{a_1, a_3\}$ and $\{a_1, a_2\}$ are not disjoint.
+						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, \{a_1, a_4\}, ...)}$. Then, $C$ is not of length $4$ since $\{a_1, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
 					\end{itemize}
 			\end{itemize}
 			All in all, the length of the shortest cycle exceeds $4$.
@@ -317,10 +317,9 @@
 	\end{solution}
 	\newpage
 	\begin{solution}{11}
-		In the following I will show how to construct for each $k>1$ a k-regular graph with no 1-factor. 
+		In the following, I will show how to construct for each $k>1$ a k-regular graph with no 1-factor. 
 		The basic idea is that for even $k$, simply $K_{n+1}$ is such a graph. 
 		For odd $k$,  I will show a way how to build such a $k-regular$ graph by connecting one vertex to $k$ components with odd number of vertices.  \\ 
-		
 		
 		For each even integer $k > 1$, the complete graph $K_{k+1}$ is a $k$-regular graph without a $1$-factor. 
 		$K_{k+1}$ is by definition $k$-regular and because $K_{k+1}$ has a odd number of components if $k$ is even, it is obviously impossible to find a 1-factor. 
@@ -339,7 +338,35 @@
 				\draw(v) -- (S2);
 				\draw(v) -- (S3);
 			\end{tikzpicture}
-		\caption{Example with k=3}
+			\hfill
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
+				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
+				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
+				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
+				
+				\draw(v1) -- (v2);
+				\draw(v1) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v2) -- (v4);
+			\end{tikzpicture}
+			\hfill
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
+				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
+				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
+				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
+				\node[circle, draw,very thick] (v5) at (0, 0) {$v_5$};
+				
+				\draw(v1) -- (v2);
+				\draw(v1) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v2) -- (v4);
+				\draw[very thick](v5) -- (v1);
+				\draw[very thick](v5) -- (v2);
+				\draw[very thick](v5) -- (v3);
+			\end{tikzpicture}
+		\caption{G, S' and S for k=3}
 		\end{figure}
 		Then, we construct $S=(V,E)$ in such a way that $|V|$ is odd and exactly one vertex $u \in V$ has degree $k-1$ while all other vertices have degree $k$.
  
@@ -361,36 +388,6 @@
 
 		Hence, $S$ hat the degree sequence $(k,k,...,k,(k-1))$. 
 		By connecting one vertex to $k$ subgraphs isomorph to S, like described above, we have constructed a $k$-regular graph without a perfect matching.
-		\begin{figure}[h]
-			\centering
-			\begin{tikzpicture}
-				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
-				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
-				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
-				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
-				
-				\draw(v1) -- (v2);
-				\draw(v1) -- (v3);
-				\draw(v3) -- (v4);
-				\draw(v2) -- (v4);
-			\end{tikzpicture}
-			\begin{tikzpicture}
-				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
-				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
-				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
-				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
-				\node[circle, draw,very thick] (v5) at (0, 0) {$v_5$};
-				
-				\draw(v1) -- (v2);
-				\draw(v1) -- (v3);
-				\draw(v3) -- (v4);
-				\draw(v2) -- (v4);
-				\draw[very thick](v5) -- (v1);
-				\draw[very thick](v5) -- (v2);
-				\draw[very thick](v5) -- (v3);
-			\end{tikzpicture}
-		\caption{$S'$ and $S$ for k=3}
-		\end{figure}
 	\end{solution}
 	\newpage
 	\begin{solution}{12}
