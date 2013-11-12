@@ -89,51 +89,71 @@
 
 
 	\begin{solution}{9}
-		\begin{theorem}{A hypercube $Q_n$ is Hamiltonian. It has a girth of $4$, a diameter of $n$, an order of $2^n$ and a size of ?.}
+		\begin{theorem}{A hypercube $Q_n$ is Hamiltonian. It has a girth of $4$ for $n \geq 2$ and $\infty$ otherwise. It's diameter is $n$, it's order $2^n$ and it has a size of ?.}
+			Let $S$ be a set of cardinality $|S| = n$. We construct $Q_n = (V_Q, E_Q)$ by creating a vertex for each subset of $S$ and moreover add edges between those subsets which differ by only one element. In the following, we will use binary representations of the vertices of $Q_n$ since $V_Q = \mathcal{P}(S) \cong (\mathbb{Z}/2\mathbb{Z})^n$ (we can denote a $1$ for including an element and a $0$ for excluding an element in a subset).\\
+
+			\textbf{Order:} Since $V_Q = \mathcal{P}(S)$ and $|\mathcal{P}(S)| = 2^n$, \emph{the order of $Q_n$ is $2^n$.}\\
+
+			\textbf{Size:}\\
+
+			\textbf{Girth:} We differ between two cases.
+				\begin{itemize}
+					\item \textbf{Case 1: } $n=1$. Our graph contains exactly one edge and is therefore acyclic. \emph{Hence, the girth is $\infty$ for $n=1$.}
+
+					\item \textbf{Case 2: } $n\geq2$ Our graph contains the cycle ($\emptyset$, $\{a\}$, $\{a,b\}$, $\{b\}$, $\emptyset$) $(a,b \in S)$ which has length $4$.
+
+						A shorter cycle ($A$, $B$, $C$, $A$) $(A, B, C \in V_Q)$ does not exist due to the property that two adjacent vertices differ by exactly one element. For such a cycle, $B$ and $A$ differed by one element, and hence $A$ and $C$ differed by two or are equal. However, a difference of zero or two elements between two consecutive elements renders any walk invalid. The edge $\{C, A\}$ could not be contained in $Q_n$.
+ 
+						\emph{From these considerations, for $n \geq 2$, the girth is $4$.}
+				\end{itemize}
+
+			\textbf{Diameter:}
+				For any set $A \in V_Q$, we are able to get to any other element $B \in V_Q$ by inserting or removing a maximum of $n$ elements. Thus, a path of length $n$ is sufficient to walk from any $A$ to any $B$. Furthermore, there exist $A$ and $B$ such that a path of length $n$ is the shortest path between them. E.g. $A = \emptyset \in V_Q$, $B = S \in V_Q$. \emph{Thus, the diameter of $Q_n$ is $n$.}\\
+
+			\textbf{Hamiltonian:} A Hamiltonian cycle is equivalent to an enumeration of $(\mathbb{Z}/2\mathbb{Z})^n$ in which consecutive elements differ by exactly one element. We provide such an enumeration: the \emph{Gray Code\footnote{For $n=2$: $00$,$01$,$11$,$10$,$00$. Generally, the $k$'th vertex in the Hamiltonian cycle is $k \otimes \lfloor \frac{k}{2} \rfloor$ whereby $\cdot \otimes \cdot$ denotes the exclusive or.}}. \emph{Thus, there exists a Hamiltonian cycle and $Q_n$ is Hamiltonian.}
 		\end{theorem}
-		\begin{theorem}{A bipartite complete graph $K_{m, n}$ is Hamiltonian iff $m = n$. It's girth is $4$ for $m, n \geq 2$ and $\infty$ otherwise. It's diameter is $2$. The graph's order is $m + n$ and it's size is $m \cdot n$.}
+
+		\newpage		
+
+		\begin{theorem}{A complete bipartite graph $K_{m, n}$ is Hamiltonian iff $m = n$. It's girth is $4$ for $m, n \neq 1$ and and $\infty$ otherwise. It's diameter is $1$ for $m = n = 1$ and $2$ otherwise. The graph's order is $m + n$ and it's size is $m \cdot n$.}
+			Let $V = \{v_1, ..., v_m\}$ and $W = \{w_1, ..., w_n\}$ denote the two partitions of $K_{m, n} = (V_K, E_K)$.\\
+
+			\textbf{Order:} The first partition has $m$ elements, the second $n$ elements. \emph{Thus, $K_{m,n}$ has an order of $m + n$.}\\
+
+			\textbf{Size:} Each of the $m$ elements of the first partition are connected to each of the $n$ elements in the second partition. \emph{Thus, $K_{m,n}$ has a size of $m \cdot n$}.\\
+
+			\textbf{Girth:} If either $m=1$ or $n=1$, then all vertices of one partition are indicent to and only to the single vertex of the other partition. Hence, there is no cycle in $K_{1, n}$ or $K_{m, 1}$ and \emph{the girth of $K_{m,n}$ is $\infty$ if $n = 1$ or $m=1$}.\\
+
+				If $m, n \neq 1$, each cycle must have even length since any two consectuive vertices in a path of $K_{n,m}$ are in different partitions. Thus, we require an even amount of edge-crossings to enclose a walk. Any cycle has a length of at least $3$, thus the girth of $K_{m,n}$ has to exceed or be equal to $4$.
+
+				Furthermore, we find such a cycle of length $4$ easily since both partitions $V, W$ have at least $2$ vertices: $(v_1, w_1, v_2, w_2, v_1)$. \emph{From these considerations, the girth of $K_{m,n}$ must be equal to $4$.}\\
+
+			\textbf{Diameter:} For $m = n = 1$, there are exactly two vertices in different partitions. They have a distance of $1$ and thus, \emph{the diameter of $K_{1,1}$ is $1$}.\\
+
+				Since two consectuive vertices in a path of $K_{n,m}$ are in different partitions $V, W$ the distance between two vertices in the same partition has to be at least $2$. Moreover, we find a path of distance $2$ between $v_1 \in V$ to $v_2 \in V$: $(v_1, w, v_2)$ for any $w \in W$. Thus, the diameter does not deceed $2$.
+
+				For any two vertices in different partitions $V, W$, they are directly connected by a path of length $1$.
+
+				 \emph{Hence, the diameter of $K_{m,n}$ is $2$ if not $m = n = 1$}.\\
+
+			\textbf{Hamiltonian:}
 		\end{theorem}
-		\begin{theorem}{The Petersen graph is Hamiltonian, it has a girth of $5$, a diameter of $2$, an order of $10$ and a size of $15$.}
+			
+		\newpage
+
+		\begin{theorem}{The Petersen graph is not Hamiltonian, it has a girth of $5$, a diameter of $2$, an order of $10$ and a size of $15$.}
+			\textbf{Order:} The graph has $10$ vertices and thus, it's order is $10$.\\
+			
+			\textbf{Size:} The graph has $15$ edges and thus, it's size is $15$.\\
+
+			\textbf{Girth:} \\
+
+			\textbf{Diameter:} \\
+
+			\textbf{Hamiltonian:}
+
 		\end{theorem}
 	\end{solution}
-	\newpage
-	\begin{solution}{10}
-		\begin{theorem}{For a natural number $n \geq 2$ let $G = (V_G, E_G)$ be the graph of order $2n + 1$ obtained from $K_{n,n}$ by subdividing an edge by a vertex. Then, $\chi'(X) = \Delta(G) + 1 = n + 1$ but $\chi'(G - e) = \Delta(G - e)$ for any edge $e$ of $G$.}
-			Let $V = \{v_1, ..., v_n\}$ and $W = \{w_1, ..., w_n\}$ denote the two partitions of $K_{n, n}$ and $\{c_k\ |\ k \in \mathbb{N}\}$ be a set of colors. Furthermore, let $u \in V_G$ be the vertex subdividing an edge between these two partitions.\\
-		
-			First, we will prove that $\chi'(X) = \Delta(G) + 1 = n + 1$. We will argue, that any partial coloring of $G$ will inevitably result in $n+1$ colors. 
-%
-% noncolored graph $G$, coloring the edges incident to a vertex $v \in V$ will inevitably result in $n + 1$ colors. Since $V$ and $W$ are entirely commutable, our proof will be sufficient after we consider the extra case in which we begin with coloring the edges of $u$.
-
-			\begin{center}
-				\begin{tikzpicture}
-					\node[draw,circle] (v1) at (0, 0) {$v_1$};
-					\node[draw,circle] (v2) at (2, 0) {$v_2$};
-					\node[draw,circle] (v3) at (4, 0) {$v_3$};
-					\node[draw,circle] (w1) at (0, -2) {$w_1$};
-					\node[draw,circle] (w2) at (2, -2) {$w_2$};
-					\node[draw,circle] (w3) at (4, -2) {$w_3$};
-					\node[draw,circle] (u) at (4.5, -1) {$u$};
-		
-					\draw[thick, red] (v1) -- (w1);
-					\draw[thick, green] (v1) -- (w2);
-					\draw[thick, blue] (v1) -- (w3);
-					\draw[thick, green] (v2) -- (w1);
-					\draw[thick, red] (v2) -- (w2);
-					\draw[thick, red] (v2) -- (w3);
-					\draw[thick, blue] (v3) -- (w1);
-					\draw[thick, red] (v3) -- (w2);
-					\draw[thick, green] (v3) -- (u);
-					\draw[thick, pink] (u) -- (w3);
-				\end{tikzpicture}
-			\end{center}
-
-			For a partially colored $G$, let $v \in V_G$ be a vertex of $G$.
-			\begin{itemize}
-				\item \textbf{Case 1:} $v \neq u$: Since $v$ has $n$ adjacent vertices, we need $n$ colors to color the edges incident to $v$. Of course, 
-			\end{itemize}
-		\end{theorem}
-	\end{solution} 
 	\newpage
 	\begin{solution}{11}
 		For each even integer $k > 1$, the complete graph $K_{(n+1)}$ is a $k$-regular graph with no 1-factor. 
