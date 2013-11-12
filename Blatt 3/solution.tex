@@ -184,7 +184,7 @@
 			
 		\newpage
 
-		\begin{theorem}{The Petersen graph is not Hamiltonian, it has a girth of $5$, a diameter of $2$, an order of $10$ and a size of $15$.}
+		\begin{theorem}{The Petersen graph is not hamiltonian, it has a girth of $5$, a diameter of $2$, an order of $10$ and a size of $15$.}
 			\textbf{Order:} The graph has $10$ vertices and thus, it's order is $10$.\\
 			
 			\textbf{Size:} The graph has $15$ edges and thus, it's size is $15$.\\
@@ -193,8 +193,106 @@
 
 			\textbf{Diameter:} \\
 
-			\textbf{Hamiltonian:}
-
+			\textbf{Hamiltonian:} \\
+			Let's assume the petersen graph is Hamiltonian, then there would be a cycle containing all 10 nodes. 
+			Now we can draw the graph by starting off by drawing the hamilton cycle. 
+			\begin{center}
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (-2.5, 0) {$v_1$};
+				\node[circle, draw] (v2) at (-2, 1.5) {$v_2$};
+				\node[circle, draw] (v3) at (-1, 2.5) {$v_3$};
+				\node[circle, draw] (v4) at (1, 2.5) {$v_4$};
+				\node[circle, draw] (v5) at (2, 1.5) {$v_5$};
+				\node[circle, draw] (v6) at (2.5, 0) {$v_6$};
+				\node[circle, draw] (v7) at (2, -1.5) {$v_7$};
+				\node[circle, draw] (v8) at (1, -2.5) {$v_8$};
+				\node[circle, draw] (v9) at (-1, -2.5) {$v_9$};
+				\node[circle, draw] (v10) at (-2, -1.5) {$v_{10}$};
+				\draw(v1) -- (v2);
+				\draw(v2) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v4) -- (v5);
+				\draw(v5) -- (v6);
+				\draw(v6) -- (v7);
+				\draw(v7) -- (v8);
+				\draw(v8) -- (v9);
+				\draw(v9) -- (v10);
+				\draw(v10) -- (v1);
+			\end{tikzpicture}
+			\end{center}
+			Now in order for $v_1$ to have degree 3 it has to have another edge. 
+			We already know that the minimum cycle in the Peterson graph is 5 so $v_1$ can only be connected to $v_5$,$v_6$ or $v_7$. 
+			Because of symmetry reasons we only need to consider the following two cases. 
+			\begin{itemize}
+				\item \emph{$(v_1,v_5)$ is an edge of Peterson Graph}\\
+					Then either $(v_{10},v_4)$, $(v_{10},v_5)$ or $(v_{10},v_6)$ has to be part of the Peterson graph. 
+					In all three cases a cycle is created with size smaller than 5. 
+					($v_1,v_5,v_4,v_{10},v_1$ with edge $(v_{10},v_4)$,  $v_1,v_5,v_{10},v_1$ with edge $(v_{10},v_5)$ or $v_1,v_5,v_6,v_{10},v_1$ with edge $(v_{10},v_6)$ )
+					Concluding, the edge $(v_1,v_5)$ cannot be part of the Peterson graph. 
+					\begin{center}
+					\begin{tikzpicture}
+						\node[circle, draw] (v1) at (-2.5, 0) {$v_1$};
+						\node[circle, draw] (v2) at (-2, 1.5) {$v_2$};
+						\node[circle, draw] (v3) at (-1, 2.5) {$v_3$};
+						\node[circle, draw] (v4) at (1, 2.5) {$v_4$};
+						\node[circle, draw] (v5) at (2, 1.5) {$v_5$};
+						\node[circle, draw] (v6) at (2.5, 0) {$v_6$};
+						\node[circle, draw] (v7) at (2, -1.5) {$v_7$};
+						\node[circle, draw] (v8) at (1, -2.5) {$v_8$};
+						\node[circle, draw] (v9) at (-1, -2.5) {$v_9$};
+						\node[circle, draw] (v10) at (-2, -1.5) {$v_{10}$};
+						\draw(v1) -- (v2);
+						\draw(v2) -- (v3);
+						\draw(v3) -- (v4);
+						\draw(v4) -- (v5);
+						\draw(v5) -- (v6);
+						\draw(v6) -- (v7);
+						\draw(v7) -- (v8);
+						\draw(v8) -- (v9);
+						\draw(v9) -- (v10);
+						\draw(v10) -- (v1);
+						\draw(v1) -- (v5);
+						\draw[dotted](v10) -- (v4);
+						\draw[dotted](v10) -- (v5);
+						\draw[dotted](v10) -- (v6);
+					\end{tikzpicture}
+					\end{center}
+				\item \emph{$(v_1,v_6)$ is an edge of Peterson Graph}\\
+					Examining $v_2$ we see that $v_2$ can only be connected to $v_8$ because all with all other vertices there would be a cycle of size smaller than 5. 
+					Then examining $v_3$ we see that $v_3$ can neither be connected to $v_7$, $v_8$ nor $v_9$ because in every case there would be a cycle of size smaller than 5. 
+					Concluding, the edge $(v_1,v_6)$ cannot be part of the Peterson graph. 
+					\begin{center}
+					\begin{tikzpicture}
+						\node[circle, draw] (v1) at (-2.5, 0) {$v_1$};
+						\node[circle, draw] (v2) at (-2, 1.5) {$v_2$};
+						\node[circle, draw] (v3) at (-1, 2.5) {$v_3$};
+						\node[circle, draw] (v4) at (1, 2.5) {$v_4$};
+						\node[circle, draw] (v5) at (2, 1.5) {$v_5$};
+						\node[circle, draw] (v6) at (2.5, 0) {$v_6$};
+						\node[circle, draw] (v7) at (2, -1.5) {$v_7$};
+						\node[circle, draw] (v8) at (1, -2.5) {$v_8$};
+						\node[circle, draw] (v9) at (-1, -2.5) {$v_9$};
+						\node[circle, draw] (v10) at (-2, -1.5) {$v_{10}$};
+						\draw(v1) -- (v2);
+						\draw(v2) -- (v3);
+						\draw(v3) -- (v4);
+						\draw(v4) -- (v5);
+						\draw(v5) -- (v6);
+						\draw(v6) -- (v7);
+						\draw(v7) -- (v8);
+						\draw(v8) -- (v9);
+						\draw(v9) -- (v10);
+						\draw(v10) -- (v1);
+						\draw(v1) -- (v6);
+						\draw(v2) -- (v8);
+						\draw[dotted](v3) -- (v7);
+						\draw[dotted](v3) -- (v8);
+						\draw[dotted](v3) -- (v9);
+					\end{tikzpicture}
+					\end{center}
+			\end{itemize}
+			Because of the symmetry of the cycle we can conclude that there is no way to construct the Peterson graph from a cycle with 10 vertices.
+			Thus, we know that the Peterson graph cannot be Hammiltonian. 
 		\end{theorem}
 	\end{solution}
 	\newpage
@@ -227,7 +325,7 @@
  
 		If we then connect $u$ to $v$, we obtain a $k$-regular graph. If we removed $v$ we would have $k$ components $S$ with an odd number of vertices. Furthermore, $k > 1$ and thus, by Tutte's theorem, we know that the resulting graph has no $1$-factor.\\
 		
-		In order to contruct $S$ we first need the following lemma.
+		In order to construct $S$ we first need the following lemma.
 		\begin{lemma}{For any odd integer $k > 1$ it is possible to construct a $(k-1)$-regular graph $G=(V,E)$ with $k+1$ vertices.}
 			We can obtain $G$ from $K_{k+1}$ by removing all edges from $K_{k+1}$ which are contained in a perfect matching of $K_{k+1}$. 
 
@@ -242,7 +340,7 @@
 		Because we have added only one vertex $|V| = |V'| +1 = k+2$ and the degree of the newly added vertex is $k$, the degree of all the other vertices except of the last one is increased by one.\\
 
 		Hence, $S$ hat the degree sequence $(k,k,...,k,(k-1))$. 
-		By connecting one vertex to $k$ subgraphs isomorph to S, like descibed above, we have constructed a $k$-regular graph without a perfect matching.
+		By connecting one vertex to $k$ subgraphs isomorph to S, like described above, we have constructed a $k$-regular graph without a perfect matching.
 		\begin{figure}[h]
 			\centering
 			\begin{tikzpicture}
