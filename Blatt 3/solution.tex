@@ -75,8 +75,7 @@
 	skipabove=\baselineskip
 ]{mytheorem}
 
-
-
+\tikzstyle{nod}= [circle, draw,inner sep=0pt, minimum size=0.5cm] 
 
 \begin{document}
 	
@@ -112,6 +111,35 @@
 
 			\textbf{Hamiltonian:} A Hamiltonian cycle is equivalent to an enumeration of $(\mathbb{Z}/2\mathbb{Z})^n$ in which consecutive elements differ by exactly one element. We provide such an enumeration: the \emph{Gray Code\footnote{For $n=2$: $00$,$01$,$11$,$10$,$00$. Generally, the $k$'th vertex in the Hamiltonian cycle is $k \otimes \lfloor \frac{k}{2} \rfloor$ whereby $\cdot \otimes \cdot$ denotes the exclusive or.}}. \emph{Thus, there exists a Hamiltonian cycle and $Q_n$ is Hamiltonian.}
 		\end{theorem}
+		\begin{figure}[h!]
+			\begin{center}
+				\begin{tikzpicture}[scale=0.8]
+					\pgfsetxvec{\pgfpoint{1.cm}{0.0cm}} 
+					\pgfsetyvec{\pgfpoint{0.0cm}{1.0cm}} 
+					\node[nod] at (0,0) [label=below:\footnotesize$0001$] (0001) {}; 
+					\node[nod] at (5,0) [label=below:\footnotesize$1001$] (1001) {}; 
+					\node[nod] at (0,5) [label=above:\footnotesize$0011$] (0011) {}; 
+					\node[nod] at (5,5) [label=above:\footnotesize$1011$] (1011) {}; 
+					\node[nod] at (2,2) [label=below:\footnotesize$0101$] (0101) {}; 
+					\node[nod] at (7,2) [label=below:\footnotesize$1101$] (1101) {}; 
+					\node[nod] at (2,7) [label=above:\footnotesize$0111$] (0111) {}; 
+					\node[nod] at (7,7) [label=above:\footnotesize$1111$] (1111) {}; 
+					\node[nod] at (2.5,1.5) [label=below:\footnotesize$0000$] (0000) {}; 
+					\node[nod] at (4.5,1.5) [label=below:\footnotesize$1000$] (1000) {}; 
+					\node[nod] at (2.5,3.5) [label=above:\footnotesize$0010$] (0010) {}; 
+					\node[nod] at (4.5,3.5) [label=above:\footnotesize$1010$] (1010) {}; 
+					\node[nod] at (3.5,2.5) [label=below:\footnotesize$0100$] (0100) {}; 
+					\node[nod] at (5.5,2.5) [label=below:\footnotesize$1100$] (1100) {}; 
+					\node[nod] at (3.5,4.5) [label=above:\footnotesize$0110$] (0110) {}; 
+					\node[nod] at (5.5,4.5) [label=above:\footnotesize$1110$] (1110) {}; 
+					\path (0011) edge (1011) edge (0111) edge (0001) (1001)	edge (0001) edge (1101) edge (1011) (1111)	edge (1101) edge (1011) edge (0111) (0010) edge (1010) edge (0110) edge (0000) (1000)	edge (0000) edge (1100) edge (1010) (1110)	edge (1100) edge (1010) edge (0110); 
+					\path[dashed] (0101) edge (1101)	edge (0001) edge (0111) (0100) edge (1100)	edge (0000) edge (0110); 
+					\path[dotted] (0000) edge (0001) (0010) edge (0011) (0100) edge (0101) (0110) edge (0111) (1000) edge (1001) (1010) edge(1011) (1100) edge (1101) (1110) edge (1111); 
+					\draw[ultra thick, red] (0000) -> (0001) -> (0011) -> (0010) -> (0110) -> (0111) -> (0101) -> (0100) -> (0000);
+				\end{tikzpicture} 
+			\end{center} 
+			\caption{The hypercube $Q_4$ and the Hamiltonian cycle of $Q_3$ as a subgraph of $Q_4$.}
+		\end{figure}
 
 		\newpage		
 
