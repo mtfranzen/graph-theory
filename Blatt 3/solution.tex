@@ -199,7 +199,13 @@
 	\end{solution}
 	\newpage
 	\begin{solution}{11}
-		For each even integer $k > 1$, the complete graph $K_{(n+1)}$ is a $k$-regular graph without a $1$-factor. 
+		In the following I will show how to construct for each $k>1$ a k-regular graph with no 1-factor. 
+		The basic idea is that for even $k$, simply $K_{n+1}$ is such a graph. 
+		For odd $k$,  I will show a way how to build such a $k-regular$ graph by connecting one vertex to $k$ components with odd number of vertices.  \\ 
+		
+		
+		For each even integer $k > 1$, the complete graph $K_{k+1}$ is a $k$-regular graph without a $1$-factor. 
+		$K_{k+1}$ is by definition $k$-regular and because $K_{k+1}$ has a odd number of components if $k$ is even, it is obviously impossible to find a 1-factor. 
 		For each odd $k > 1$, we are able to construct a $k$-regular graph without a $1$-factor in the following way. \\
 		
 		In order to guarantee that the graph has no $1$-factor, we can use Tutte's theorem. We construct the graph by starting with a single vertex $v \in V$ connected to $k$ subgraphs $S$ which are not inter-connected. 
@@ -223,9 +229,10 @@
 		
 		In order to contruct $S$ we first need the following lemma.
 		\begin{lemma}{For any odd integer $k > 1$ it is possible to construct a $(k-1)$-regular graph $G=(V,E)$ with $k+1$ vertices.}
-			We can obtain $G$ from $K_{k+1}$ by removing all edges from $K_{k+1}$ which are contained in a perfect matching. 
+			We can obtain $G$ from $K_{k+1}$ by removing all edges from $K_{k+1}$ which are contained in a perfect matching of $K_{k+1}$. 
 
-			By removing those edges, the degree of every vertex decreases exactly by one. $K_{k+1}$ is by definition $k$-regular and hence $G$ is $k-1$-regular.
+			By removing those edges, the degree of every vertex decreases exactly by one. 
+			$K_{k+1}$ is by definition $k$-regular and hence $G$ is $k-1$-regular.
 
 			A perfect matching in $K_{k+1}$ exists, because $k+1$ is even, and the conditions of Tutte's theorem are always satisfied in a complete graph. Moreover, we find such a matching by randomly choosing edges $\{u,v\}$ and removing $u$ and $v$ from $K_{k+1}$. 
 		\end{lemma}
@@ -234,7 +241,8 @@
 		First we construct a $(k-1)$-regular graph $S' = (V',E')$ with $k+1$ vertices as described in the aforementioned way. Then, we can add one vertex to $S'$ and connect it to all except one vertices in $V'$. Thus, we have a new graph $S$. 
 		Because we have added only one vertex $|V| = |V'| +1 = k+2$ and the degree of the newly added vertex is $k$, the degree of all the other vertices except of the last one is increased by one.\\
 
-		Hence, $S$ hat the degree sequence $(k,k,...,k,(k-1))$ and we have constructed a $k$-regular graph without a perfect matching.
+		Hence, $S$ hat the degree sequence $(k,k,...,k,(k-1))$. 
+		By connecting one vertex to $k$ subgraphs isomorph to S, like descibed above, we have constructed a $k$-regular graph without a perfect matching.
 		\begin{figure}[h]
 			\centering
 			\begin{tikzpicture}
