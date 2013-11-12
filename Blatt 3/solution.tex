@@ -89,12 +89,12 @@
 
 
 	\begin{solution}{9}
-		\begin{theorem}{A hypercube $Q_n$ is Hamiltonian. It has a girth of $4$ for $n \geq 2$ and $\infty$ otherwise. It's diameter is $n$, it's order $2^n$ and it has a size of ?.}
-			Let $S$ be a set of cardinality $|S| = n$. We construct $Q_n = (V_Q, E_Q)$ by creating a vertex for each subset of $S$ and moreover add edges between those subsets which differ by only one element. In the following, we will use binary representations of the vertices of $Q_n$ since $V_Q = \mathcal{P}(S) \cong (\mathbb{Z}/2\mathbb{Z})^n$ (we can denote a $1$ for including an element and a $0$ for excluding an element in a subset).\\
+		\begin{theorem}{A hypercube $Q_n$ is Hamiltonian. It has a girth of $4$ for $n \geq 2$ and $\infty$ otherwise. It's diameter is $n$, it's order $2^n$ and it has a size of $2^{n-1} \cdot n$.}
+			Let $S$ be a set of cardinality $|S| = n$. We construct $Q_n = (V_Q, E_Q)$ by creating a vertex for each subset of $S$ and moreover add edges between those subsets which differ by only one element. In the following, we may use binary representations of the vertices of $Q_n$ since $V_Q = \mathcal{P}(S) \cong (\mathbb{Z}/2\mathbb{Z})^n$ (we can denote a $1$ for including an element and a $0$ for excluding an element in a subset).\\
 
 			\textbf{Order:} Since $V_Q = \mathcal{P}(S)$ and $|\mathcal{P}(S)| = 2^n$, \emph{the order of $Q_n$ is $2^n$.}\\
 
-			\textbf{Size:}\\
+			\textbf{Size:} Each of the $2^n$ vertices is adjacent to $n$ other vertices since we can insert / remove each of the $n$ elements of $S$. For undirected edges, we have $\frac{2^n \cdot n}{2} = 2^{n-1} \cdot n$ edges. \emph{Thus, the size of $Q_n$ is $2^{n-1} \cdot n$.}\\
 
 			\textbf{Girth:} We differ between two cases.
 				\begin{itemize}
@@ -229,13 +229,64 @@
 	\end{solution}
 	\newpage
 	\begin{solution}{12}
-	In the following I will show that any graph $G$ with $2n$ vertices and all degrees at least $n$ has a 1-factor. 	
-	I will show that if we divide such a $G$ into two parts we can remove edges until we get an bipartite 1-regular graph. 
-	Then using the corollary of Hall's theorem we know we can find a perfect matching.
-		\begin{theorem}{Let $G=(V,E)$ be a graph with $|V| = 2n$ vertices with all degree atleast n, then $G$ has a 1-factor.}
-		Because $|V| = 2n$ we can divide the vertices $V$ into two subsets $A,B \subset V$ with $|A|=|B|=n$ and $A \cap B = \emptyset$. 
-		
-	
+		\begin{theorem}{Any graph $G$ with $2n$ vertices and $\delta(G) \geq n$ has a $1$-factor.}
+			Let $G=(V,E)$ be a graph with $|V| = 2n$ and $d(v) \geq n \: \forall v \in V$.
+
+			In the following, we will prove for nontrivial $G$ that the number of odd components in a graph $G - S$ deceeds the number of vertices in S. By \emph{Tutte's Matching Theorem}, $G$ then has a $1$-factor.
+			\begin{itemize}
+				\item [$\mathbf{n = 1}$]
+
+					Then, $G$ is a simple graph with two vertices that are connected by one edge. This is of course a perfect matching of $G$.
+			
+				\item [$\mathbf{n \geq 2}$]
+
+					Let $S \subseteq V$ be a set of vertices, $G' = (V', E') := G - S$ and $k := |S|$.\\
+					As $G'$ is created by removing all vertices of $S$ and their incident edges from $G$, we obtain the following properties: 
+					\begin{itemize}
+						\item $\forall v \in V: d(v) \geq n - k$
+						\item For any component $C$ of $G'$, $|V(C)| \geq n-k+1$
+						\item the order of G is $2n-k$
+					\end{itemize}
+					
+					In the following cases, we prove that $\lambda:=\#odd\ components \leq k$.
+					\begin{itemize}
+						\item[$\mathbf{k=0}$]:
+
+							Because $G$ consists of one even component, $\lambda=0 \leq k$
+						\item[$\mathbf{k=1}$]:
+
+							After removing any vertex of $G$, the degree of a vertex in $G'$ is reduced by one or less. Hence, $\forall v \in V: d(v) >= n-1$. This implies that the size of any component in $G'$ is at least $n$. As far as $|V'|=2n-1$ there can only exist one component in $G'$ with order $2n-1$ (which is odd).
+
+							All in all, we have shown that $\lambda=1 \leq k$.
+						
+						\item[$\mathbf{2\leq k \leq n}$]:
+
+							As the minimum size of a component in $G'$ is $n-k+1$ and $|V'|=2n-k$, we can bound the amount of components by the following term: $\frac{2n-k}{n-k+1}$.
+
+							We now have to prove that 
+							$\frac{2n-k}{n-k+1} \leq k \iff 2n-k \leq k*n-k^2+k \iff 0 \leq (k-2)n-k^2+2k =: f(k)$.
+
+							To prove this inequality, we have to determine the minimum value of $f$ in the defined boundaries.
+							\begin{itemize}
+								\item $f'(k)=n-2k+2 =^! 0 \iff k=\frac{n}{2}+1$
+								\item $f''(k)=-2$
+							\end{itemize}
+							So $f$ has a maximum but no local minimum. To find the minimum value within the given range, we have to check the borders:
+
+							$f(2)=0=f(n)$. Thus, $\min(f)=0 \geq f(k)$ which proves the inequality.
+
+							All in all, we have shown that the number of compomonents deceeds or is equal to $k$. This implies that $\lambda \leq k$.
+					\item[$\mathbf{n \leq k \leq 2n}$]:
+
+						Because removing one vertex can not increase the number of components by more than one and $V'=2n-k\leq n \leq k$, there can not  be more than k odd components.
+
+						Hence, $\lambda \leq k$.
+				\end{itemize}
+				Finally, we have shown that the number of resulting components in $G'$ is bounded by the order of $S$.
+				In other words: $\forall  S \subseteq V(G): \#odd\ components\ of\ G-S \leq |S|$.\\
+
+				Thus, we have shown that all conditions for \emph{Tutte's Matching Theorem} are satisfied. Hence, $G$ has a pefect matching aka $1$-factor.
+			\end{itemize}
 		\end{theorem}
 	\end{solution}
 	
