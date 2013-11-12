@@ -136,7 +136,22 @@
 
 				 \emph{Hence, the diameter of $K_{m,n}$ is $2$ if not $m = n = 1$}.\\
 
-			\textbf{Hamiltonian:}
+			\textbf{Hamiltonian:} For $m = n$, we find always find a Hamiltonian cycle: $(v_1, w_1, v_2, w_2, ..., v_n, w_n, v_1)$.
+
+				However, for $m \neq n$, there can not exist a Hamiltonian cycle.
+
+				We assume such a Hamiltonian cycle $c = (u_1, u_2, ..., u_{n+m}, u_1)$ existed for $m \neq n$. 
+				\begin{itemize}
+					\item \textbf{Case 1:} $m + n$ odd. Then, $u_{n+m}$ and $u_1$ were in the same partition which rendered the edge $\{u_{n+m}, u_1\}$ invalid. \emph{Hence, $K_{m,n}$ is not Hamiltonian for an odd $n + m$.}
+					\item \textbf{Case 2:} $m + n$ is even. Then, there was an $n_0 < n+m$ such that $(u_1, ..., u_{n_0})$ is the shortest sub walk that covers one partition but not both. Again, we inspect two cases.
+						\begin{itemize}
+							\item $\mathbf{n_0 = m + n - 1}$. Then, both partitions have the same number of vertices which is contradictory to our precondition that $m \neq n$.
+							\item $\mathbf{n_0 < m + n - 1}$. Then, we are trapped in one partition for we are not able to cover two vertices of the same partition consecutively.
+						\end{itemize}
+					\emph{Hence, $K_{m, n}$ ($m \neq n$) is not Hamiltonian for an even $m + n$.}
+				\end{itemize}
+
+				All in all, $K_{m,n}$ is Hamiltonian if and only if $m = n$.
 		\end{theorem}
 			
 		\newpage
