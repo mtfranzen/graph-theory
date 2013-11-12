@@ -213,11 +213,9 @@
 
 				\emph{All in all, the shortest path between any two vertices does not exceed $2$. Thus, the distance of the Petersen graph is $2$.}\\
 
-			\textbf{Diameter:} \\
-
-			\textbf{Hamiltonian:} \\
-			Let's assume the petersen graph is Hamiltonian, then there would be a cycle containing all 10 nodes. 
-			Now we can draw the graph by starting off by drawing the hamilton cycle. 
+			\textbf{Hamiltonian:}
+			Let's assume the Petersen graph is Hamiltonian, then there would be a cycle containing all 10 nodes. 
+			Now we can draw the graph. We start off by drawing the Hamilton cycle. 
 			\begin{center}
 			\begin{tikzpicture}
 				\node[circle, draw] (v1) at (-2.5, 0) {$v_1$};
@@ -242,15 +240,15 @@
 				\draw(v10) -- (v1);
 			\end{tikzpicture}
 			\end{center}
-			Now in order for $v_1$ to have degree 3 it has to have another edge. 
-			We already know that the minimum cycle in the Petersen graph is 5 so $v_1$ can only be connected to $v_5$,$v_6$ or $v_7$. 
-			Because of symmetry reasons we only need to consider the following two cases. 
+			Now in order for $v_1$ to have degree 3, the graph must have another edge. 
+			We already know that the minimum cycle in the Petersen graph is of length $5$ so $v_1$ can only be connected to $v_5$,$v_6$ or $v_7$. 
+			Because of symmetry reasons, we only need to consider the following two cases. 
 			\begin{itemize}
 				\item \emph{$(v_1,v_5)$ is an edge of Petersen Graph}\\
 					Then either $(v_{10},v_4)$, $(v_{10},v_5)$ or $(v_{10},v_6)$ has to be part of the Petersen graph. 
-					In all three cases a cycle is created with size smaller than 5. 
+					In all three cases a cycle is created with a size smaller than 5. 
 					($v_1,v_5,v_4,v_{10},v_1$ with edge $(v_{10},v_4)$,  $v_1,v_5,v_{10},v_1$ with edge $(v_{10},v_5)$ or $v_1,v_5,v_6,v_{10},v_1$ with edge $(v_{10},v_6)$ )
-					Concluding, the edge $(v_1,v_5)$ cannot be part of the Petersen graph. 
+					In conclusion, the edge $(v_1,v_5)$ cannot be part of the Petersen graph. 
 					\begin{center}
 					\begin{tikzpicture}
 						\node[circle, draw] (v1) at (-2.5, 0) {$v_1$};
@@ -280,9 +278,9 @@
 					\end{tikzpicture}
 					\end{center}
 				\item \emph{$(v_1,v_6)$ is an edge of Petersen Graph}\\
-					Examining $v_2$ we see that $v_2$ can only be connected to $v_8$ because all with all other vertices there would be a cycle of size smaller than 5. 
-					Then examining $v_3$ we see that $v_3$ can neither be connected to $v_7$, $v_8$ nor $v_9$ because in every case there would be a cycle of size smaller than 5. 
-					Concluding, the edge $(v_1,v_6)$ cannot be part of the Petersen graph. 
+					By examining $v_2$, we see that $v_2$ can only be connected to $v_8$. Otherwise, there would be a cycle of size smaller than 5. 
+					Then, examining $v_3$, we see that $v_3$ can neither be connected to $v_7$, $v_8$ nor $v_9$ because in every case there would be a cycle of size smaller than 5. 
+					In conclusion, the edge $(v_1,v_6)$ cannot be part of the Petersen graph. 
 					\begin{center}
 					\begin{tikzpicture}
 						\node[circle, draw] (v1) at (-2.5, 0) {$v_1$};
@@ -313,8 +311,8 @@
 					\end{tikzpicture}
 					\end{center}
 			\end{itemize}
-			Because of the symmetry of the cycle we can conclude that there is no way to construct the Petersen graph from a cycle with 10 vertices.
-			Thus, we know that the Petersen graph cannot be Hammiltonian. 
+			Because of the symmetry of the cycle, we can conclude that there is no way to construct the Petersen graph from a cycle with 10 vertices.
+			\emph{Thus, we know that the Petersen graph cannot be Hammiltonian.}
 		\end{theorem}
 	\end{solution}
 	\newpage
