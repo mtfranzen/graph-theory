@@ -95,7 +95,7 @@
 
 			\textbf{Size:} Each of the $2^n$ vertices is adjacent to $n$ other vertices since we can insert / remove each of the $n$ elements of $S$. For undirected edges, we have $\frac{2^n \cdot n}{2} = 2^{n-1} \cdot n$ edges. \emph{Thus, the size of $Q_n$ is $2^{n-1} \cdot n$.}\\
 
-			\textbf{Girth:} We differ between two cases.
+			\textbf{Girth:} We differentiate between two cases.
 				\begin{itemize}
 					\item \textbf{Case 1: } $n=1$. Our graph contains exactly one edge and is therefore acyclic. \emph{Hence, the girth is $\infty$ for $n=1$.}
 
@@ -192,7 +192,7 @@
 
 			\textbf{Girth:} we consider $C = (\{a_1, a_2\}, \{a_3, a_4\}, ...)$ to be a cycle. $\{a_3, a_4\}$ is disjoint to $\{a_1, a_2\}, \{a_1, a_5\}, \{a_2, a_5\}$. Hence, we inspect the following cases for the continuation of $C$:
 			\begin{itemize}
-				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, ...)}$. Then, $C$ is not of length $3$, since $\{a_1, a_5\}$ and $\{a_1, a_2\}$ are not disjoint. Again, we differ between two cases for the subsets disjoint to $\{a_1, a_5\}$.
+				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, ...)}$. Then, $C$ is not of length $3$, since $\{a_1, a_5\}$ and $\{a_1, a_2\}$ are not disjoint. Again, we differentiate between two cases for the subsets disjoint to $\{a_1, a_5\}$.
 					\begin{itemize}
 						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_3\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_2, a_3\}$ and $\{a_1, a_2\}$ are not disjoint.
 						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_4\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_2, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
