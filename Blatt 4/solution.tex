@@ -1,0 +1,122 @@
+% all-in-one cheatsheet layout (Michael Franzen, 2013)
+\documentclass[a4paper]{article}
+
+% geometry settings
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+
+% font settings
+%\usepackage[light,math]{kurier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{marvosym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% colors
+\usepackage{xcolor}
+\definecolor{lightgray}{gray}{0.8}
+
+% formatting
+\usepackage{paralist}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{Tabbing}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage[framemethod=tikz]{mdframed}
+\pagestyle{fancy}
+
+% math
+\usepackage{array}
+\usepackage{eqnarray}
+\usepackage{mathtools}
+
+% figures
+\usepackage{wrapfig}
+\usepackage{subfig}
+
+% figure modules
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc, shapes}
+\usepackage{algorithm2e}
+\usepackage{verbatim}	
+
+% TOC & Glossary
+\usepackage{sectsty}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[titles,subfigure]{tocloft}
+
+% commands
+\usepackage{xargs}
+\usepackage{ifthen}
+
+% head line
+\fancyhf{}
+\chead{Graph Theory - Sheet 4 - \today\\J. Batzill (1698622), M. Franzen (1696933), J. Labeit (1656460)}
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+
+\newcommand{\sheetnumber}{1}
+
+% (problem number)
+\surroundwithmdframed[
+    hidealllines=true,
+    backgroundcolor=gray!10,
+    skipbelow=\baselineskip,
+    skipabove=\baselineskip
+]{mylemma}
+
+\surroundwithmdframed[
+	linecolor=white,
+	skipbelow=\baselineskip,
+	skipabove=\baselineskip
+]{mytheorem}
+
+\tikzstyle{nod}= [circle, draw,inner sep=0pt, minimum size=0.5cm] 
+
+\begin{document}
+	
+	\newtheorem{mytheorem}{Theorem}[section]
+	\newtheorem{mylemma}{Lemma}[mytheorem]	
+
+	\newenvironmentx*{solution}[1]{\section*{Problem #1}\addtocounter{section}{1}\setcounter{mylemma}{0}\setcounter{mytheorem}{0}}{}
+	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\\\begin{proof}}{\end{proof}\end{mytheorem}}
+	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\\\begin{proof}}{\end{proof}\end{mylemma}}
+
+
+	\begin{solution}{13}
+		\begin{theorem}{If a graph has an ear-decomposition, then it is $2$-connected.}
+			By \emph{Menger's Theorem}, a graph $G$ is $k$-connected if and only if for any two vertices $a, b$ in $G$ there exist $k$ independent $a$-$b$-paths. We find those $2$ paths for any ear-composable graph.
+		\end{theorem}
+	\end{solution}
+	\newpage
+	\begin{solution}{14}
+		For $0 < l < m \leq d$, we will construct a graph $F(d, l, m)$ with 
+		\begin{itemize}
+			\item $\delta(F(d,l,m)) = d$
+			\item $\kappa(F(d,l,m)) = l$
+			\item $\kappa'(F(d,l,m)) = m$
+		\end{itemize}
+		Let $F'( l, m) := K_{l, m}$ be the complete bipartite graph of $l, m$ partition sizes. Thus,
+			\begin{equation}
+				\kappa(F'(l, m)) = \kappa(K_{l, m}) = \min\{l, m\} = l
+			\end{equation}
+		and furthermore, 
+			\begin{equation}
+				\kappa'(F'(l, m)) = \kappa'(K_{l, m}) = \max\{l, m\} = m
+			\end{equation}
+		.
+
+		Now, we construct  $F(d, l, m)$ by substituting each vertex of $F'(l, m)$ with the complete graph $K_{d}$. Hence, $\delta(F(d,l,m)) = d$. Since $\kappa(K_{d}) = d \geq m$ and $\kappa'(K_{d}) > l$ and since we do not modify the connections between those substituted vertices, the edge- and vertex-connectivity of $F'(l, m)$ are maintained in $F(d, l, m)$.
+	\end{solution}
+	\newpage
+	\begin{solution}{15}
+	\end{solution}
+	\newpage
+	\begin{solution}{16}
+	\end{solution}
+	
+\end{document}

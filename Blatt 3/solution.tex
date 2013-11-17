@@ -95,7 +95,7 @@
 
 			\textbf{Size:} Each of the $2^n$ vertices is adjacent to $n$ other vertices since we can insert / remove each of the $n$ elements of $S$. For undirected edges, we have $\frac{2^n \cdot n}{2} = 2^{n-1} \cdot n$ edges. \emph{Thus, the size of $Q_n$ is $2^{n-1} \cdot n$.}\\
 
-			\textbf{Girth:} We differ between two cases.
+			\textbf{Girth:} We differentiate between two cases.
 				\begin{itemize}
 					\item \textbf{Case 1: } $n=1$. Our graph contains exactly one edge and is therefore acyclic. \emph{Hence, the girth is $\infty$ for $n=1$.}
 
@@ -184,23 +184,23 @@
 			
 		\newpage
 		\begin{theorem}{The Petersen graph is not Hamiltonian, it has a girth of $5$, a diameter of $2$, an order of $10$ and a size of $15$.}
-			Let $G = (V, E)$ be the Petersen graph. Then, $V = \binom{\{1, ..., 5\}}{2}$ and $E = \{\{A, B\}\ |\ A \cap B = \emptyset\}$. To avoid loss of generality, we will consider that $\{a_1, ..., a_5\} = \{1, ..., 5\}$.
+			Let $G = (V, E)$ be the Petersen graph. Then, $V = \binom{\{1, ..., 5\}}{2}$ and $E = \{\{A, B\}\ |\ A \cap B = \emptyset\}$. To avoid loss of generality, we consider that $\{a_1, ..., a_5\} = \{1, ..., 5\}$.
 			
-			\textbf{Order:} The set $\{1, ..., 5\}$ has $10$ sets with $2$ elements each and thus, the number of the graph's vertices aka it's order is $10$.\\
+			\textbf{Order:} The set $\{1, ..., 5\}$ has $10$ different subsets with $2$ elements each and thus, the number of the graph's vertices and thereby it's order is $10$.\\
 			
 			\textbf{Size:} Each vertex $\{a_1, a_2\}$ is disjoint to exactly three other $2$-element sets: $\{a_3, a_4\}, \{a_4, a_5\}, \{a_3, a_5\}$. Thus, the graph has $\frac{10 \cdot 3}{2} = 15$ edges and it's size is $15$.\\
 
-			\textbf{Girth:} we consider $C = (\{a_1, a_2\}, \{a_3, a_4\}, ...)$ to be a cycle. $\{a_3, a_4\}$ is disjoint to $\{a_1, a_2\}, \{a_1, a_5\}, \{a_2, a_5\}$. Hence, we inspect the following cases for the continuation of $C$:
+			\textbf{Girth:} We consider $C = (\{a_1, a_2\}, \{a_3, a_4\}, ...)$ to be a cycle. $\{a_3, a_4\}$ is disjoint to $\{a_1, a_2\}, \{a_1, a_5\}, \{a_2, a_5\}$. Hence, we inspect the following cases for the continuation of $C$:
 			\begin{itemize}
-				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, ...)}$. Then, $C$ is not of length $3$, since $\{a_1, a_5\}$ and $\{a_1, a_2\}$ are not disjoint. Again, we differ between two cases for the subsets disjoint to $\{a_1, a_5\}$.
+				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, ...)}$. Then, $C$ is not of length $3$ since $\{a_1, a_5\}$ and $\{a_1, a_2\}$ are not disjoint. Again, we define one case for each subset disjoint to $\{a_1, a_5\}$ (except the vertex' predecessor).
 					\begin{itemize}
-						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_3\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_2, a_3\}$ and $\{a_1, a_2\}$ are not disjoint.
-						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_4\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_2, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
+						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_3\}, ...)}$. Then, $C$ is not of length $4$ since $\{a_2, a_3\}$ and $\{a_1, a_2\}$ are not disjoint.
+						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_1, a_5\}, \{a_2, a_4\}, ...)}$. Then, $C$ is not of length $4$ since $\{a_2, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
 					\end{itemize}
-				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, ...)}$. Then, $C$ is also not of length $3$, since $\{a_2, a_5\}$ and $\{a_1, a_2\}$ are not disjoint.
+				\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, ...)}$. Then, $C$ is also not of length $3$ since $\{a_2, a_5\}$ and $\{a_1, a_2\}$ are not disjoint.
 					\begin{itemize}
-						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, \{a_1, a_3\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_1, a_3\}$ and $\{a_1, a_2\}$ are not disjoint.
-						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, \{a_1, a_4\}, ...)}$. Then, $C$ is not of length $4$, since $\{a_1, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
+						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, \{a_1, a_3\}, ...)}$. Then, $C$ is not of length $4$ since $\{a_1, a_3\}$ and $\{a_1, a_2\}$ are not disjoint.
+						\item $\mathbf{C = (\{a_1, a_2\}, \{a_3, a_4\}, \{a_2, a_5\}, \{a_1, a_4\}, ...)}$. Then, $C$ is not of length $4$ since $\{a_1, a_4\}$ and $\{a_1, a_2\}$ are not disjoint.
 					\end{itemize}
 			\end{itemize}
 			All in all, the length of the shortest cycle exceeds $4$.
@@ -213,11 +213,9 @@
 
 				\emph{All in all, the shortest path between any two vertices does not exceed $2$. Thus, the distance of the Petersen graph is $2$.}\\
 
-			\textbf{Diameter:} \\
-
-			\textbf{Hamiltonian:} \\
-			Let's assume the petersen graph is Hamiltonian, then there would be a cycle containing all 10 nodes. 
-			Now we can draw the graph by starting off by drawing the hamilton cycle. 
+			\textbf{Hamiltonian:}
+			Let's assume the Petersen graph is Hamiltonian, then there would be a cycle containing all 10 nodes. 
+			Now we can draw the graph. We start off by drawing the Hamilton cycle. 
 			\begin{center}
 			\begin{tikzpicture}
 				\node[circle, draw] (v1) at (-2.5, 0) {$v_1$};
@@ -242,15 +240,15 @@
 				\draw(v10) -- (v1);
 			\end{tikzpicture}
 			\end{center}
-			Now in order for $v_1$ to have degree 3 it has to have another edge. 
-			We already know that the minimum cycle in the Petersen graph is 5 so $v_1$ can only be connected to $v_5$,$v_6$ or $v_7$. 
-			Because of symmetry reasons we only need to consider the following two cases. 
+			Now in order for $v_1$ to have degree 3, the graph must have another edge. 
+			We already know that the minimum cycle in the Petersen graph is of length $5$ so $v_1$ can only be connected to $v_5$,$v_6$ or $v_7$. 
+			Because of symmetry reasons, we only need to consider the following two cases. 
 			\begin{itemize}
 				\item \emph{$(v_1,v_5)$ is an edge of Petersen Graph}\\
 					Then either $(v_{10},v_4)$, $(v_{10},v_5)$ or $(v_{10},v_6)$ has to be part of the Petersen graph. 
-					In all three cases a cycle is created with size smaller than 5. 
+					In all three cases a cycle is created with a size smaller than 5. 
 					($v_1,v_5,v_4,v_{10},v_1$ with edge $(v_{10},v_4)$,  $v_1,v_5,v_{10},v_1$ with edge $(v_{10},v_5)$ or $v_1,v_5,v_6,v_{10},v_1$ with edge $(v_{10},v_6)$ )
-					Concluding, the edge $(v_1,v_5)$ cannot be part of the Petersen graph. 
+					In conclusion, the edge $(v_1,v_5)$ cannot be part of the Petersen graph. 
 					\begin{center}
 					\begin{tikzpicture}
 						\node[circle, draw] (v1) at (-2.5, 0) {$v_1$};
@@ -280,9 +278,9 @@
 					\end{tikzpicture}
 					\end{center}
 				\item \emph{$(v_1,v_6)$ is an edge of Petersen Graph}\\
-					Examining $v_2$ we see that $v_2$ can only be connected to $v_8$ because all with all other vertices there would be a cycle of size smaller than 5. 
-					Then examining $v_3$ we see that $v_3$ can neither be connected to $v_7$, $v_8$ nor $v_9$ because in every case there would be a cycle of size smaller than 5. 
-					Concluding, the edge $(v_1,v_6)$ cannot be part of the Petersen graph. 
+					By examining $v_2$, we see that $v_2$ can only be connected to $v_8$. Otherwise, there would be a cycle of size smaller than 5. 
+					Then, examining $v_3$, we see that $v_3$ can neither be connected to $v_7$, $v_8$ nor $v_9$ because in every case there would be a cycle of size smaller than 5. 
+					In conclusion, the edge $(v_1,v_6)$ cannot be part of the Petersen graph. 
 					\begin{center}
 					\begin{tikzpicture}
 						\node[circle, draw] (v1) at (-2.5, 0) {$v_1$};
@@ -313,16 +311,15 @@
 					\end{tikzpicture}
 					\end{center}
 			\end{itemize}
-			Because of the symmetry of the cycle we can conclude that there is no way to construct the Petersen graph from a cycle with 10 vertices.
-			Thus, we know that the Petersen graph cannot be Hammiltonian. 
+			Because of the symmetry of the cycle, we can conclude that there is no way to construct the Petersen graph from a cycle with 10 vertices.
+			\emph{Thus, we know that the Petersen graph cannot be Hammiltonian.}
 		\end{theorem}
 	\end{solution}
 	\newpage
 	\begin{solution}{11}
-		In the following I will show how to construct for each $k>1$ a k-regular graph with no 1-factor. 
+		In the following, I will show how to construct for each $k>1$ a k-regular graph with no 1-factor. 
 		The basic idea is that for even $k$, simply $K_{n+1}$ is such a graph. 
 		For odd $k$,  I will show a way how to build such a $k-regular$ graph by connecting one vertex to $k$ components with odd number of vertices.  \\ 
-		
 		
 		For each even integer $k > 1$, the complete graph $K_{k+1}$ is a $k$-regular graph without a $1$-factor. 
 		$K_{k+1}$ is by definition $k$-regular and because $K_{k+1}$ has a odd number of components if $k$ is even, it is obviously impossible to find a 1-factor. 
@@ -341,7 +338,35 @@
 				\draw(v) -- (S2);
 				\draw(v) -- (S3);
 			\end{tikzpicture}
-		\caption{Example with k=3}
+			\hfill
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
+				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
+				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
+				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
+				
+				\draw(v1) -- (v2);
+				\draw(v1) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v2) -- (v4);
+			\end{tikzpicture}
+			\hfill
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
+				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
+				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
+				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
+				\node[circle, draw,very thick] (v5) at (0, 0) {$v_5$};
+				
+				\draw(v1) -- (v2);
+				\draw(v1) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v2) -- (v4);
+				\draw[very thick](v5) -- (v1);
+				\draw[very thick](v5) -- (v2);
+				\draw[very thick](v5) -- (v3);
+			\end{tikzpicture}
+		\caption{G, S' and S for k=3}
 		\end{figure}
 		Then, we construct $S=(V,E)$ in such a way that $|V|$ is odd and exactly one vertex $u \in V$ has degree $k-1$ while all other vertices have degree $k$.
  
@@ -363,36 +388,6 @@
 
 		Hence, $S$ hat the degree sequence $(k,k,...,k,(k-1))$. 
 		By connecting one vertex to $k$ subgraphs isomorph to S, like described above, we have constructed a $k$-regular graph without a perfect matching.
-		\begin{figure}[h]
-			\centering
-			\begin{tikzpicture}
-				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
-				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
-				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
-				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
-				
-				\draw(v1) -- (v2);
-				\draw(v1) -- (v3);
-				\draw(v3) -- (v4);
-				\draw(v2) -- (v4);
-			\end{tikzpicture}
-			\begin{tikzpicture}
-				\node[circle, draw] (v1) at (0, 1.5) {$v_1$};
-				\node[circle, draw] (v2) at (-1.5, 0) {$v_2$};
-				\node[circle, draw] (v3) at (1.5, 0) {$v_3$};
-				\node[circle, draw] (v4) at (0, -1.5) {$v_4$};
-				\node[circle, draw,very thick] (v5) at (0, 0) {$v_5$};
-				
-				\draw(v1) -- (v2);
-				\draw(v1) -- (v3);
-				\draw(v3) -- (v4);
-				\draw(v2) -- (v4);
-				\draw[very thick](v5) -- (v1);
-				\draw[very thick](v5) -- (v2);
-				\draw[very thick](v5) -- (v3);
-			\end{tikzpicture}
-		\caption{$S'$ and $S$ for k=3}
-		\end{figure}
 	\end{solution}
 	\newpage
 	\begin{solution}{12}
