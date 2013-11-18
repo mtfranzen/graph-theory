@@ -126,10 +126,14 @@
 	\begin{solution}{15}
 		I will prove that any block-cut-vertex graph is a tree, by showing by contradiction that any block-cut-vertex graph is acyclic and connected. 
 		\begin{theorem}{The block-cut-vertex graph $G=(V,E)$ of any connected graph $G'=(V',E')$ is a tree.}
-		Let's assume for the sake of contradiction that $G$ has a cycle $C=(b_1b_2...b_1)$. 
-		Then, the $C$ induced subgraph of $G$ is 2-connected, because obviously each pair $b_i,b_j \in C$ is connected by two distinct paths. 
-		
-		
+		Let's assume for the sake of contradiction that $G$ has a cycle $C=(b_1b_2...b_1)$.
+		Let's denote the subgraphs $B_1,B_2,...B_n$ of $G'$ which are the 2-connected components and bridges corresponding to the nodes $b_1,b_2,...b_n$ of $G$. 
+		Let $B_1$ and $B_2$ be as stated above two different subgraphs of $G'$. 
+		Because the corresponding nodes $b_1$ and $b_2$ are adjacent in $G$, $B_1$ and $B_2$ have to share a vertex $x \in V(B_1) \cap V(B_2)$. 
+		We can use the same argument for each pair $B_i, B_{i+1)$. 
+		Additionally, we know because each component $B_j$ is either 2-connected or a bridge. 
+		Thus we can find a circle through all the components $B_1, B_2...B_n$ which is 2-connected.
+		this is a contradiction to $B_1, B_2...B_n$ being the blocks of an block-cut-vertex graph, because by definition these blocks are either bridges or maximal 2-connected components.
 		\end{theorem}
 	\end{solution}
 	\newpage
