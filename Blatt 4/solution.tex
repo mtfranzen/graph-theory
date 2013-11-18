@@ -36,7 +36,7 @@
 
 % figures
 \usepackage{wrapfig}
-\usepackage{subfig}
+\usepackage{subfigure}
 
 % figure modules
 \usepackage{graphicx}
@@ -100,17 +100,27 @@
 			\item $\kappa(F(d,l,m)) = l$
 			\item $\kappa'(F(d,l,m)) = m$
 		\end{itemize}
-		Let $F'( l, m) := K_{l, m}$ be the complete bipartite graph of $l, m$ partition sizes. Thus,
-			\begin{equation}
-				\kappa(F'(l, m)) = \kappa(K_{l, m}) = \min\{l, m\} = l
-			\end{equation}
-		and furthermore, 
-			\begin{equation}
-				\kappa'(F'(l, m)) = \kappa'(K_{l, m}) = \max\{l, m\} = m
-			\end{equation}
-		.
+		\begin{figure}[h]
+			\begin{tikzpicture}
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=6cm, minimum height=4cm, draw, dotted] (V) at (0, 0) {$K_{d+1}$};
+				\node[circle, draw] (v1) at (1.5,0.75) {$v_1$};
+				\node (vdots) at (1.5,0.125) {$\vdots$};
+				\node[circle, draw] (vm) at (1.5, -0.75) {$v_m$};
 
-		Now, we construct  $F(d, l, m)$ by substituting each vertex of $F'(l, m)$ with the complete graph $K_{d}$. Hence, $\delta(F(d,l,m)) = d$. Since $\kappa(K_{d}) = d \geq m$ and $\kappa'(K_{d}) > l$ and since we do not modify the connections between those substituted vertices, the edge- and vertex-connectivity of $F'(l, m)$ are maintained in $F(d, l, m)$.
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=6cm, minimum height=4cm, draw, dotted] (W) at (11, 0) {$K_{d+1}$};
+				\node[circle, draw] (w1) at (9.5,0.75) {$w_1$};
+				\node (vdots) at (9.5,0.125) {$\vdots$};
+				\node[circle, draw] (wm) at (9.5, -0.75) {$w_l$};
+
+				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=1.5cm, minimum height=1cm] (S) at (5.5, 0) {$\cdots$};
+
+
+				\draw[dotted] (v1) -- (S);
+				\draw[dotted] (vm) -- (S);
+				\draw[dotted] (w1) -- (S);
+				\draw[dotted] (wm) -- (S);
+			\end{tikzpicture}
+		\end{figure}
 	\end{solution}
 	\newpage
 	\begin{solution}{15}
