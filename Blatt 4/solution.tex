@@ -169,16 +169,30 @@
 	\newpage
 	\begin{solution}{15}
 		I will prove that any block-cut-vertex graph is a tree, by showing by contradiction that any block-cut-vertex graph is acyclic and connected. 
-		\begin{theorem}{The block-cut-vertex graph $G=(V,E)$ of any connected graph $G'=(V',E')$ is a tree.}
+	\begin{theorem}{The block-cut-vertex graph $G=(V,E)$ of any connected graph $G'=(V',E')$ is a tree.}
+		\emph{Acyclic}\\
 		Let's assume for the sake of contradiction that $G$ has a cycle $C=(b_1b_2...b_1)$.
 		Let's denote the subgraphs $B_1,B_2,...B_n$ of $G'$ which are the 2-connected components and bridges corresponding to the nodes $b_1,b_2,...b_n$ of $G$. 
 		Let $B_1$ and $B_2$ be as stated above two different subgraphs of $G'$. 
 		Because the corresponding nodes $b_1$ and $b_2$ are adjacent in $G$, $B_1$ and $B_2$ have to share a vertex $x \in V(B_1) \cap V(B_2)$. 
 		We can use the same argument for each pair $B_i, B_{i+1}$. 
-		Additionally, we know because each component $B_j$ is either 2-connected or a bridge. 
-		Thus we can find a circle through all the components $B_1, B_2...B_n$ which is 2-connected.
-		this is a contradiction to $B_1, B_2...B_n$ being the blocks of an block-cut-vertex graph, because by definition these blocks are either bridges or maximal 2-connected components.
-		\end{theorem}
+		Additionally, we know that each component $B_j$ is either 2-connected or a bridge. 
+		Thus we can find a circle through all the components $B_1, B_2...B_n$ which is, like very cycle, 2-connected.
+		this is a contradiction to $B_1, B_2...B_n$ being the blocks of an block-cut-vertex graph, because by definition these blocks are either bridges or maximal 2-connected components. 
+		In this case though, we found a larger two connected component. 
+		Thus $G$ has to be acyclic. 
+		
+		\emph{Connected}\\
+		Let's assume for the sake of contradiction that $G$ is not connected (but $G'$ is connected). 
+		If $G$ is not connected we have atleast two not connected components in $G$. 
+		Because $G$ is the block-cut-vertex graph of $G'$ each node in $G'$ is represented by atleast one component of $G$ because each vertex in $G'$ is either part of a 2-connected component or is incident to a bridge. 
+		Additionally because $G'$ is connected, there is atleast one edge $e=(uv) \in G'$ with with $u$ and $v$ being in a 2-connected component or bridge which are in $G$ represented in different not connected components. 
+		Now there are two cases:\\
+		Either $u$ and $v$ are connected by an additionally path, not using $e$, then $u$ and $v$ would be 2-connected and would lie in the same 2-connected component. 
+		Or there is no additional path connecting $u$ to $v$, hence $e$ is a bridge. 
+		Either way, $u$ and $v$ would be represented in $G$ by one and the same node which is a direct contradiction with $u$ and $v$ being represented in different components in $G$. 
+		Thus $G$ has to be connected if $G'$ is connected.  
+	\end{theorem}
 	\end{solution}
 	\newpage
 	\begin{solution}{16}
