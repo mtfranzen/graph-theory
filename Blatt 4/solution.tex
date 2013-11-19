@@ -33,6 +33,7 @@
 \usepackage{array}
 \usepackage{eqnarray}
 \usepackage{mathtools}
+\usepackage{cases}
 
 % figures
 \usepackage{wrapfig}
@@ -83,8 +84,8 @@
 	\newtheorem{mylemma}{Lemma}[mytheorem]	
 
 	\newenvironmentx*{solution}[1]{\section*{Problem #1}\addtocounter{section}{1}\setcounter{mylemma}{0}\setcounter{mytheorem}{0}}{}
-	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\\\begin{proof}}{\end{proof}\end{mytheorem}}
-	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\\\begin{proof}}{\end{proof}\end{mylemma}}
+	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\begin{proof}}{\end{proof}\end{mytheorem}}
+	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\begin{proof}}{\end{proof}\end{mylemma}}
 
 
 	\begin{solution}{13}
@@ -94,12 +95,8 @@
 	\end{solution}
 	\newpage
 	\begin{solution}{14}
-		For $0 < l < m \leq d$, we will construct a graph $F(d, l, m)$ with 
-		\begin{itemize}
-			\item $\delta(F(d,l,m)) = d$
-			\item $\kappa(F(d,l,m)) = l$
-			\item $\kappa'(F(d,l,m)) = m$
-		\end{itemize}
+		For $0 < l < m \leq d$, we will construct a graph $F(d, l, m)$.\\
+
 		\begin{figure}[h]
 			\begin{tikzpicture}
 				\node[cloud, cloud puffs=10, cloud puff arc=120, aspect=2, minimum width=6cm, minimum height=4cm, draw, dashed] (V) at (0, 0) {$K_{d+1}$};
@@ -120,7 +117,54 @@
 				\draw[dotted] (w1) -- (S);
 				\draw[dotted] (wm) -- (S);
 			\end{tikzpicture}
+			\caption{$F(d, l, m)$}
 		\end{figure}
+		First, we construct two complete graphs on $d+1$ vertices. $(V, E) \simeq K_{d+1}$, $(W, E') \simeq K_{d+1}$.\\
+
+		Then, we join $m$ vertices $v_1, ..., v_m \in V$ of the first complete graph and $l$ vertices $w_1, ..., w_l \in W$ of the second such that each $v_i$ has a degree of exactly $d+1$ and each $w_j$ of at least $d+1$ $(i \in [m], j \in [l])$.\\
+
+		Formally, for our constructed graph $F(d, l, m) := (V_F, E_F)$,  the vertex set is the union of both complete graphs ($V_F = V \cup W$) and it's edge set is defined by
+		\begin{equation}
+			E_F = E \cup E' \cup \{\{v_i, w_j\}\ |\ \delta_{ij} = 1\ (i, j \in \mathbb{N})\}
+		\end{equation}
+		
+		for a delta function $\delta_{ij}$ ($i, j \in \mathbb{N}$)
+		\begin{equation}
+			\delta_{ij} =
+					\begin{cases}
+						1 & \text{if } i = j \text{ or }  i > l, j = l\\
+						0 & \text{otherwise}
+					\end{cases}
+		\end{equation}\\
+		We will show that
+		\begin{compactitem}%
+			\item $\delta(F(d,l,m)) = d$%
+			\item $\kappa(F(d,l,m)) = l$%
+			\item $\kappa'(F(d,l,m)) = m$%
+		\end{compactitem}\ \\
+		$\mathbf{\delta(F(d,l,m)) = d}$\\
+		No degree of a vertex of the complete graphs has been decreased. \emph{Thus, $\delta(F(d,l,m)) \geq \delta(K_{d+1}) = d$.}
+
+		Moreover, we have increased the degree of exactly $l + m < 2(d+1)$ vertices.  Indeed, the complete graph on $d+1$ vertices is $d$-regular and hence there is at least one vertex of degree $d$ in $F(d,l,m)$. \emph{Thus, $\delta(F(d,l,m)) \leq d$.}
+
+		From these considerations, $\delta(F(d,l,m)) = d$.\ \\ \ \\
+		$\mathbf{\kappa(F(d,l,m)) = l}$\\
+		In $F(d,l,m)$, the two complete graphs are only joined by edges between $l$ vertices of one and $m$ vertices of another complete graph.
+		The graph obviously disconnects by removing those first $l$ vertices. \emph{Thus, $\kappa(F(d,l,m)) \leq l$.}
+
+		Moreover, a complete graph on $d+1$ vertices is internally connected with $\kappa(K_{d+1}) = d > l$. Hence, if we found a subset of $l' < l$ vertices that disconnects $F(d, l, m)$, it had to consist of the complete graphs' vertices that we have affected in our construction. However, between the complete graphs there are $l$ edges not sharing an endpoint.
+
+		\emph{Thus, it is neither possible to disconnect one of the complete graph by removing less than $l$ vertices nor is it possible to remove the inter-connection between the two complete graphs by removing less than $l$ vertices.}
+
+		From these considerations, $\kappa(F(d,l,m)) = l$.\ \\ \ \\
+		$\mathbf{\kappa'(F(d,l,m)) = m}$\\
+		In $F(d,l,m)$, the two complete graphs are only joined by exactly $m$ edges and a removal of those $m$ vertices obviously disconnects $F(d, l, m)$. \emph{Thus, $\kappa'(F(d,l,m)) \leq m$}.
+
+		Moreover, a complete graph on $d+1$ vertices is internally connected with $\kappa'(K_{d+1}) = d > m$.
+
+		\emph{Thus, it is neither possible to disconnect one of the complete graph by removing less than $m$ edges nor is it possible to remove the inter-connection between the two complete graphs by removing less than $m$ edges.}
+
+		From these considerations, $\kappa'(F(d,l,m)) = m$.
 	\end{solution}
 	\newpage
 	\begin{solution}{15}
@@ -130,7 +174,7 @@
 		Let's denote the subgraphs $B_1,B_2,...B_n$ of $G'$ which are the 2-connected components and bridges corresponding to the nodes $b_1,b_2,...b_n$ of $G$. 
 		Let $B_1$ and $B_2$ be as stated above two different subgraphs of $G'$. 
 		Because the corresponding nodes $b_1$ and $b_2$ are adjacent in $G$, $B_1$ and $B_2$ have to share a vertex $x \in V(B_1) \cap V(B_2)$. 
-		We can use the same argument for each pair $B_i, B_{i+1)$. 
+		We can use the same argument for each pair $B_i, B_{i+1}$. 
 		Additionally, we know because each component $B_j$ is either 2-connected or a bridge. 
 		Thus we can find a circle through all the components $B_1, B_2...B_n$ which is 2-connected.
 		this is a contradiction to $B_1, B_2...B_n$ being the blocks of an block-cut-vertex graph, because by definition these blocks are either bridges or maximal 2-connected components.
