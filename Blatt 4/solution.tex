@@ -90,35 +90,34 @@
 
 	\begin{solution}{13}
 		\begin{theorem}{If a graph has an ear-decomposition, then it is $2$-connected.}
-				Let $G_1,...,G_n$ be the ear-decomposition of $G=(V,E)$ existing by definition.\\
-				As far as $G_n=G$ it is sufficient to proof that $\forall i \in \{1,..,n\} ~ G_i$ is 2-connected.\\
-				This can be done by inducion.\\
+				Let $G_1,...,G_n$ be an ear-decomposition of $G=(V,E)$ (existing by definition).
+
+				As far as $G_n=G$, it is sufficient to inductively prove that $G_i$ is $2$-connected ($i \in \{1,..,n\}$).
 				\begin{itemize}
-					\item[$\mathbf{Base(i=1):} $]
-						$G_1$ is a cycle, hence it is 2-connected.
+					\item[$\mathbf{\text{Base }(i=1):} $]
+						$G_1$ is a cycle and hence, it is 2-connected.
 						
-					\item[$\mathbf{Step(i \geq 2):}$]
-						Per defintion $G_i=G_{i-1} + P_i$, $P_i$ path and $P_i \cap G_{i-1}$ contains exactly the two endpoints of $P_i$.\\
-						Moreover we know that $G_{i-1}$ is 2-connected by induction and $P_i$ is connected by definition.\\
-						To proof that $G_i$ is 2-connected we have to proof that $H:=G_i-\{u\} ~ (u \in V(G_i))$ is connected.\\
-						Hence 2 cases have to be considered:\\
+					\item[$\mathbf{\text{Step }(i \geq 2):}$]
+						By defintion $G_i=G_{i-1} + P_i$, $P_i$ is a path and $P_i \cap G_{i-1}$ contains exactly the two endpoints of $P_i$. By induction, we know that $G_{i-1}$ is $2$-connected and by definition, $P_i$ is connected.\\
+
+						To prove that $G_i$ is $2$-connected, we have to show that $H := G_i-\{u\} ~ (u \in V(G_i))$ is connected. We differ between two cases:
 						\begin{itemize}
 							\item[$\mathbf{u \in G_{i-1}} $]
-								Because $G_{i-1}$ is 2-connected by induction $H$ is connected.\\
-								Furthermore we know that $H$ contains still one endpoint of $P_i$ or more.\\
-								Thus $H$ is a composition of two connected graphs, hence $H$ is connected.
+								Because $G_{i-1}$ is $2$-connected (induction), $H$ is connected.\\
+								Furthermore we know that $H$ contains still one or more endpoint of $P_i$.\\
+								Thus, $H$ is a composition of two connected graphs and hence, $H$ is connected.
 						
 							\item[$\mathbf{u \in P_i - G_{i-1} } $]
-								We know that $u$ is no endpoint of $P_i$, thus $P':=P_i-\{u\}$ is disconnected and is now a forest containing exactly two Trees $T_1, T_2$.\\
-								Nevertheless each tree of $P'$ contains exactly one endpoint of $P_i$.
-								Hence $G_{i-1} + T_1 + T_2$ is still connected, because $T_1, T_2$ and $G_{i-1}$ are connected.
+								We know that $u$ is no endpoint of $P_i$. Thus, $P':=P_i-\{u\}$ is disconnected and a forest containing exactly two trees $T_1, T_2$.\\
+								Nevertheless, each tree of $P'$ contains exactly one endpoint of $P_i$.
+								Hence, $G_{i-1} + T_1 + T_2$ is still connected because $T_1, T_2$ and $G_{i-1}$ are connected.
 								As far as $G_{i-1} + T_1 + T_2 = G_{i-1} + P_i - \{u\} = G_i - \{u\} = H$, $H$ is connected.
 						\end{itemize}
 						
-						Considering these two cases we know that $H$ is connected, hence $G_i$ is 2-connected.			
+						From these two considerations, we know that $H$ is connected and hence, $G_i$ is $2$-connected.			
 				\end{itemize}
-				We finally proofed by induction that $\forall i \in \{1,...,n\} ~ G_i$ is 2-connected.\\
-				Thus $G=G_n$ is 2-connected.\\
+				Inductively, we have shown that $\forall i \in \{1,...,n\} ~ G_i$ is $2$-connected.\\
+				Thus, $G=G_n$ is $2$-connected.\\
 		\end{theorem}
 	\end{solution}
 	\newpage
@@ -153,17 +152,9 @@
 
 		Formally, for our constructed graph $F(d, l, m) := (V_F, E_F)$,  the vertex set is the union of both complete graphs ($V_F = V \cup W$) and it's edge set is defined by
 		\begin{equation}
-			E_F = E \cup E' \cup \{\{v_i, w_j\}\ |\ \delta_{ij} = 1\ (i, j \in \mathbb{N})\}
+			E_F = E \cup E' \cup \{\{v_i, w_j\}\ |\ (i, j) \in [m] \times [l]: (i = j) \lor  (i > l, j = l)\}
 		\end{equation}
 		
-		for a delta function $\delta_{ij}$ ($i, j \in \mathbb{N}$)
-		\begin{equation}
-			\delta_{ij} =
-					\begin{cases}
-						1 & \text{if } i = j \text{ or }  i > l, j = l\\
-						0 & \text{otherwise}
-					\end{cases}
-		\end{equation}\\
 		We will show that
 		\begin{compactitem}%
 			\item $\delta(F(d,l,m)) = d$%
@@ -197,34 +188,36 @@
 	\end{solution}
 	\newpage
 	\begin{solution}{15}
-		I will prove that any block-cut-vertex graph is a tree, by showing by contradiction that any block-cut-vertex graph is acyclic and connected. 
 	\begin{theorem}{The block-cut-vertex graph $G=(V,E)$ of any connected graph $G'=(V',E')$ is a tree.}
-		\emph{Acyclic}\\
-		Let's assume for the sake of contradiction that $G$ has a cycle $C=(b_1b_2...b_1)$.
-		Let's denote the subgraphs $B_1,B_2,...B_n$ of $G'$ which are the 2-connected components and bridges corresponding to the nodes $b_1,b_2,...b_n$ of $G$. 
-		Let $B_1$ and $B_2$ be as stated above two different subgraphs of $G'$. 
-		Because the corresponding nodes $b_1$ and $b_2$ are adjacent in $G$, $B_1$ and $B_2$ have to share a vertex $x \in V(B_1) \cap V(B_2)$. 
-		We can use the same argument for each pair $B_i, B_{i+1}$. 
-		Additionally, we know that each component $B_j$ is either 2-connected or a bridge. 
-		Thus we can find a circle through all the components $B_1, B_2...B_n$ which is, like every cycle, 2-connected.
-		this is a contradiction to $B_1, B_2...B_n$ being the blocks of an block-cut-vertex graph, because by definition these blocks are either bridges or maximal 2-connected components. 
-		In this case though, we found a larger two connected component. 
-		Thus $G$ has to be acyclic. 
-		
-		\emph{Connected}\\
-		Let's assume for the sake of contradiction that $G$ is not connected (but $G'$ is connected). 
-		If $G$ is not connected we have atleast two not connected components in $G$. 
-		Because $G$ is the block-cut-vertex graph of $G'$ each node in $G'$ is represented by atleast one component of $G$ because each vertex in $G'$ is either part of a 2-connected component or is incident to a bridge. 
-		Additionally because $G'$ is connected, there is atleast one edge $e=(uv) \in G'$ with $u$ and $v$ being in a 2-connected component or bridge which are in $G$ represented in different not connected components. 
-		Now there are two cases:\\
-		Either $u$ and $v$ are connected by an additionally path, not using $e$, then $u$ and $v$ would be 2-connected and would lie in the same 2-connected component. 
-		Or there is no additional path connecting $u$ to $v$, hence $e$ is a bridge. 
-		Either way, $u$ and $v$ would be represented in $G$ by one and the same node which is a direct contradiction with $u$ and $v$ being represented in different components in $G$. 
-		Thus $G$ has to be connected if $G'$ is connected.  
+		Considering that a tree is an acyclic, connected graph, we prove the aforementioned theorem by contradiction.\\		
+		\ \\
+		First, we will show that $G$ is \emph{acyclic}.
+
+		For the sake of contradiction, let's assume for the that $G$ has a cycle $C=(b_1, b_2, ..., b_1)$. We denote $G'$'s subgraphs as $B_1,B_2,...B_n$. They are the $2$-connected components and bridges of $G$ corresponding to the nodes $b_1, b_2,..., b_n$. 
+
+		As stated above, $B_1$ and $B_2$ are two different subgraphs of $G'$. 
+		Because the corresponding nodes $b_1$ and $b_2$ are adjacent in $G$, $B_1$ and $B_2$ have to share a vertex $x \in V(B_1) \cap V(B_2)$. We are able to apply the same argumentation for each pair $B_i, B_{i+1}$.\\
+
+		Additionally, we know that each component $B_j$ is either $2$-connected or a bridge. 
+		Thus, we find a circle through all the components $B_1, B_2...B_n$ which is, like every cycle, $2$-connected.
+ these blocks are either bridges or maximally $2$-connected components by definition (in this case though, we found a larger two connected component).
+
+		\emph{Thus, $G$ has to be acyclic.}\\
+		\ \\
+		Next, we will prove that $G$ is \emph{connected}.
+
+		For the sake of contradiction, let's assume that $G$ is not connected (but $G'$ is connected). 
+
+		If $G$ is not connected, we have at least two non-connected components in $G$. Because $G$ is the block-cut-vertex graph of $G'$, each node in $G'$ is represented by at least one component of $G$ (since each vertex in $G'$ is either part of a $2$-connected component or is incident to a bridge).\\
+ 
+		Because $G'$ is connected, there is at least one edge $e=\{u, v\}$ in $G'$ with $u$ and $v$ being in a $2$-connected component or bridge which are in $G$ represented as different non-connected components. 
+
+		Now, there are two cases. Either $u$ and $v$ are connected by an additional path, not using $e$, then $u$ and $v$ would be $2$-connected and share a $2$-connected component. Or there is no additional path joining $u$ and $v$ ($e$ is a bridge then). 
+
+		Either way, $u$ and $v$ would be represented in $G$ by one and the same node which is a direct contradiction with $u$ and $v$ being represented in different components of $G$.
+
+		\emph{Thus, $G$ has to be connected if $G'$ is connected.}
 	\end{theorem}
-	\end{solution}
-	\newpage
-	\begin{solution}{16}
 	\end{solution}
 	
 \end{document}
