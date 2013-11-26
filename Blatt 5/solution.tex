@@ -181,7 +181,43 @@
 		\begin{theorem}{For a planar embedded graph $G$ on $n$ vertices such that $G* \cong G$, the number of edges $e = 2(n - 1)$.}
 			The faces of $G$ corrospond to the vertices of $G^*$. Considering their ismorphism, the number of faces $f$ of $G$ equals the number of vertices of $G$.
 			
-			$G$ is planar, by \emph{Euler's Characteristic}: $n - e + f = 2 \Rightarrow 2n - e = 2 \Rightarrow e = 2(n-1)$.
+			$G$ is planar, by \emph{Euler's Characteristic}: $n - e + f = 2 \Rightarrow 2n - e = 2 \Rightarrow e = 2(n-1)$. \\
+			How to find such a graph $G=(V,E)$ which is isomorph to it's plane dual $G*$ with $|V| = n \geq 4$. 
+			Let $v_2,v_3,...v_n$ be a simple cycle with $v_1$ connected with an edge to every other vertex. 
+			$G$ can be planar embedded by drawing $v_1$ in the middle of the cycle. 
+			We can see that $G \cong G*$ holds by finding a bijection identifying every vertex of $G$ with exactly one face of $G$. 
+			The vertices $v_2,v_3...v_n$ can be identified with the face below it. 
+			The vertex $v_1$ can be identified with the face surrounding $G$. 
+			Now it is easy to see that $G \cong G*$ holds. 
+			\begin{center}
+			\begin{tikzpicture}
+				\node[circle, draw] (v1) at (0, 0) {$v_1$};
+				\node[circle, draw] (v2) at (2, 0) {$v_2$};
+				\node[circle, draw] (v3) at (0, 2) {$v_3$};
+				\node[circle, draw] (v4) at (-2, 0) {$v_4$};
+				\node[circle, draw] (v5) at (0, -2) {$v_5$};
+				\node[draw] (f1) at (2.0, 2.0) {$f_1$};
+				\node[draw] (f2) at (0.6, -0.6) {$f_2$};
+				\node[draw] (f3) at (0.6, 0.6) {$f_3$};
+				\node[draw] (f4) at (-0.6, 0.6) {$f_4$};
+				\node[draw] (f5) at (-0.6, -0.6) {$f_5$};
+
+				\draw(v1) -- (v2);
+				\draw(v1) -- (v3);
+				\draw(v1) -- (v4);
+				\draw(v1) -- (v5);
+				\draw(v2) -- (v3);
+				\draw(v3) -- (v4);
+				\draw(v4) -- (v5);
+				\draw(v5) -- (v2);
+				
+				\draw[dotted](f2) -- (f3);
+				\draw[dotted](f3) -- (f4);
+				\draw[dotted](f4) -- (f5);
+				\draw[dotted](f5) -- (f2);
+			\end{tikzpicture}
+			\end{center}
+			
 		\end{theorem}
 	\end{solution}
 	
