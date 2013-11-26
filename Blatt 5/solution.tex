@@ -142,38 +142,46 @@
 	\newpage
 	\begin{solution}{19}
 		\begin{theorem} {A plane embedded graph on $n$ vertices that has no triangular face has at most $2n-4$ edges.}
-			\begin{lemma} {Each planar triangulation ($order \geq 4$) can be modified to a planar graph containing only faces of order $4$ by removing one edge for each two faces}
+			\begin{lemma} {Each plane triangulation ($order \geq 4$) can be modified to a plane graph containing only faces of order $4$ by removing one edge for each two faces}
 				
 				Proof by induction over the order of a plane triangulation $G$:\\
 				\begin{itemize}
 					\item \textbf{Base: $V(G)=4$}\\
-						$G$ contains of $4$ faces $f_1,f_2,f_3,f_4$. We get the desired graph by removing the shared edge between $f_1, f_2$ and $f_3, f_4$.
-						This is possible because each face is adjacent to one another. The remaining graph is, as desired, created by removing one edge for each $2$ faces.
+						G contains of $4$ faces $f_1,f_2,f_3,f_4$. We get the desired graph by removing the shared edge between $f_1, f_2$ and $f_3, f_4$.
+						This is possible because each face is adjacent to one another. The remaining graph is, as desired, created by removing one edge foreach $2$ faces.
 						
 					\item \textbf{Step: $V(G)=n$}\\
-						Let $G' = G -\{u\} ~ (u \in V(G)$ with $deg(u) = 3$ as shown in $\textbf{Lemma 1.1.1})$. Then $G'$ is still a planar triangulation and the amount of faces in $G$ is exactly $2$ more than in $G'$, because by removing the vertex $u$, $3$ edges were removed, thus, $2$ triangular faces were removed.\\
+						Let $G' = G -\{u\} ~ (u \in V(G)$ with $deg(u) = 3$ as shown in $\textbf{Lemma 1.1.1})$. Then $G'$ is still a plane triangulation and the amount of faces in $G$ is exactly $2$ more than in $G'$, because by removing the vertex $u$, $3$ edges were removed, thus, $2$ triangular faces were removed.\\
 						By induction we get the desired graph $H'$ for $G'$ by removing one edge for each $2$ faces. Moreover, by inserting $u$ and its $3$ adjacent edges in $H'$ at their old position, $2$ faces of degree $3$ were created (Would there be more than $2$ new faces, the face in which $u$ was inserted would have an order of at least $5$). Thus, there are only two faces of order $3$ remaining. Because all inserted edges are incident to $u$, these two faces of oder $3$ are adjacent and can be merged by removing the shared edge.\\
-						The resulting graph of order $n$ is still planar (only edges have been removed), has only faces of order $4$ and was created of $G$ by removing one edge for each $2$ faces. 
+						The resulting graph of order $n$ is still plane (only edges have been removed), has only faces of order $4$ and was created of $G$ by removing one edge for each $2$ faces. 
 					
 				\end{itemize}
 			
 			\end{lemma}
 		
-			\begin{lemma} {Each planar graph with no triangular face can be modified to a planar graph containing only faces of order $4$  and with at least the same amount of edges}
-				Let $G$ be such a planar graph with no triangular face. Let $G'$ be the planar triangulation of $G$.\\
-				To get $G'$ out of $G$ edges have to be added. Because the smallest face is of order $4$, at least $1$ edge for each face is needed to reduce the size of all faces, resulting in at least one additional face for each existing face in $G$, to be more precisely, in exactly one additional face for each inserted edge. So $G'$ has at least twice as much faces as $G$ and exactly one new edge for each new face. As shown in \textbf{Lemma 2.1.1}, $G'$ can be modified to a planar graph $H$ containing only faces of order $4$ by removing one edge for each two faces. Thus, the amount of faces in $H$ is at least as much as in $G$, and furthermore the amount of edges is at least as much as in $G$, because for each two faces exactly one edge has been removed.\\
+			\begin{lemma} {Each plane graph with no triangular face can be modified to a plane graph containing only faces of order $4$  and with at least the same amount of edges}
+				Let $G$ be such a plane graph with no triangular face. Let $G'$ be the plane triangulation of $G$.\\
+				To get $G'$ out of $G$ edges have to be added. Because the smallest face is of order $4$, at least $1$ edge for each face is needed to reduce the size of all faces, resulting in at least one additional face for each existing face in $G$, to be more precisely, in exactly one additional face for each inserted edge. So $G'$ has at least twice as much faces as $G$ and exactly one new edge for each new face. As shown in \textbf{Lemma 2.1.1}, $G'$ can be modified to a plane graph $H$ containing only faces of order $4$ by removing one edge for each two faces. Thus, the amount of faces in $H$ is at least as much as in $G$, and furthermore the amount of edges is at least as much as in $G$, because for each two faces exactly one edge has been removed.\\
 				All in all, $H$ is a graph containing only faces of order $4$ and has at least the same amount of edges as $G$.
 			\end{lemma}		
 			
 	
-			Let $G=(V,E_G)$ be a planar graph with no plane triangulation.\\
-			As shown in \textbf{Lemma 2.1.2}, we get a planar graph $H=(V,E_H)$ ($F_H$ corresponding faces, each face of order 4), containing at least the same amount of edges as $G$ and the same set of vertices $V$.\\
+			Let $G=(V,E_G)$ be a plane graph with no plane triangulation.\\
+			As shown in \textbf{Lemma 2.1.2}, we get a plane graph $H=(V,E_H)$ ($F_H$ corresponding faces, each face of order 4), containing at least the same amount of edges as $G$ and the same set of vertices $V$.\\
 			
 			By $Euler's Formula$ and the fact $|E_H|= \frac{4 * |F_H|}{2}$ (because each face in $F_H$ has order 4 and each edge is exactly counted twice), we get the following:\\
 			$2 = |V| - |E_H| +|F_H|$ $\leftrightarrow$ $2 = |V| - |E_H| + \frac{E_H}{2}$ $\leftrightarrow$ $|E_H| = 2 * |V| - 4$.\\
 			This inequality allows us to bound the amount of edges as following:\\\\
 			$|E_G| \leq |E_H| = 2 * n - 4$   $~~(n=|V|)$
 			
+		\end{theorem}
+	\end{solution}
+	\newpage
+	\begin{solution}{20}
+		\begin{theorem}{For a planar embedded graph $G$ on $n$ vertices such that $G* \cong G$, the number of edges $e = 2(n - 1)$.}
+			The faces of $G$ corrospond to the vertices of $G^*$. Considering their ismorphism, the number of faces $f$ of $G$ equals the number of vertices of $G$.
+			
+			$G$ is planar, by \emph{Euler's Characteristic}: $n - e + f = 2 \Rightarrow 2n - e = 2 \Rightarrow e = 2(n-1)$.
 		\end{theorem}
 	\end{solution}
 	\newpage
