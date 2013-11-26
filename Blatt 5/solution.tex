@@ -1,0 +1,152 @@
+% all-in-one cheatsheet layout (Michael Franzen, 2013)
+\documentclass[a4paper]{article}
+
+% geometry settings
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+
+% font settings
+%\usepackage[light,math]{kurier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{marvosym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% colors
+\usepackage{xcolor}
+\definecolor{lightgray}{gray}{0.8}
+
+% formatting
+\usepackage{paralist}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{Tabbing}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage[framemethod=tikz]{mdframed}
+\pagestyle{fancy}
+
+% math
+\usepackage{array}
+\usepackage{eqnarray}
+\usepackage{mathtools}
+\usepackage{cases}
+
+% figures
+\usepackage{wrapfig}
+\usepackage{subfigure}
+
+% figure modules
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc, shapes}
+\usepackage{algorithm2e}
+\usepackage{verbatim}	
+
+% TOC & Glossary
+\usepackage{sectsty}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[titles,subfigure]{tocloft}
+
+% commands
+\usepackage{xargs}
+\usepackage{ifthen}
+
+% head line
+\fancyhf{}
+\chead{Graph Theory - Sheet 5 - \today\\J. Batzill (1698622), M. Franzen (1696933), J. Labeit (1656460)}
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+
+\newcommand{\sheetnumber}{1}
+
+% (problem number)
+\surroundwithmdframed[
+    hidealllines=true,
+    backgroundcolor=gray!10,
+    skipbelow=\baselineskip,
+    skipabove=\baselineskip
+]{mylemma}
+
+\surroundwithmdframed[
+	linecolor=white,
+	skipbelow=\baselineskip,
+	skipabove=\baselineskip
+]{mytheorem}
+
+\tikzstyle{nod}= [circle, draw,inner sep=0pt, minimum size=0.5cm] 
+
+\begin{document}
+	
+	\newtheorem{mytheorem}{Theorem}[section]
+	\newtheorem{mylemma}{Lemma}[mytheorem]	
+
+	\newenvironmentx*{solution}[1]{\section*{Problem #1}\addtocounter{section}{1}\setcounter{mylemma}{0}\setcounter{mytheorem}{0}}{}
+	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\begin{proof}}{\end{proof}\end{mytheorem}}
+	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\begin{proof}}{\end{proof}\end{mylemma}}
+
+
+	\begin{solution}{17}
+		\begin{theorem}{In a planar triangulation let $n_i$ be the number of vertices of degree $i$. Then, \begin{equation*}\sum_{i \in \mathbb{N}} (6 - i)n_i = 12 \end{equation*}.}
+			\begin{lemma}{Let $G = (V, E)$ and $G' = (V \cup \{v\}, E \cup E')$ be planar triangulations. Then $|E'| = 3$ and all edges in $E'$ are indicent to $v$.}
+			Since any planar triangulation of $n$ vertices and $e_n$ edges satisifes $e_n = 3n - 6$, we see inductively that
+			\begin{align*}
+				e_n &= e_{n-1} + 3& (n > 3)\\
+				e_3 &= 3
+			\end{align*}
+			
+			Since $G'$ has exactly one vertex more than $G$ and both are planar triangulations, $|E'| = 3$.\\
+			\ \\
+			Next, we will show that the degree of $v$ exceeds or is equal to $3$ and thus, all edges of $E'$ have to be indicent to $v$.
+
+			By \textsc{Kuratowski}, $G'$ is not a topological minor of $K_{3,3}$ or $K_5$ and any planar triangulation is edge-maximal. By \emph{Lemma 4.4.5 (any edge-maximal graph without topological minors $K_{3,3}, K_5$ is $3$-connected)}, $G'$ is $3$-connected.
+
+			If the degree of $v$ deceeded $3$, then $G'$ would not be $3$-connected (it could be isolated by removing two vertices) .
+			
+			Hence, all three edges of $E'$ are indicent to $v$.
+			\end{lemma}
+			
+			We will show by induction on the number of vertices $n$ of a planar triangulation $G$ with $n_i$ vertices of degree $i$ ($i \in \mathbb{N}$) that 
+			\begin{equation*}
+				T_G := \sum_{i \in \mathbb{N}} (6 - i)n_i = 12
+			\end{equation*}
+	.
+	
+			\begin{itemize}
+				\item Base $\mathbf{n = 3}$
+					
+					Then, the graph is a triangle and the condition is satisifed:
+					\begin{align*}
+						T_{K_3} = \sum_{i \in \mathbb{N}} (6 - i)n_i = (6-2) \cdot 3 = 4 \cdot 3 = 12
+					\end{align*}
+				\item Step $\mathbf{n \geq 4}$
+					
+					Any $n$-vertex planar triangulation $G = (V, E)$ has a subgraph $H = (V', E')$ which is a  ($n - 1$)-vertex planar triangulation.
+	
+					By \emph{Lemma 1.1.1}, there is a vertex $v \in V \setminus V'$ of degree $3$. Furthermore, the degree of exactly three other vertices $v_i, v_j, v_k \in V$ is increased. Thus $E \setminus E' = \{\{v, v_i\}, \{v, v_j\}, \{v, v_k\}\}$ and for $T_G$:
+					\begin{align*}
+						T_G=&T_H\\
+						 &+ (6 - 3)\\
+						 &+ (6 - (d(v_i) + 1)) - (6 - d(v_i)))\\
+						 &+ (6 - (d(v_j) + 1)) - (6 - d(v_j))\\
+						 &+ (6 - (d(v_k) + 1)) - (6 - d(v_k))\\
+						=&T_H +  3 - 1 - 1 -1\\
+						=&T_H\\
+						=&12&\text{(by induction)}
+					\end{align*}
+			\end{itemize}
+		\end{theorem}
+	\end{solution}
+	\newpage
+	\begin{solution}{18}
+	\end{solution}
+	\newpage
+	\begin{solution}{19}
+	\end{solution}
+	\newpage
+	\begin{solution}{20}
+	\end{solution}
+	
+\end{document}
