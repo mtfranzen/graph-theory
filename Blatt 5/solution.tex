@@ -90,7 +90,7 @@
 
 	\begin{solution}{17}
 		\begin{theorem}{In a planar triangulation let $n_i$ be the number of vertices of degree $i$. Then, \begin{equation*}\sum_{i \in \mathbb{N}} (6 - i)n_i = 12 \end{equation*}.}
-			\begin{lemma}{Let $G = (V, E)$ and $G' = (V \cup \{v\}, E \cup E')$ be planar triangulations. Then $|E'| = 3$ and all edges in $E'$ are indicent to $v$.}
+			\begin{lemma}{Let $G = (V, E)$ and $G' = (V \cup \{v\}, E \cup E')$ be planar triangulations. Then $|E'| = 3$ and all edges in $E'$ are incident to $v$.}
 			Since any planar triangulation of $n$ vertices and $e_n$ edges satisifes $e_n = 3n - 6$, we see inductively that
 			\begin{align*}
 				e_n &= e_{n-1} + 3& (n > 3)\\
@@ -99,13 +99,13 @@
 			
 			Since $G'$ has exactly one vertex more than $G$ and both are planar triangulations, $|E'| = 3$.\\
 			\ \\
-			Next, we will show that the degree of $v$ exceeds or is equal to $3$ and thus, all edges of $E'$ have to be indicent to $v$.
+			Next, we will show that the degree of $v$ exceeds or is equal to $3$ and thus, all edges of $E'$ have to be incident to $v$.
 
 			By \textsc{Kuratowski}, $G'$ is not a topological minor of $K_{3,3}$ or $K_5$ and any planar triangulation is edge-maximal. By \emph{Lemma 4.4.5 (any edge-maximal graph without topological minors $K_{3,3}, K_5$ is $3$-connected)}, $G'$ is $3$-connected.
 
 			If the degree of $v$ deceeded $3$, then $G'$ would not be $3$-connected ($v$ could be isolated by removing two vertices) .
 			
-			Hence, all three edges of $E'$ are indicent to $v$.
+			Hence, all three edges of $E'$ are incident to $v$.
 			\end{lemma}
 			
 			We will show by induction on the number of vertices $n$ of a planar triangulation $G$ with $n_i$ vertices of degree $i$ ($i \in \mathbb{N}$) that 
@@ -141,38 +141,40 @@
 	\end{solution}
 	\newpage
 	\begin{solution}{19}
-			\begin{theorem} {Each plane triangulation ($order >= 4$) can be modified to a plane graph containing only faces of order $4$ by removing one edge for each two faces}
+		\begin{theorem} {A plane embedded graph on $n$ vertices that has no triangular face has at most $2n-4$ edges.}
+			\begin{lemma} {Each plane triangulation ($order \geq 4$) can be modified to a plane graph containing only faces of order $4$ by removing one edge for each two faces}
 				
 				Proof by induction over the order of a plane triangulation $G$:\\
 				\begin{itemize}
-					\item Base: $V(G)=4$\\
+					\item \textbf{Base: $V(G)=4$}\\
 						G contains of $4$ faces $f_1,f_2,f_3,f_4$. We get the desired graph by removing the shared edge between $f_1, f_2$ and $f_3, f_4$.
-						This is possible because each face is adjacent to one another. The remaining graph is as desired, created by removing one edge foreach $2$ faces.
+						This is possible because each face is adjacent to one another. The remaining graph is, as desired, created by removing one edge foreach $2$ faces.
 						
-					\item {Step: $V(G)=n$}\\
-						Let $G' = G -\{u\} ~ (u \in V(G))$. Then $G'$ is still a plane triangulation and the amount of faces in $G$ is exactly $2$ more than in $G'$, because by removing the vertex $u$ $3$ edges were removed, thus $2$ triangular faces were removed.\\
-						By induction we get the desired graph $H'$ for $G'$ by removing one edge for each $2$ faces. Because the order of the unbounded face in $H'$ is $4$, exactly one edge was removed of its border. Hence, by inserting $u$ and its $3$ adjacent edges, in $H'$, there is one triangular face less than before. Thus, there are only two faces of order $3$ remaining. Because all inserted edges are incident to $u$, these two faces of oder $3$ are adjacent and can be merged by removing the shared edge.\\
-						The resulting graph of order $n$ is still plane, has only faces of order $4$ and was created of $G$ by removing one edge for each $2$ faces. 
+					\item \textbf{Step: $V(G)=n$}\\
+						Let $G' = G -\{u\} ~ (u \in V(G)$ with $deg(u) = 3$ as shown in $\textbf{Lemma 1.1.1})$. Then $G'$ is still a plane triangulation and the amount of faces in $G$ is exactly $2$ more than in $G'$, because by removing the vertex $u$, $3$ edges were removed, thus, $2$ triangular faces were removed.\\
+						By induction we get the desired graph $H'$ for $G'$ by removing one edge for each $2$ faces. Moreover, by inserting $u$ and its $3$ adjacent edges in $H'$ at their old position, $2$ faces of degree $3$ were created (Would there be more than $2$ new faces, the face in which $u$ was inserted would have an order of at least $5$). Thus, there are only two faces of order $3$ remaining. Because all inserted edges are incident to $u$, these two faces of oder $3$ are adjacent and can be merged by removing the shared edge.\\
+						The resulting graph of order $n$ is still plane (only edges have been removed), has only faces of order $4$ and was created of $G$ by removing one edge for each $2$ faces. 
 					
 				\end{itemize}
 			
-			\end{theorem}
+			\end{lemma}
 		
-			\begin{theorem} {Each plane graph with no triangular face can be modified to a plane graph containing only faces of order $4$ and at least the same amount of edges}
+			\begin{lemma} {Each plane graph with no triangular face can be modified to a plane graph containing only faces of order $4$  and with at least the same amount of edges}
 				Let $G$ be such a plane graph with no triangular face. Let $G'$ be the plane triangulation of $G$.\\
-				To get $G'$ out of $G$ edges have to be added. Because the smallest face is of order $4$, at least $1$ edge is needed to
-				reduce the size of one face, resulting in at least one additional face, to be more precisely, in one additional face for each inserted edge. So $G'$ has at least twice as much faces as $G$ and one new edge for each new face. As shown in \textbf{Theorem 3.1}, $G'$ can be modified to a plane graph $H$ containing only faces of order $4$ by removing one edge for each two faces. Thus, the amount of faces in $H$ is at least as much as in $G$, and furthermore the amount of edges is at least as much as in $G$, because for each face removed exactly one edge has been removed.\\
+				To get $G'$ out of $G$ edges have to be added. Because the smallest face is of order $4$, at least $1$ edge for each face is needed to reduce the size of all faces, resulting in at least one additional face for each existing face in $G$, to be more precisely, in exactly one additional face for each inserted edge. So $G'$ has at least twice as much faces as $G$ and exactly one new edge for each new face. As shown in \textbf{Lemma 2.1.1}, $G'$ can be modified to a plane graph $H$ containing only faces of order $4$ by removing one edge for each two faces. Thus, the amount of faces in $H$ is at least as much as in $G$, and furthermore the amount of edges is at least as much as in $G$, because for each two faces exactly one edge has been removed.\\
 				All in all, $H$ is a graph containing only faces of order $4$ and has at least the same amount of edges as $G$.
-			\end{theorem}		
+			\end{lemma}		
 			
 	
-			Let $G=(V,E_G)$ be a plane graph with no planar triangulation.\\
-			As shown in \textbf{Theorem 3.2}, we get a graph $H=(V,E_H)$ ($F_H$ corresponding faces) containing at least the same amount of edges as $G$ and the same set of vertices $V$.\\
+			Let $G=(V,E_G)$ be a plane graph with no plane triangulation.\\
+			As shown in \textbf{Lemma 2.1.2}, we get a plane graph $H=(V,E_H)$ ($F_H$ corresponding faces, each face of order 4), containing at least the same amount of edges as $G$ and the same set of vertices $V$.\\
 			
 			By $Euler's Formula$ and the fact $|E_H|= \frac{4 * |F_H|}{2}$ (because each face in $F_H$ has order 4 and each edge is exactly counted twice), we get the following:\\
 			$2 = |V| - |E_H| +|F_H|$ $\leftrightarrow$ $2 = |V| - |E_H| + \frac{E_H}{2}$ $\leftrightarrow$ $|E_H| = 2 * |V| - 4$.\\
 			This inequality allows us to bound the amount of edges as following:\\\\
 			$|E_G| \leq |E_H| = 2 * n - 4$   $~~(n=|V|)$
+			
+		\end{theorem}
 	\end{solution}
 	\newpage
 	\begin{solution}{20}
