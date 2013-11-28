@@ -89,8 +89,15 @@
 
 
 	\begin{solution}{21}
+		\begin{lemma}{In every planar triangulation $G$ on atleast four vertices, there existes a vertex $v$ which does not lie on the outer bound of $G$}
+		For the sake of contradiction let's assume there is no such vertex $v$. 
+		Then all the vertices lie on the outer bound of $G$ forming a cycle with atleast four vertices. 
+		This is a contradiction with $G$ beeing a planar triangulation, because we can add a edge between two not adjacent vertices to $G$ and the result is still planar. 
+		Hence, there has to be atleast one vertex $v$ not on the outer bound of $G$. 
+		\end{lemma}
+	
 		\begin{theorem}{Every planar triangulation $G$ on atleast four vertices contains a vertex whose neighborhood induces a cycle.}
-		Let $v$ be a vertex which does not lie on the outer bound of $G$ which exists after lemma 21.1. 
+		After lemma 1.0.1 there exists a vertex $v$ which does not lie on the outer bound of $G$. 
 		Let $N(v) = {p_1,p_2,...,p_n}$ be the neighborhood of $v$. 
 		$N(v)$ induces a cycle if all $p_i$ are connected to a cycle. 
 		For the sake of contradiction let's assume this is not the case, hence there is $p_i$ and $p_{i+1}$ which are not connected. 
