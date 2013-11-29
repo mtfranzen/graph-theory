@@ -89,25 +89,33 @@
 
 
 	\begin{solution}{21}
-		\begin{lemma}{In every planar triangulation $G$ on atleast four vertices, there existes a vertex $v$ which does not lie on the outer bound of $G$}
+		\begin{lemma}{In every planar triangulation $G$ on atleast four vertices, there exists a vertex $v$ which does not lie on the outer bound of $G$}
 		For the sake of contradiction let's assume there is no such vertex $v$. 
 		Then all the vertices lie on the outer bound of $G$ forming a cycle with atleast four vertices. 
-		This is a contradiction with $G$ beeing a planar triangulation, because we can add a edge between two not adjacent vertices to $G$ and the result is still planar. 
+		This is a contradiction with $G$ being a planar triangulation, because we can add a edge between two not adjacent vertices to $G$ and the result is still planar. 
 		Hence, there has to be atleast one vertex $v$ not on the outer bound of $G$. 
 		\end{lemma}
 	
-		\begin{theorem}{Every planar triangulation $G$ on atleast four vertices contains a vertex whose neighborhood induces a cycle.}
+		\begin{theorem}{Every planar triangulation $G$ on atleast four vertices contains a vertex whose neighbourhood induces a cycle.}
 		After lemma 1.0.1 there exists a vertex $v$ which does not lie on the outer bound of $G$. 
-		Let $N(v) = {p_1,p_2,...,p_n}$ be the neighborhood of $v$. 
+		Let $N(v) = {p_1,p_2,...,p_n}$ be the neighbourhood of $v$. 
 		$N(v)$ induces a cycle if all $p_i$ are connected to a cycle. 
 		For the sake of contradiction let's assume this is not the case, hence there is $p_i$ and $p_{i+1}$ which are not connected. 
 		This is either a contradiction with $v$ not lying on the outer bound of $G$, or with $G$ being a maximal planar graph. 
 		Because if $v_i$ and $v_{i+1}$ are not connected and $v$ is not on the outer bound of $G$ there is a face bounded by $v$,$p_i$,$p_{i+1}$ and atleast one additional vertex. 
-		This face could be again devided into to smaller faces by adding an edge, hence $G$ is no triangulation. 
+		This face could be again divided into to smaller faces by adding an edge, hence $G$ is no triangulation. 
 		\end{theorem}
 		
-		\begin{theorem}{Every $n$-vertex planar graph has at mose $3n-8$ triangles.}
-		
+		\begin{lemma}{Any planar triangulation $G$ hast at most $2n-4$ faces and $2n-5$ triangles}
+		Every inner face of $G$ is a triangle, hence every face is adjacent to atleast 3 edges. 
+		Additionally, every edge is adjacent to exactly two faces, hence $2e \geq 3*f  \Leftrightarrow e \geq \frac{3}{2} f $(e: number of edges, f: number of faces). 
+		By Euler's formula we know $2 = n-e+f \Leftrightarrow e - f = n - 2 \Rightarrow \frac{1}{2} f \leq n - 2 \Leftrightarrow f  \leq 2n - 4$. 
+		Now we know that $G$ has at most $2n-4$ faces and because the unbounded face cannot be a triangle we know that $G$ has at most $2n-5$ triangles. 
+		\end{lemma}
+		\begin{theorem}{Every $n$-vertex planar graph has at most $3n-8$ triangles.}
+		A planar graph which $G$ is maximal in the number of triangles has to be a triangulation, because if there would be a inner face which is adjacent to more than 3 edges, we could divide the face into triangles thus forming a graph with same number of vertices but more triangles. 
+		Now we can apply lemma 1.1.1 and we know that $G$ has at most $2n - 5$ triangles. 
+		Now we know that $2n-5 \leq 3n-8$ for every $n > 2$, hence we have proven an even stronger theorem.  
 		\end{theorem}
 	\end{solution}
 	\newpage
