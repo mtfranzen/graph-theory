@@ -244,7 +244,7 @@
 
 			For any $i < n$, $G_i = (V_i, E_i)$ can be constructed by contracting an edge $e = \{x, y\}$ of $G_{i+1}$ ($x, y \in V_{i+1}$, $d(x), d(y) \geq 3$).
 
-			Since $d(y) \geq 3$ and contracting $e$ results in $G_i$, we can effectly say that there is a third vertex $z$ in $G_i$ which is also in $G_{i+1}$ for which $\{\{x,y\}, \{y, z\}\}$ is a subdivision of $\{x,z\}$.
+			Since $d(y) \geq 3$ and contracting $e$ results in $G_i$, we can effectively say that there is a third vertex $z$ in $G_{i+1}$ for which $\{\{x,y\}, \{y, z\}\} \subset E_{i+1}$ is a subdivision of $\{x,z\} \in E_i$.
 
 			Thus, $G_{i+1}$ has a $TG_{i}$ and inductively, by the transitivity of topological minority, $G_{i+1}$ has a $TG_0 = TK_4$.
 		\end{theorem}
