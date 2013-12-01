@@ -99,11 +99,24 @@
 		\begin{theorem}{Every planar triangulation $G$ on atleast four vertices contains a vertex whose neighbourhood induces a cycle.}
 		After lemma 1.0.1 there exists a vertex $v$ which does not lie on the outer bound of $G$. 
 		Let $N(v) = {p_1,p_2,...,p_n}$ be the neighbourhood of $v$. 
-		$N(v)$ induces a cycle if all $p_i$ are connected to a cycle. 
+		$N(v)$ induces a cycle if all $p_i$ are connected to a cycle and if there are no additionaly edges between $p_i$ and $p_j$ with $|i-j|>1$.  
+		We first will proof that all $p_i$ form a cycle, hence the enduced subgraph $N(v)$ has a cycle as a subgraph. 
 		For the sake of contradiction let's assume this is not the case, hence there is $p_i$ and $p_{i+1}$ which are not connected. 
 		This is either a contradiction with $v$ not lying on the outer bound of $G$, or with $G$ being a maximal planar graph. 
 		Because if $v_i$ and $v_{i+1}$ are not connected and $v$ is not on the outer bound of $G$ there is a face bounded by $v$,$p_i$,$p_{i+1}$ and atleast one additional vertex. 
 		This face could be again divided into to smaller faces by adding an edge, hence $G$ is no triangulation. 
+		Now we will proof that either $N(v)$ has no additional edges and thus is a cycle or that one of the vertices adjacent to $v$ induces a cycle. 
+		\begin{itemize}
+			\item \emph{There are no additional edges connecting two vertices $p_i$ and $p_j$ with $|i-j|>1$.} \\
+				In this case $N(v)$ is a cycle and we found a vertex whose neighbourhood induces a cycle.
+			\item \emph{There is an edge $p_ip_{i+2}$}\\
+				In this case the neighbourhood induces graph of $p_{i+1}$ is a cycle namely $p_i p_{i+1} v$. 
+			\item \emph{There is an edge between to vertices $p_i$ and $p_j$ with $|i-j| > 2$  and without loss of generalitiv $i<v$.}\\
+				This case there is a bounded face in $G$ which is not a triangle. 
+				This face is the face bounded by at least the edges $p_ip_{i+1}$, $p_j p_{j-1}$, $p_i p_j$ and atleast one or more edges forming a path from $p_{i+1}$ to $p_{j-1}$. 
+				Hence this case can never occur in a planar triangulation. 
+		\end{itemize} 
+		 In summary we now that we can always find a vertex $v$ whoose neighbourhood induces a cycle or one of the neighbours of $v$ here called $p_{i+1}$ has a neibourhood inducing a cycle.  
 		\end{theorem}
 		
 		\begin{lemma}{Any planar triangulation $G$ hast at most $2n-4$ faces and $2n-5$ triangles}
