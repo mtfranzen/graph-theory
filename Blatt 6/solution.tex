@@ -133,7 +133,23 @@
 	\end{solution}
 	\newpage
 	\begin{solution}{22}
-		
+		\begin{theorem}{Any $TK_3$-free graph $G$ on $n$ vertices contains a maximum of $n-1$ edges.}
+			First, $K_3$ is the triangle $C_3$. Subdividing any edge of $C_i$ results in $C_{i+1}$. Moreover, any cycle has a $TC_3 = TK_3$.
+			
+			Hence, a graph $G$ is $TK_3$-free if and only if it is acyclic. Further we assume that $G$ is connected (since joining two disjoint acyclic components will not create a cycle but increase the edge count).\\
+
+			From these considerations, the maximum number of edges of an $n$-vertex, $TK_3$-free graph equals the maximum number of edges in an $n$-vertex tree. Any $n$-vertex tree contains a maximum of $n - 1$ edges.
+		\end{theorem}
+
+		\begin{theorem}{If a graph $G$ is $3$-connected then $TK_4 \subseteq G$.}
+			By \textsc{Tutte (1961)}, any $3$-connected graph has a construction sequence $G_0, G_1, ..., G_n$ whereby $G_0 = K_4$ and $G_n = G$.
+
+			For any $i < n$, $G_i = (V_i, E_i)$ can be constructed by contracting an edge $e = \{x, y\}$ of $G_{i+1}$ ($x, y \in V_{i+1}$, $d(x), d(y) \geq 3$).
+
+			Since $d(y) \geq 3$ and contracting $e$ results in $G_i$, we can effectly say that there is a third vertex $z$ in $G_i$ which is also in $G_{i+1}$ for which $\{\{x,y\}, \{y, z\}\}$ is a subdivision of $\{x,z\}$.
+
+			Thus, $G_{i+1}$ has a $TG_{i}$ and inductively, by the transitivity of topological minority, $G_{i+1}$ has a $TG_0 = TK_4$.
+		\end{theorem}
 	\end{solution}
 	
 \end{document}
