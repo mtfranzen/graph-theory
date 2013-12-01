@@ -99,8 +99,8 @@
 		\begin{theorem}{Every planar triangulation $G$ on atleast four vertices contains a vertex whose neighbourhood induces a cycle.}
 		After lemma 1.0.1 there exists a vertex $v$ which does not lie on the outer bound of $G$. 
 		Let $N(v) = {p_1,p_2,...,p_n}$ be the neighbourhood of $v$. 
-		$N(v)$ induces a cycle if all $p_i$ are connected to a cycle and if there are no additionaly edges between $p_i$ and $p_j$ with $|i-j|>1$.  
-		We first will proof that all $p_i$ form a cycle, hence the enduced subgraph $N(v)$ has a cycle as a subgraph. 
+		$N(v)$ induces a cycle if all $p_i$ are connected to a cycle and if there are no additionally edges between $p_i$ and $p_j$ with $|i-j|>1$.  
+		We first will proof that all $p_i$ form a cycle, hence the induced subgraph $N(v)$ has a cycle as a subgraph. 
 		For the sake of contradiction let's assume this is not the case, hence there is $p_i$ and $p_{i+1}$ which are not connected. 
 		This is either a contradiction with $v$ not lying on the outer bound of $G$, or with $G$ being a maximal planar graph. 
 		Because if $v_i$ and $v_{i+1}$ are not connected and $v$ is not on the outer bound of $G$ there is a face bounded by $v$,$p_i$,$p_{i+1}$ and atleast one additional vertex. 
@@ -111,24 +111,122 @@
 				In this case $N(v)$ is a cycle and we found a vertex whose neighbourhood induces a cycle.
 			\item \emph{There is an edge $p_ip_{i+2}$}\\
 				In this case the neighbourhood induces graph of $p_{i+1}$ is a cycle namely $p_i p_{i+1} v$. 
-			\item \emph{There is an edge between to vertices $p_i$ and $p_j$ with $|i-j| > 2$  and without loss of generalitiv $i<v$.}\\
+			\item \emph{There is an edge between to vertices $p_i$ and $p_j$ with $|i-j| > 2$  and without loss of generality $i<v$.}\\
 				This case there is a bounded face in $G$ which is not a triangle. 
 				This face is the face bounded by at least the edges $p_ip_{i+1}$, $p_j p_{j-1}$, $p_i p_j$ and atleast one or more edges forming a path from $p_{i+1}$ to $p_{j-1}$. 
 				Hence this case can never occur in a planar triangulation. 
 		\end{itemize} 
-		 In summary we now that we can always find a vertex $v$ whoose neighbourhood induces a cycle or one of the neighbours of $v$ here called $p_{i+1}$ has a neibourhood inducing a cycle.  
+		 In summary we now that we can always find a vertex $v$ whose neighbourhood induces a cycle or one of the neighbours of $v$ here called $p_{i+1}$ has a neighbourhood inducing a cycle.  
 		\end{theorem}
 		
-		\begin{lemma}{Any planar triangulation $G$ hast at most $2n-4$ faces and $2n-5$ triangles}
-		Every inner face of $G$ is a triangle, hence every face is adjacent to atleast 3 edges. 
-		Additionally, every edge is adjacent to exactly two faces, hence $2e \geq 3*f  \Leftrightarrow e \geq \frac{3}{2} f $(e: number of edges, f: number of faces). 
-		By Euler's formula we know $2 = n-e+f \Leftrightarrow e - f = n - 2 \Rightarrow \frac{1}{2} f \leq n - 2 \Leftrightarrow f  \leq 2n - 4$. 
-		Now we know that $G$ has at most $2n-4$ faces and because the unbounded face cannot be a triangle we know that $G$ has at most $2n-5$ triangles. 
+		\begin{lemma}{Every planar graph $G$ with a maximal number of triangles and atleast 4 vertices has a vertex of degree 3.}
+		Using theorem 1.1 we can find a vertex $v$ whose neighbourhood induces a cycle $p_1 p_2 ... p_n$. 
+		In the following we will show by induction over the degree of $v$ that if $G$ has a maximal number of triangles, $v$ cannot have a degree greater than $3$. 
+		\paragraph{Basis: $v$ has a degree of 4}
+		If $v$ has a degree 4, then the subgraph with the nodes $v,p_1,p_2,p_3,p_4$ only has 4 triangles.
+		We can change the edge set of this subgraph to get a subgraph with the same vertices and the same outer structure but with containing 6 triangles. 
+		We can achieve this by removing edge $v p_3$ and adding the edge $p_2 p_4$. 
+		Thus we know that if $G$ has a maximal number of triangles $v$ cannot have degree 4. 
+		\begin{center}
+			\begin{tikzpicture}
+				\node[circle, draw] (v) at (0, 0) {$v$};
+				\node[circle, draw] (p1) at (0, 2) {$p_1$};
+				\node[circle, draw] (p2) at (2, 0) {$p_2$};
+				\node[circle, draw] (p3) at (0, -2) {$p_3$};
+				\node[circle, draw] (p4) at (-2, 0) {$p_4$};
+				\draw(v) -- (p1);
+				\draw(v) -- (p2);
+				\draw(v) -- (p3);
+				\draw(v) -- (p4);
+				\draw(p1) -- (p2);
+				\draw(p2) -- (p3);
+				\draw(p3) -- (p4);
+				\draw(p4) -- (p1);
+			\end{tikzpicture}
+			\begin{tikzpicture}
+				\node[circle, draw] (v) at (0, 1) {$v$};
+				\node[circle, draw] (p1) at (0, 2) {$p_1$};
+				\node[circle, draw] (p2) at (2, 0) {$p_2$};
+				\node[circle, draw] (p3) at (0, -2) {$p_3$};
+				\node[circle, draw] (p4) at (-2, 0) {$p_4$};
+				\draw(v) -- (p1);
+				\draw(v) -- (p2);
+				\draw(v) -- (p4);
+				\draw(p1) -- (p2);
+				\draw(p2) -- (p3);
+				\draw(p3) -- (p4);
+				\draw(p4) -- (p1);
+				\draw(p4) -- (p2);
+			\end{tikzpicture}
+		\end{center}
+		
+		\paragraph{Induction step}
+		Let the degree of $v$ be $n>3$. 
+		We now can again change the edges set without changing the outer structure of the induced subgraph $N(v)$ so that $v$ has degree $n-1$ and the number of triangles in $N(v)$ stays the same. 
+		We can achieve this by removing the edge $v p_2$ and adding the edge $p_1 p_3$. 
+		By induction we can repeat this operation until $n=4$ and have the base case. 
+		Thus we can increase the number of triangles in the subgraph without changing the vertex count or the outer structure. 
+		Hence, the degree of $v$ cannot be greater than 3 if $G$ has a maximal number of triangles.
+		\begin{center}
+			\begin{tikzpicture}
+				\node[circle, draw] (v) at (0, 0) {$v$};
+				\node[circle, draw] (p1) at (-1.5, 1) {$p_1$};
+				\node[circle, draw] (p2) at (0, 1.5) {$p_2$};
+				\node[circle, draw] (p3) at (1.5, 1) {$p_3$};
+				\node[circle, draw] (p4) at (1.5, -1) {$p_4$};
+				\node[circle, draw] (p5) at (0, -1.5) {$p_5$};
+				\node[circle, draw] (p6) at (-1.5, -1) {$p_6$};
+				\draw(v) -- (p1);
+				\draw(v) -- (p2);
+				\draw(v) -- (p3);
+				\draw(v) -- (p4);
+				\draw(v) -- (p5);
+				\draw(v) -- (p6);
+				\draw(p1) -- (p2);
+				\draw(p2) -- (p3);
+				\draw(p3) -- (p4);
+				\draw(p4) -- (p5);
+				\draw(p5) -- (p6);
+				\draw(p6) -- (p1);
+			\end{tikzpicture}
+						\begin{tikzpicture}
+				\node[circle, draw] (v) at (0, 0) {$v$};
+				\node[circle, draw] (p1) at (-1.5, 1) {$p_1$};
+				\node[circle, draw] (p2) at (0, 1.5) {$p_2$};
+				\node[circle, draw] (p3) at (1.5, 1) {$p_3$};
+				\node[circle, draw] (p4) at (1.5, -1) {$p_4$};
+				\node[circle, draw] (p5) at (0, -1.5) {$p_5$};
+				\node[circle, draw] (p6) at (-1.5, -1) {$p_6$};
+				\draw(v) -- (p1);
+				\draw(v) -- (p3);
+				\draw(v) -- (p4);
+				\draw(v) -- (p5);
+				\draw(v) -- (p6);
+				\draw(p1) -- (p2);
+				\draw(p2) -- (p3);
+				\draw(p3) -- (p4);
+				\draw(p4) -- (p5);
+				\draw(p5) -- (p6);
+				\draw(p6) -- (p1);
+				\draw(p1) -- (p3);
+			\end{tikzpicture}
+		\end{center}
+		
 		\end{lemma}
+		
+		
 		\begin{theorem}{Every $n$-vertex planar graph has at most $3n-8$ triangles.}
-		A planar graph which $G$ is maximal in the number of triangles has to be a triangulation, because if there would be a inner face which is adjacent to more than 3 edges, we could divide the face into triangles thus forming a graph with same number of vertices but more triangles. 
-		Now we can apply lemma 1.1.1 and we know that $G$ has at most $2n - 5$ triangles. 
-		Now we know that $2n-5 \leq 3n-8$ for every $n > 2$, hence we have proven an even stronger theorem.  
+		Let $G$ be a planar graph with a maximal number of triangles. 
+		In the following we will show by induction that a planar graph $G$ with atleast 3 vertices with a maximum number of triangles has exactly $3n-8$ triangles. 
+		\paragraph{Base: $n=3$}
+		The planar graph with maximum number of triangles is $K3$ which has one triangle. 
+		$3n-8 = 3*3-8 = 1$ so for the base case the formula is correct.  
+		\paragraph{Induction Step}
+		Let $G$ be such a graph with $n$ nodes. 
+		By using lemma 1.1.1 we can find a vertex $v$ with degree 3 whose neighbourhood induces a cycle.
+		If we remove this node we decrease the number of nodes by one and the number of triangles by 3. 
+		By induction we know that the resulting graph has no more than $3*(n-1) -8$ triangles. 
+		Hence, we know that $G$ has no more than $3*(n-1) -8 + 3 = 3*n-8$ triangles. 
 		\end{theorem}
 	\end{solution}
 	\newpage
