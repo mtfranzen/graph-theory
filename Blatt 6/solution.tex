@@ -277,14 +277,14 @@
 						\item {\emph{$|E_N| > 0$}}\\
 							In this case, there is at least one edge not laying in the border of the unbounded face, hence, laying in another face.\\
 							Let $e=(u,v) \in E_N$. Because $H$ is outerplanar, $e$ cuts $H$ into two connected parts $H_1$ and $H_2$ ($V(H_1) \cap V(H_2) = \{u,v\}$ and $E(H_1) \cap E(H_2) = \{e\})$. 
-							Assume there is an edge $e_2$ between $H_1 \setminus \{u,v\}$ and $H_2 \setminus \{u,v\}$. Then either $e_2$ have to cross $e$, or $e_2$ cut w.l.o.g $u$ from the border of the unbounded face. A contradiction in both cases, hence, there is no such edge.\\
-							As before, $H_1$ and $H_2$ are induced subgraphs of $H$, $H_1 \cup H_2 = H$, so both are 3-colorable by induction.\\
-							By these conditions, $H$ is 3-colorable.
+							Assume there is an edge $e_2$ between $H_1 \setminus \{u,v\}$ and $H_2 \setminus \{u,v\}$. Then either $e_2$ have to cross $e$, or $e_2$ cut w.l.o.g $u$ from the border of the unbounded face. A contradiction in both cases, hence, there is no such edge, and $H_1 \cup H_2 = H$.\\
+							As before, $H_1$ and $H_2$  are 3-colorable by induction (both are induced subgraphs of $H$). So $H_1$ and $H_2$ can still be colored with 3 colors after setting the color of $u$ and $v$ ($c(u) \neq c(v)$).\\
+							By these conditions (all vertices were colored with 3 colors), $H$ is 3-colorable.
 				\end{itemize}
 		\end{itemize}				
 
 		All in all, a connected outerplanar graph is 3-colorable.\\
-		Hence, because each outerplanar graph consists of connected, outerplanar components, each outerplanar graph is 3-colorable.
+		Hence, because a outerplanar graph consists of connected, outerplanar components, each outerplanar graph is 3-colorable.
 
 		\end{theorem}
 	\end{solution}
