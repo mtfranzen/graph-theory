@@ -88,14 +88,29 @@
 	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\begin{proof}}{\end{proof}\end{mylemma}}
 
 
+	\begin{solution}{26}
+		\begin{lemma}{Every graph $G$ with $\chi(G) = k$ has a proper $k$-coloring in which one color class has size at least $m=\alpha(G)$.}
+			
+		\end{lemma}
+		\begin{lemma}{For every graph G $\chi(G) \leq |V(G)| - \alpha(G) + 1$}
+		
+		
+		\end{lemma}
+		\begin{lemma}{If $G = F \bigcup H$, then $\chi(G) \leq \chi(F) + \chi(H)$ } 
+		
+		\end{lemma}
+	\end{solution}
+	
+	
 	\begin{solution}{27}
-		In the following we will show that for every Graph G on $n$ vertices we have \\ 
-		$\chi (G) + \chi (\bar{G}) \geq max (\omega (G) , \frac{n}{\alpha(G)}) + max (\omega (\bar{G}) , \frac{n}{\alpha(\bar{G})}) \geq 2\sqrt{n}$. \\
-		Using the lemma of small colouring results we know that $\chi (G)  \geq max (\omega (G) , \frac{n}{\alpha(G)})$ and that
+		\begin{theorem}{For every Graph $G$ on $n$ vertices we have $\chi (G) + \chi (\bar{G}) \geq 2\sqrt{n}$}
+		Using the lemma of small coloring results we know that $\chi (G)  \geq max (\omega (G) , \frac{n}{\alpha(G)})$ and that
 		$\chi (\bar{G})  \geq max (\omega (\bar{G}) , \frac{n}{\alpha(\bar{G})})$. 
 		Hence, $\chi (G) + \chi (\bar{G}) \geq max (\omega (G) , \frac{n}{\alpha(G)}) + max (\omega (\bar{G}) , \frac{n}{\alpha(\bar{G})}) =  max (\omega (G) , \frac{n}{\alpha(G)}) + max (\alpha (G) , \frac{n}{\omega(G)}) \geq \omega (G) + \frac{n}{\omega(G)} \geq \sqrt{n} +  \frac{n}{\sqrt{n}} = 2\sqrt{n}$ \\
 		The inequality $\omega (G) + \frac{n}{\omega(G)} \geq \sqrt{n} +  \frac{n}{\sqrt{n}}$ is true for $\omega(G) \in [1,n]$ because the function $f(x) = x + \frac{n}{x}$ has a local minima at $x=\sqrt{n}$ in the interval $x \in [1,n]$. 
+		\end{theorem}
 	\end{solution}
+	
 	
 
 		
