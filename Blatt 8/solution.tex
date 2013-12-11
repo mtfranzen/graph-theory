@@ -104,8 +104,20 @@
 			\end{itemize}
 		\end{theorem}
 		Finally, by using the proven theorem we know that $min\{k \in \mathbb{N} | \Gamma(T) \leq k\ for\ all\ trees\ T\} = \infty$. 
-		\begin{theorem}{For any Graph $G$  $\Gamma(T) \leq max_{uv \in E(G)} min\{deg(u), deg(v)\} + 1$}
 		
+		
+		\begin{theorem}{For any Graph $G$  $\Gamma(G) \leq max_{uv \in E(G)} min\{deg(u), deg(v)\} + 1$}
+		For the sake of contradiction let's assume that there is a graph $G$ with $\Gamma(G) = k$ and $k > max_{uv \in E(G)} min\{deg(u), deg(v)\} + 1$. 
+		Additionally, let $G$ be colored with a greedy coloring using $k$ colors which obviously has to exist if $\Gamma(G) = k$. \\
+		Let $v \in V(G)\ with\ c(v) = k$ be one of the vertices with the highest color. 
+		Now, $deg(v) \geq k-1$  for $c(v)=k$ to be possible in a gready coloring, because $v$ has to have atleast $k-1$ adjacent vertices which are colored in colors $1$ through $k-1$. \\
+		By assumption we know that for all neighbours $u$ of $v$, $k> min\{deg(v), deg(u)\} + 1$. 
+		Now we easily see that $deg(u) < deg(v)$ because else  $k > min\{deg(v), deg(u)\} + 1 = deg(v) + 1$ but earlier we saw that $deg(v) \geq k-1$. 
+		Hence, we know that for all neighbours $u$ of $v$ the following inequality holds: $k > min\{deg(u), deg(v)\} + 1 = deg(u) + 1 \Leftrightarrow deg(u) < k - 1$. \\
+		Now for $c(v)=k$ to hold in a proper greedy coloring we need to find a neighbor $u$ of $v$ with $c(u)=k-1$ which was colored before $v$. 
+		Because $deg(u) > k-1$ $u$ only has $k-2$ neighbors which are not $v$. 
+		Hence if $v$ is not already colored $c(u) < k-1$ so it is impossible to greedy color $v$ with the color $k$. 
+		This finally leads to a contradiction, hence $k > max_{uv \in E(G)} min\{deg(u), deg(v)\} + 1$ was a wrong assumption and for every graph $\Gamma(G) > max_{uv \in E(G)} min\{deg(u), deg(v)\} + 1$ holds.
 		\end{theorem}
 	\end{solution}
 	
