@@ -1,0 +1,112 @@
+% all-in-one cheatsheet layout (Michael Franzen, 2013)
+\documentclass[a4paper]{article}
+
+% geometry settings
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+
+% font settings
+%\usepackage[light,math]{kurier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{marvosym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% colors
+\usepackage{xcolor}
+\definecolor{lightgray}{gray}{0.8}
+
+% formatting
+\usepackage{paralist}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{Tabbing}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage[framemethod=tikz]{mdframed}
+\pagestyle{fancy}
+
+% math
+\usepackage{array}
+\usepackage{eqnarray}
+\usepackage{mathtools}
+\usepackage{cases}
+
+% figures
+\usepackage{wrapfig}
+\usepackage{subfigure}
+
+% figure modules
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc, shapes}
+\usepackage{algorithm2e}
+\usepackage{verbatim}	
+
+% TOC & Glossary
+\usepackage{sectsty}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[titles,subfigure]{tocloft}
+
+% commands
+\usepackage{xargs}
+\usepackage{ifthen}
+
+% head line
+\fancyhf{}
+\chead{Graph Theory - Sheet 8 - \today\\J. Batzill (1698622), M. Franzen (1696933), J. Labeit (1656460)}
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+
+\newcommand{\sheetnumber}{1}
+
+% (problem number)
+\surroundwithmdframed[
+    hidealllines=true,
+    backgroundcolor=gray!10,
+    skipbelow=\baselineskip,
+    skipabove=\baselineskip
+]{mylemma}
+
+\surroundwithmdframed[
+	linecolor=white,
+	skipbelow=\baselineskip,
+	skipabove=\baselineskip
+]{mytheorem}
+
+\tikzstyle{nod}= [circle, draw,inner sep=0pt, minimum size=0.5cm] 
+
+\begin{document}
+	
+	\newtheorem{mytheorem}{Theorem}[section]
+	\newtheorem{mylemma}{Lemma}[mytheorem]	
+
+	\newenvironmentx*{solution}[1]{\section*{Problem #1}\addtocounter{section}{1}\setcounter{mylemma}{0}\setcounter{mytheorem}{0}}{}
+	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\begin{proof}}{\end{proof}\end{mytheorem}}
+	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\begin{proof}}{\end{proof}\end{mylemma}}
+
+
+	\begin{solution}{Problem 29}
+		\begin{theorem}{For every $k \in \mathbb{N} $ there exists a tree $T_k$ with $\Gamma (T_k) = k$}
+			In the following we will show how to construct $T_k$ by induction. 
+			Additionally to $\Gamma (T_k) = k$, every $T_k$ will have a greedy coloring so that the root of $T_k$ is colored with color $k$.  
+			\begin{itemize}
+				\item \emph{Base} \\
+					$T_1$ is just a single vertex without edges. Obviously $\Gamma (T_1) = 1$ and the color of the root of $T_1$ is 1.
+				\item \emph{Induction step} \\
+					For any $k > 1$, $T_k$ can be constructed by using one new vertex $v$ and $T_1$, $T_2$, ... $T_{k-1}$. 
+					By connecting the roots of $T_1$, $T_2$ ... $T_{k-1}$ to $v$ we ensure that there is a greedy coloring in which $v$ has to have the color $k$. 
+					This greedy coloring can be achieved by first coloring $T_1$, $T_2$, ...$T_{k+1}$ by induction so that the roots have the colors $1$, $2$, ... $k-1$. 
+					Now we can color $v$ with the color $k$ because by construction all colors smaller than $v$ are already taken by the nodes adjacent to $v$. 
+					Hence, we constructed $T_k$ with a root node $v$ which has color $k$ and $\Gamma (T_k) = k$. 
+			\end{itemize}
+		\end{theorem}
+		Finally, by using the proven theorem we know that $min\{k \in \mathbb{N} | \Gamma(T) \leq k\ for\ all\ trees\ T\} = \infty$. 
+		\begin{theorem}{For any Graph $G$  $\Gamma(T) \leq max_{uv \in E(G)} min\{deg(u), deg(v)\} + 1$}
+		
+		\end{theorem}
+	\end{solution}
+	
+\end{document}
