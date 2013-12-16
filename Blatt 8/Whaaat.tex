@@ -122,8 +122,48 @@
 		\end{theorem}
 	\end{solution}
 	\newpage
-	\begin{solution}{31}
-	
+		\begin{solution}{30}
+			\begin{theorem}{A planar truangulation is $4-colorable$ if and only if its plane dual is $3-edge-colorable$}
+				Let $G=(V,E)$ be a planar triangulation and $H=(E,E')$ its plane dual.\\
+			
+				\begin{mylemma} {Let $G,H$ be graphs as defined before, then $L(G) is isomorph to L(H)$}
+					\\
+					\begin{itemize}
+						\item $\textbf{|V(L(G))| = |V(L(H))|}$\\
+							Let $e \in E(G)$ be the corresponding edge of a node in $V(L(G))$, then $\exists f_1,f_2 - face$, so that $e$ is in the border of $f_1, f_2$ ($G$ is planar triangulation, hence, a edge always is in the border of exactly $2$ unique faces). Because $H$ is the plane dual of $G$, $f_1,f_2 \in V(H)$, furthermore, because $f_1$ and $f_2$ are adjacent faces, $e'=f_1f_2 \in E(H)$.\\
+							Because $e'$ is crossing $e$ in the plane, and $e'$ is unique (because $f_1$ and $f_2$ are unique), $e'$ will be called $'the associated edge to e$ ($a(e)=e'$) in the following.\\
+							However, there is $e' \in E(H)$, thus, there is a unique corresponding vertex in $V(L(H))$.\\
+							
+							On the other side, let $e \in E(H)$ be the corresponding edge of a node in $V(L(H))$, then $\exists f_1, f_2 - face$, so that $e=f_1 f_2$. Because $f_1$ and $f_2$ are adjacent, there has to be an edge $e' \in E(G)$ (unique), so that $e'$ is in the border of $f_1$ and $f_2$.\\
+							Because $e'$ is crossing $e$ in the plane, and $e'$ is unique (because $f_1$ and $f_2$ are unique), $e'$ will be called $'the associated edge to e$ ($a(e)=e'$) in the following.\\
+							However, there is a unique corresponding vertex in $V(L(H))$\\
+							
+							Finally, foreach vertex in $V(L(G))$ there  is a unique vertex in $V(L(H))$ and vice versa. Moreover, $a(a(e)) = e \forall e \in V(L(G)) \cap V(LG(H))$, because each face in $G$ is adjacent to exactly 3 different faces, sharing exactly one edge with each, hence the associated edge is unique in both ways.\\
+							Thus $|V(L(G))| = |V(L(H))|$, with isomorphism a.
+							 
+						\item $\textbf{E(L(G)) isomorph to E(L(H))}$\\
+							Let $e \in E(L(G))$, then $\exists e_1,e_2 \in E(G)=V(L(G))$, so that $e_1$ and $e_2$ are adjacent, and $e=e_1e_2$. Let $e_1' = a(e_1) and e_2'=a(e_2) \in E(H)=V(L(H))$ be the associated edges of $e_1$ and $e_2$.
+							Because $e_1$ and $e_2$ are adjacent, there is a face $f$ in $G$, so that $e_1$ and $e_2$ are in the border of $f$.\\
+							Hence, $e_1'$ and $e_2'$ are both incident to the same face of $G$, in othere words, $e_1'$ and $e_2'$ are adjacent, in other words, $e_1'e_2' \in E(L(H))$.\\\\
+							
+							On the other side, let $e \in E(L(H))$, then $\exists e_1,e_2 \in E(H)=V(L(H))$, so that $e_1$ and $e_2$ are adjacent, and $e=e_1e_2$.
+							Because $e_1$ and $e_2$ are adjacent, there exists a face $f$ in $G$, with $e_1$ and $e_2$ incident to $f$. Let, $e_1'=a(e_1)$ and $e_2'=a(e_1) \in E(G)=V(L(G))$ be the associated edges of $e_1$ and $e_2$ ($e_1,e_2$ are in the border of $f$, else $e_i$ wouldn't cross $e_i' (i \in  \{1,2\}))$. Now $G$ is a plane triangulation, hence, the order of $f$ is 3, in other words, $e_1'$ and $e_2'$ are adjacent, so $e_1'e_2' \in E(L(G))$.
+					\end{itemize}			
+					
+					All in all, $a$ is a isomoprhism between $L(G)$ and $L(H)$, hence, $L(G)$ and $L(H)$ are isomorph.
+				\end{mylemma}
+				
+				
+				As shown in $\textbf{Lemma 2.1}$ $L(G)$ and $L(H)$ are isomorph, hence, $G$ is $4-edge-colorable$ if and only if $H$ is $4-edge-colorable$.\\\\
+				
+				Let $G$ be $3-edge-colorable$, then, by $\textbf{Vizing's theorem}$, $2 \le \triangle(G) \le 3$. Moreover, because of the \emph{first lemma in chapter colorings} $\triangle \le 4$.\\\\
+				
+				Let $G$ be $4-colorable$.
+			\end{theorem}
+		\end{solution}
+		\newpage
+		\begin{solution}{31}
+		
 		Let $G=(V=\{v_1,...,v_n\}, E)$ be a graph.
 			
 		\begin{mylemma}$(A(G)^k)[i,j])=a^k_{i,j}$ represents the amount of $v_i\unaryminus v_j \unaryminus paths ~of ~lengt~h k$ ($i,j \in \{1,...,n\}$.\\
@@ -139,25 +179,23 @@
 					So all in all, $(A(G)^k)[i,j] = \sum_{d=1}^{n}(A(G)^{k-1})[i,d] * A(G)[d,j]$ is the amount of all $v_i\unaryminus v_j \unaryminus paths~ of ~length ~k$.
 			\end{itemize} 
 		\end{mylemma}
-			
-		\begin{itemize}
-			\item (a)$tr(A(G))=0$\\
-				Because G doesn't have any self-loops, $A(G)[i,i] = 0 ~ \forall i \in \{1,...,n\}$.\\
-				Therefore: $tr(A(G))=\sum_{i=1}^{n}A[i,i] = \sum_{i=1}^{n}0=0$
-				\\
-			\item (b)$tr(A(G)^2 ~equals$ twice the number of edges of G.\\
-				$tr(A(G)^2) = \sum_{i=1}^{n}\sum_{k=1}^{n}A[i,k] * A[k,i]=\sum_{i=1}^{n}\sum_{k=1}^{n}A[k,i]^2$\\
-				$=\sum_{i=1}^{n}\sum_{k=1}^{n}A[i,k]=\sum_{i=1}^{n}d(v_n)=2*|E|$.
 				
-			\item (c)$tr(A(G)^3) ~equals$ six times the number of triangles in G.\\
-				As proven in $Lemma ~ 2.0.1$, $(A(G)^k)[i,i]$ is the amount of all $v_i\unaryminus v_i \unaryminus paths ~of ~length ~3$.\\
-				Because a closed path of length $3$ is a triangle, $(A(G)^k)[i,i]$ is the amount of triangles containing $v_i$.\\
-				Moreover, a triangle $t=(v_i,v_j,v_k)$ can be interpreted as two different paths starting/ending at $v_i$: $p_1=v_iv_jv_kv_i$ and $p_2=v_iv_kv_jv_i$. Thus, for each triangle there are two paths.\\
-				All in all, let $t$ be a triangle in $G$. Then for each vertex in $t$ there are two paths of length $3$.
-				This makes $3 * 2 = 6$ paths in $tr(A(G)^3)$ for each triangle in $G$.\\
-				Because $tr(A(G)^3)$ is the amount of all $closed~ paths ~ of ~ length~ 3 ~ (v\in V(G))$, and a triangle is a closed path of length $3$, $tr(A(G)^3)=\sum_{i=1}^{n}(2 * |\{t~ -~ triangle ~in~ G ~:~ t~ contains ~v_i\}|)$ is exactly six times the amount of all triangles in $G$.
-		\end{itemize}
-	\end{solution}
+			\begin{itemize}
+				\item (a)$tr(A(G))=0$\\
+					Because G doesn't have any self-loops, $A(G)[i,i] = 0 ~ \forall i \in \{1,...,n\}$.\\
+					Therefore: $tr(A(G))=\sum_{i=1}^{n}A[i,i] = \sum_{i=1}^{n}0=0$
+					\\
+				\item (b)$tr(A(G)^2 ~equals$ twice the number of edges of G.\\
+					$tr(A(G)^2) = \sum_{i=1}^{n}\sum_{k=1}^{n}A[i,k] * A[k,i]=\sum_{i=1}^{n}\sum_{k=1}^{n}A[k,i]^2$\\
+					$=\sum_{i=1}^{n}\sum_{k=1}^{n}A[i,k]=\sum_{i=1}^{n}d(v_n)=2*|E|$.
+					
+				\item (c)$tr(A(G)^3) ~equals$ six times the number of triangles in G.\\
+					As proven in $Lemma ~ 3.0.1$, $(A(G)^k)[i,i]$ is the amount of $v_i\unaryminus v_i \unaryminus paths ~of ~length ~3$.\\
+					Because a closed path of length $3$ is a triangle, $(A(G)^k)[i,i]$ is the amount of triangles containing $v_i$.\\
+					Moreover, a triangle $t=(v_i,v_j,v_k)$ can be interpreted as two different paths: $p_1=v_iv_jv_kv_i$ and $p_2=v_iv_kv_jv_i$. Thus, for each two paths there is one triangle. Moreover, a triangle contains three vertices, meaning that triangle counts for each vertex extra.\\
+					All in all, we find each triangle in 3 different entries, two times in each, thus, 6 times in $A^k(G)$.
+			\end{itemize}
+		\end{solution}
 	\newpage
 	\begin{solution}{32}
 		\begin{theorem}{The adjacency matrix of any $d$-regular graph has an eigenvalue of $d$.}
