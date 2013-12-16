@@ -120,5 +120,54 @@
 		This finally leads to a contradiction, hence $k > max_{uv \in E(G)} min\{deg(u), deg(v)\} + 1$ was a wrong assumption and for every graph $\Gamma(G) > max_{uv \in E(G)} min\{deg(u), deg(v)\} + 1$ holds.
 		\end{theorem}
 	\end{solution}
-	
+	\newpage
+	\begin{solution}{Problem 32}
+		\begin{theorem}{The adjacency matrix of any $d$-regular graph has an eigenvalue of $d$.}
+			Let $G = (V, E)$ be a $d$-regular graph and let $A(G) = (a_{ij})_{i, j = 1,\dots, n}$ ($n \in \mathbb{N}$) denote it's adjacency matrix. We show that
+				\begin{equation*}
+					A(G) \cdot (1, \dots ,1)^{\top} = (d,  \dots ,d)^{\top} = d \cdot (1,  \dots ,1)^{\top}
+				\end{equation*}
+			and thereby that $d$ is an eigenvalue of $G$. Since $G$ is $d$-regular, every row sum equals exactly $d$:
+				\begin{equation*}
+					\forall i \in [1, \dots, n]: \sum_{j=1}^{n} a_{ij} = d
+				\end{equation*}
+			Trivially,
+				\begin{equation*}
+					A(G) \cdot (1, \dots ,1)^{\top} =  (\sum_{j=1}^{n} a_{1j},  \dots , \sum_{j=1}^{n} a_{nj})^{\top} = (d, \dots, d)^\top = d \cdot (1,  \dots ,1)^{\top}
+				\end{equation*}
+		\end{theorem}
+
+		\begin{theorem}{The adjacency matrix of any bipartite, $d$-regular graph has an eigenvalue of $-d$.}
+			Let $G = (V, E)$ be a bipartite, $d$-regular graph and let $A(G) = (a_{ij})_{i, j = 1,\dots, n}$ ($n \in \mathbb{N}$) denote it's adjacency matrix.
+			
+			For all of $G$'s vertices $v_1, ..., v_n$ ($n \in \mathbb{N}$), let $\sigma(v_i)$ denote a selection function that assigns each vertex it's partition:
+\[
+ \sigma(v) =
+  \begin{cases}
+   -1 & \text{if } v \text{ in partition \#1}\\
+   1 & \text{if } v \text{ in partition \#2}
+  \end{cases}
+\]
+Let $\mathbf{x}$ denote
+	\begin{equation*}
+		A(G) \cdot (\sigma(v_1), \dots, \sigma(v_n))^\top = \mathbf{x} = (x_1, \cdots, x_n)^\top
+	\end{equation*}
+We will prove that $(\sigma(v_1), \dots, \sigma(v_n))^\top$ is an eigenvector for the eigenvalue $-d$ by showing that $\mathbf{x} = (-d \cdot \sigma(v_1), \dots, -d \cdot \sigma(v_n))$.\\
+
+For any $i \in \{1, \dots, n\}$,
+\begin{equation*}
+	x_i := \sum_{j=1}^n a_{ij} \cdot \sigma(v_j)
+\end{equation*}
+Since $v_i$ is only adjacent to vertices which are not in it's partition and $\sigma(v_i) = -\sigma(v_j)$ if $i, j$ are in different partitions.
+\begin{equation*}
+	x_i := \sum_{j=1}^n a_{ij} \cdot -\sigma(v_i)
+\end{equation*}
+Moreover, $G$ is $d$-regular. Thus,
+\begin{equation*}
+	x_i :=  \sum_{i=1}^d 1 \cdot -\sigma(v_i) = -d \cdot \sigma(v_i) 
+\end{equation*}
+Hence, $A(G) \cdot (\sigma(v_1), \dots, \sigma(v_n))^\top = \mathbf{x} = -d \cdot (\sigma(v_1) , \dots, \sigma(v_n) )^\top$ and thereby, $-d$ is an eigenvalue of $G$.
+		\end{theorem}
+	\end{solution}
+
 \end{document}
