@@ -126,16 +126,16 @@
 	
 		Let $G=(V=\{v_1,...,v_n\}, E)$ be a graph.
 			
-		\begin{mylemma}$(A(G)^k)[i,j])=a^k_{i,j}$ represents the amount of $v_i\unaryminus v_j \unaryminus paths ~of ~lengt~h k$ ($i,j \in \{1,...,n\}$.\\
+		\begin{mylemma}$(A(G)^k)[i,j]=a^k_{i,j}$ represents the amount of $v_i\unaryminus v_j \unaryminus paths ~of ~length~ k$ ($i,j \in \{1,...,n\}$.\\
 		
-			\emph{proof} Prove by induction ofer k.\\
+			\emph{proof} Prove by induction over k.\\
 			\begin{itemize}
 				\item \emph{Base: $k=1$}\\
 					$A(G)[i,j] =  \{e \in E ~ : ~ e=v_iv_j\} = \{p ~ - ~ path ~ : ~ p=(v_i,v_j)\} ~ \in \{0,1\}$
 				\item \emph{Step: $k \ge 1$}\\
 					$(A(G)^k)[i,j] = (A(G)^{k-1} * A(G))[i,j] = (\sum_{a=1}^{n}\sum_{b=1}^{n}\sum_{d=1}^{n}(A(G)^{k-1})[a,d] * A(G)[d,b])[i,j]=$\\
 					$\sum_{d=1}^{n}(A(G)^{k-1})[i,d] * A(G)[d,j]$.\\
-					By induction $(A(G)^{k-1})[i,d]$ is the amount of $v_i\unaryminus v_d\unaryminus paths~ of ~length~ k-1$, and $A(G)[d,j]$ is the amount of $v_d\unaryminus v_j\unaryminus paths~ of ~length ~1$. So $(A(G)^{k-1})[i,d] * A(G)[d,j]$ is the amount of $v_i\unaryminus v_j\unaryminus paths ~of ~length~ k$ containing $v_dv_j$. To get all paths of length k, all possible incident edges of $v_j$ have to be checked.\\
+					By induction $(A(G)^{k-1})[i,d]$ is the amount of $v_i\unaryminus v_d\unaryminus paths~ of ~length~ k-1$, and $A(G)[d,j]$ indicates if there is a $v_d\unaryminus v_j\unaryminus paths~ of ~length ~1$. So $(A(G)^{k-1})[i,d] * A(G)[d,j]$ is the amount of $v_i\unaryminus v_j\unaryminus paths ~of ~length~ k$ containing $v_dv_j$ as last edge. To get all paths of length k, all possible incident edges of $v_j$ have to be checked.\\
 					So all in all, $(A(G)^k)[i,j] = \sum_{d=1}^{n}(A(G)^{k-1})[i,d] * A(G)[d,j]$ is the amount of all $v_i\unaryminus v_j \unaryminus paths~ of ~length ~k$.
 			\end{itemize} 
 		\end{mylemma}
@@ -150,9 +150,9 @@
 				$=\sum_{i=1}^{n}\sum_{k=1}^{n}A[i,k]=\sum_{i=1}^{n}d(v_n)=2*|E|$.
 				
 			\item (c)$tr(A(G)^3) ~equals$ six times the number of triangles in G.\\
-				As proven in $Lemma ~ 2.0.1$, $(A(G)^k)[i,i]$ is the amount of all $v_i\unaryminus v_i \unaryminus paths ~of ~length ~3$.\\
+				As proven in $Lemma ~ 2.0.1$, $(A(G)^3)[i,i]$ is the amount of all $v_i\unaryminus v_i \unaryminus paths ~of ~length ~3$.\\
 				Because a closed path of length $3$ is a triangle, $(A(G)^k)[i,i]$ is the amount of triangles containing $v_i$.\\
-				Moreover, a triangle $t=(v_i,v_j,v_k)$ can be interpreted as two different paths starting/ending at $v_i$: $p_1=v_iv_jv_kv_i$ and $p_2=v_iv_kv_jv_i$. Thus, for each triangle there are two paths.\\
+				Moreover, a triangle $t=(v_i,v_j,v_k,v_i)$ can be interpreted as two different paths starting/ending at $v_i$: $p_1=v_iv_jv_kv_i$ and $p_2=v_iv_kv_jv_i$. Thus, for each triangle there are two paths.\\
 				All in all, let $t$ be a triangle in $G$. Then for each vertex in $t$ there are two paths of length $3$.
 				This makes $3 * 2 = 6$ paths in $tr(A(G)^3)$ for each triangle in $G$.\\
 				Because $tr(A(G)^3)$ is the amount of all $closed~ paths ~ of ~ length~ 3 ~ (v\in V(G))$, and a triangle is a closed path of length $3$, $tr(A(G)^3)=\sum_{i=1}^{n}(2 * |\{t~ -~ triangle ~in~ G ~:~ t~ contains ~v_i\}|)$ is exactly six times the amount of all triangles in $G$.
