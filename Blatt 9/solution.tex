@@ -1,0 +1,113 @@
+% all-in-one cheatsheet layout (Michael Franzen, 2013)
+\documentclass[a4paper]{article}
+
+% geometry settings
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+
+% font settings
+%\usepackage[light,math]{kurier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{marvosym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% colors
+\usepackage{xcolor}
+\definecolor{lightgray}{gray}{0.8}
+
+% formatting
+\usepackage{paralist}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{Tabbing}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage[framemethod=tikz]{mdframed}
+\pagestyle{fancy}
+
+% math
+\usepackage{array}
+\usepackage{eqnarray}
+\usepackage{mathtools}
+\usepackage{cases}
+
+% figures
+\usepackage{wrapfig}
+\usepackage{subfigure}
+
+% figure modules
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc, shapes}
+\usepackage{algorithm2e}
+\usepackage{verbatim}	
+
+% TOC & Glossary
+\usepackage{sectsty}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[titles,subfigure]{tocloft}
+
+% commands
+\usepackage{xargs}
+\usepackage{ifthen}
+
+% head line
+\fancyhf{}
+\chead{Graph Theory - Sheet 9 - \today\\J. Batzill (1698622), M. Franzen (1696933), J. Labeit (1656460)}
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+
+\newcommand{\sheetnumber}{1}
+\newcommand{\unaryminus}{\scalebox{0.5}[1.0]{\( - \)}}
+
+% (problem number)
+\surroundwithmdframed[
+    hidealllines=true,
+    backgroundcolor=gray!10,
+    skipbelow=\baselineskip,
+    skipabove=\baselineskip
+]{mylemma}
+
+\surroundwithmdframed[
+	linecolor=white,
+	skipbelow=\baselineskip,
+	skipabove=\baselineskip
+]{mytheorem}
+
+\tikzstyle{nod}= [circle, draw,inner sep=0pt, minimum size=0.5cm] 
+
+\begin{document}
+	
+	\newtheorem{mytheorem}{Theorem}[section]
+	\newtheorem{mylemma}{Lemma}[mytheorem]	
+
+	\newenvironmentx*{solution}[1]{\section*{Problem #1}\addtocounter{section}{1}\setcounter{mylemma}{0}\setcounter{mytheorem}{0}}{}
+	\newenvironmentx*{theorem}[1]{\begin{mytheorem}#1\begin{proof}}{\end{proof}\end{mytheorem}}
+	\newenvironmentx*{lemma}[1]{\begin{mylemma}#1\begin{proof}}{\end{proof}\end{mylemma}}
+	
+	
+		\begin{solution}{34}
+		In the following we will first proof a lemma and then the theorem. 
+		
+		\begin{lemma}{In a triangle-free graph $G=(V,E)$ with $|V|=n$ if there is a vertex $v \in V$ with $deg(v) = a$, then all the neighbours of $v$ have at most a degree of $n-a$}
+			Let $u \in V$ be any neighbour of $v$. 
+			$u$ cannot be connected to nodes adjacent to $v$ or we would have a triangle with $u$ and $v$. 
+			So $deg(u) \leq |V - neighbourhood(v)| = n - deg(v) \leq n-a$. This line of argumentation can be used on all neighbours of $v$. 
+		\end{lemma}
+				
+			
+		\begin{theorem}{For every triangle-free graph $G=(V,E)$ with $|V|=n$ the inequality $\sum_{v \in V}{deg(v)^2 \leq \frac{n^3}{4}}$ holds.}
+			Let $v \in V$ be the vertex with the highest degree in $G$, $deg(v) = a$. \\
+			Using the lemma we know that for all $u \in neighbours(v) : deg(u) \leq n-a$. Now we now that we have $a$ vertices with maximum degree $n-a$ and the rest $n-a$ vertices have maximum degree $a$. 
+			This gives us the upper bound for the formula $\sum_{v \in V}{deg(v)^2} \leq a*(n-a)^2 + (n-a)*a^2$ with the parameter $a$. 
+			Now we can seek for the maximum of the function to get a precise upper bound $f(a) = a*(n-a)^2 + (n-a)*a^2 = a*n^2-a^2*n$.
+			$f'(a) = n^2 - 2*a*n = n(n-2a)$. So $f$ has a maximum at $\frac{n}{2}$, so to achieve the maximum for  $\sum_{v \in V}{deg(v)^2}$ it is best for all the vertices to have degree $\frac{n}{2}$.  
+			Now we easily get the upper bound  $\sum_{v \in V}{deg(v)^2 \leq f(a) \leq f(\frac{n}{2}) = \frac{n^3}{4}}$. 
+		\end{theorem}
+	\end{solution}
+	
+	
+\end{document}
